@@ -1,0 +1,18 @@
+[
+  "backend/test_backend.py::test_dashboards",
+  "backend/test_backend.py::test_hackathon_demo_flow",
+  "backend/test_backend.py::test_health_check",
+  "backend/test_backend.py::test_host_info_endpoint",
+  "backend/test_backend.py::test_interactive_quiz_evaluation",
+  "backend/test_backend.py::test_lady_voice_auto_speak_profile",
+  "backend/test_backend.py::test_language_detection_indic_and_english",
+  "backend/test_backend.py::test_mitra_tutor_dialogue_and_misconception",
+  "backend/test_backend.py::test_multilingual_translation",
+  "backend/test_backend.py::test_pedagogy_engine_culturally_rooted",
+  "backend/test_backend.py::test_speech_synthesis_metadata",
+  "backend/test_backend.py::test_speech_tts_audio_streaming",
+  "backend/test_backend.py::test_supported_languages",
+  "backend/test_backend.py::test_teacher_lesson_generator",
+  "backend/test_backend.py::test_tutor_any_language_converts_to_mother_tongue",
+  "backend/test_backend.py::test_tutor_scaffolding_hints"
+]

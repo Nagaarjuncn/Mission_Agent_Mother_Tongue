@@ -1,0 +1,14 @@
+# Netlify Headers Rule: Security, Mobile Microphone & Speech Access
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: microphone=(self "*"), camera=(), geolocation=()
+  Access-Control-Allow-Origin: *
+
+/styles/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/js/*
+  Cache-Control: public, max-age=3600, must-revalidate

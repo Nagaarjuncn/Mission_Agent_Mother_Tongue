@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission Agent Mother-Tongue — Learn in the Language You Think In</title>
+  <meta name="description" content="AI-powered vernacular education bringing personalized learning into every child's mother tongue.">
+
+  <!-- Design System Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/responsive.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       1. GLOBAL STICKY NAVBAR
+       ========================================================================== -->
+  <header class="site-navbar">
+    <div class="nav-container">
+      
+      <!-- Brand Logo -->
+      <div class="brand-identity" onclick="window.vernacApp.switchTab('home')">
+        <div class="brand-logo-icon">📖</div>
+        <div class="brand-text-block">
+          <h1>Mission Agent Mother-Tongue</h1>
+          <div class="brand-tagline">Learn in the Language You Think In</div>
+        </div>
+      </div>
+
+      <!-- Center Nav Links -->
+      <nav class="nav-center-links">
+        <a href="#home" class="nav-link active" data-tab="home">🏠 Home</a>
+        <a href="#translate" class="nav-link" data-tab="translate">🌐 AI Translate</a>
+        <a href="#tutor" class="nav-link" data-tab="tutor">🦉 Mitra (AI Tutor)</a>
+        <a href="#dashboard" class="nav-link" data-tab="dashboard">🎒 Student Hub</a>
+        <a href="#teacher" class="nav-link" data-tab="teacher">👩‍🏫 Teacher Hub</a>
+        <a href="#parent" class="nav-link" data-tab="parent">👨‍👩‍👧 Parent View</a>
+      </nav>
+
+      <!-- Right Controls: Role, Language, Gamification, Demo Button -->
+      <div class="nav-right-controls">
+        
+        <!-- Global Mother Tongue Selector - PROMINENT & HIGH VISIBILITY -->
+        <div class="lang-dropdown-wrapper" title="Select Platform Mother Tongue / Language">
+          <span class="nav-lang-icon">🌐</span>
+          <select id="global-lang-select" class="select-global-lang" title="Choose Your Mother Tongue" aria-label="Select Mother Tongue">
+            <option value="ta" selected>🇮🇳 Tamil (தமிழ்)</option>
+            <option value="hi">🇮🇳 Hindi (हिन्दी)</option>
+            <option value="te">🇮🇳 Telugu (తెలుగు)</option>
+            <option value="kn">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+            <option value="ml">🇮🇳 Malayalam (മലയാളം)</option>
+            <option value="bn">🇮🇳 Bengali (বাংলা)</option>
+            <option value="mr">🇮🇳 Marathi (मराठी)</option>
+            <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+            <option value="pa">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+            <option value="or">🇮🇳 Odia (ଓଡ଼ିଆ)</option>
+            <option value="as">🇮🇳 Assamese (অসমীয়া)</option>
+            <option value="en">🌐 English (English)</option>
+          </select>
+        </div>
+
+        <!-- Mother Tongue Voice Setup Pill -->
+        <button id="btn-nav-mother-tongue" class="btn-nav-mt-pill" title="Speak or Choose Your Mother Tongue">
+          🎙️ <span id="nav-mt-label">Tamil (தமிழ்)</span>
+        </button>
+
+        <!-- Live Full-Stack Backend Connection Pill -->
+        <div id="backend-status-indicator" class="status-pill checking" title="Connecting to Mission Agent Mother-Tongue AI Backend...">
+          <span class="indicator-dot checking"></span> ⚡ Connecting AI...
+        </div>
+
+        <!-- Role Switcher -->
+        <div class="role-switcher-group">
+          <button class="btn-role-pill active" data-role="student">🎒 Student</button>
+          <button class="btn-role-pill" data-role="teacher">👩‍🏫 Teacher</button>
+          <button class="btn-role-pill" data-role="parent">👨‍👩‍👧 Parent</button>
+        </div>
+
+        <!-- Permanent Secured Host Link Pill -->
+        <button id="btn-nav-host-link" class="btn-nav-host-pill" title="View Permanent Secured HTTPS Link & QR Code">
+          🔒 <span id="nav-host-label">Secured Link</span>
+        </button>
+
+        <!-- Hackathon Golden Demo Pulsing Button -->
+        <button class="btn-launch-demo" id="btn-header-demo">
+          <span>✨</span> 3-Min Demo
+        </button>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       2. MAIN VIEWPORT CONTAINER
+       ========================================================================== -->
+  <main class="main-content-viewport">
+
+    <!-- ========================================================================
+         VIEW 1: LANDING PAGE & LIVE SANDBOX
+         ======================================================================== -->
+    <section id="view-home" class="tab-view active">
+      
+      <!-- Hero Banner -->
+      <div class="hero-container">
+        <div class="hero-text-content">
+          <div class="hero-pill-badge">
+            <span>🇮🇳</span> AI-Powered Primary Vernacular Education
+          </div>
+          <h2 class="hero-title">
+            Learn in the Language <br>
+            <span class="highlight">You Think In.</span>
+          </h2>
+          <p class="hero-subheadline">
+            Children grasp foundational concepts faster when taught in their mother tongue with familiar cultural metaphors, not cold word-for-word translations.
+          </p>
+
+          <div class="hero-cta-group">
+            <button class="btn-primary" onclick="window.vernacApp.switchTab('translate')">
+              🚀 Try AI Translation
+            </button>
+            <button class="btn-secondary" onclick="window.vernacApp.switchTab('tutor')">
+              🦉 Talk to Mitra AI
+            </button>
+            <button class="btn-secondary btn-launch-demo">
+              ✨ Watch 3-Min Live Demo
+            </button>
+          </div>
+        </div>
+
+        <!-- Hero Visual Floating Cards -->
+        <div class="hero-visual-board">
+          <div class="hero-float-card">
+            <div class="float-icon">☀️</div>
+            <div class="float-info">
+              <h4>Sunlight ⇄ சூரிய ஒளி</h4>
+              <p>Explained with morning kolam & grandma's balcony plants</p>
+            </div>
+          </div>
+
+          <div class="hero-float-card">
+            <div class="float-icon">🍲</div>
+            <div class="float-info">
+              <h4>Water Cycle ⇄ நீர் சுழற்சி</h4>
+              <p>Explained with mother's boiling rasam pot & lid droplets</p>
+            </div>
+          </div>
+
+          <div class="hero-float-card">
+            <div class="float-icon">🥭</div>
+            <div class="float-info">
+              <h4>Fractions ⇄ பின்னங்கள் (1/2, 1/4)</h4>
+              <p>Explained with sharing sweet summer mango slices</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- "See Vernacular AI in Action" Live Sandbox -->
+      <div class="section-wrapper">
+        <div class="section-header">
+          <span class="section-tag">Interactive Preview</span>
+          <h2>See Vernacular AI in Action</h2>
+          <p>Watch how VernacLearn turns dry textbook jargon into an engaging, culturally familiar story in the child's native mother tongue.</p>
+        </div>
+
+        <div class="sandbox-wrapper">
+          <div class="sandbox-input-bar">
+            <input type="text" id="sandbox-input" class="sandbox-input-box" value="Why does rain fall from the sky?" placeholder="Ask any primary science or math question...">
+            
+            <select id="sandbox-lang-select" class="sandbox-select-lang">
+              <option value="ta" selected>🇮🇳 Tamil (தமிழ்)</option>
+              <option value="hi">🇮🇳 Hindi (हिन्दी)</option>
+              <option value="te">🇮🇳 Telugu (తెలుగు)</option>
+              <option value="kn">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+              <option value="ml">🇮🇳 Malayalam (മലയാളം)</option>
+              <option value="bn">🇮🇳 Bengali (বাংলা)</option>
+              <option value="mr">🇮🇳 Marathi (मराठी)</option>
+              <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+              <option value="pa">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+              <option value="or">🇮🇳 Odia (ଓଡ଼ିଆ)</option>
+              <option value="as">🇮🇳 Assamese (অসমীয়া)</option>
+              <option value="en">🌐 English (English)</option>
+            </select>
+
+            <button id="btn-sandbox-run" class="btn-sandbox-action">
+              <span>⚡</span> Translate & Explain
+            </button>
+          </div>
+
+          <div class="sandbox-presets-row">
+            <span class="preset-label">Try popular concepts:</span>
+            <button class="sandbox-preset-chip" data-query="Why does rain fall from the sky?">🌧️ Why does rain fall?</button>
+            <button class="sandbox-preset-chip" data-query="What is a fraction?">🥭 What is a Fraction (1/2)?</button>
+            <button class="sandbox-preset-chip" data-query="How do plants make food? Photosynthesis">🍃 How do plants cook food?</button>
+          </div>
+
+          <!-- Dynamic Comparison Results -->
+          <div id="sandbox-result-box">
+            <!-- Injected by app.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Differences Matrix -->
+      <div class="diff-matrix-wrapper">
+        <h3 style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--color-primary);">
+          Why Word-for-Word Translation Fails Primary Schoolers
+        </h3>
+        <p style="color: var(--text-muted); margin-bottom: 1rem;">
+          Traditional tools translate words literally. Mission Agent Mother-Tongue adapts pedagogy to the child’s lived cultural environment.
+        </p>
+
+        <table class="diff-table">
+          <thead>
+            <tr>
+              <th>Feature Dimension</th>
+              <th>Generic Machine Translation</th>
+              <th>Mission Agent Mother-Tongue AI Pedagogy Engine</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Vocabulary Style</strong></td>
+              <td>Complex, archaic dictionary words children cannot pronounce.</td>
+              <td>Age-appropriate, friendly, spoken colloquial mother tongue.</td>
+            </tr>
+            <tr>
+              <td><strong>Real-World Metaphors</strong></td>
+              <td>Westernized examples (snow, apples, baseball).</td>
+              <td>Familiar Indian cultural contexts (monsoon, tea steam, mangoes, farm fields).</td>
+            </tr>
+            <tr>
+              <td><strong>Audio Support</strong></td>
+              <td>Mechanical, flat robotic voice.</td>
+              <td>Natural cadence, warm storytelling tone tuned for ages 5–12.</td>
+            </tr>
+            <tr>
+              <td><strong>Pedagogy Follow-up</strong></td>
+              <td>Ends at translation; zero comprehension checks.</td>
+              <td>Interactive Socratic hints, mini quizzes, and star rewards.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Stats Counters -->
+      <div class="stats-counter-strip">
+        <div class="stat-metric-card">
+          <div class="stat-number">12+</div>
+          <div class="stat-label">Indian Regional Languages</div>
+        </div>
+        <div class="stat-metric-card">
+          <div class="stat-number">85%</div>
+          <div class="stat-label">Faster Concept Comprehension</div>
+        </div>
+        <div class="stat-metric-card">
+          <div class="stat-number">450+</div>
+          <div class="stat-label">Localized Pedagogies & Stories</div>
+        </div>
+        <div class="stat-metric-card">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Culturally Rooted Metaphors</div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================================================
+         VIEW 2: AI REAL-TIME TRANSLATION & CULTURAL EXPLAIN STUDIO
+         ======================================================================== -->
+    <section id="view-translate" class="tab-view">
+      <div class="section-header">
+        <span class="section-tag">Bilingual Learning Studio</span>
+        <h2>AI Real-Time Translation & Pedagogy</h2>
+        <p>Type or speak in English or any regional language. Receive instant speech-to-text, translation, and a contextualized pedagogical explanation.</p>
+      </div>
+
+      <div class="studio-layout">
+        
+        <!-- Left: Input Workspace -->
+        <div class="studio-input-card">
+          <div class="studio-card-toolbar">
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); display: block;">SOURCE LANGUAGE</label>
+              <select id="source-lang-select" class="studio-select">
+                <option value="en" selected>🌐 English (English)</option>
+                <option value="ta">🇮🇳 Tamil (தமிழ்)</option>
+                <option value="hi">🇮🇳 Hindi (हिन्दी)</option>
+                <option value="te">🇮🇳 Telugu (తెలుగు)</option>
+                <option value="kn">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                <option value="ml">🇮🇳 Malayalam (മലയാളം)</option>
+                <option value="bn">🇮🇳 Bengali (বাংলা)</option>
+                <option value="mr">🇮🇳 Marathi (मराठी)</option>
+                <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+                <option value="pa">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+                <option value="or">🇮🇳 Odia (ଓଡ଼ିଆ)</option>
+                <option value="as">🇮🇳 Assamese (অসমীয়া)</option>
+              </select>
+            </div>
+            <span>⇄</span>
+            <div>
+              <label style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); display: block;">TARGET MOTHER TONGUE</label>
+              <select id="target-lang-select" class="studio-select">
+                <option value="ta" selected>🇮🇳 Tamil (தமிழ்)</option>
+                <option value="hi">🇮🇳 Hindi (हिन्दी)</option>
+                <option value="te">🇮🇳 Telugu (తెలుగు)</option>
+                <option value="kn">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                <option value="ml">🇮🇳 Malayalam (മലയാളം)</option>
+                <option value="bn">🇮🇳 Bengali (বাংলা)</option>
+                <option value="mr">🇮🇳 Marathi (मराठी)</option>
+                <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+                <option value="pa">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+                <option value="or">🇮🇳 Odia (ଓଡ଼ିଆ)</option>
+                <option value="as">🇮🇳 Assamese (অসমীয়া)</option>
+                <option value="en">🌐 English (English)</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="detected-speaker-banner" class="detected-speaker-banner" style="display: none;">
+            <span class="pulse-icon">🔍</span>
+            <div id="detected-speaker-text">Auto-detecting speaker's language...</div>
+          </div>
+
+          <textarea id="translate-input" class="studio-textarea" placeholder="Type or click the microphone to speak in English, Hindi, or any language (e.g. 'Plants need sunlight to grow' or 'வானத்திலிருந்து மழை ஏன் பெய்கிறது?')...">Plants need sunlight to grow.</textarea>
+
+          <div class="studio-actions-row">
+            <button id="btn-voice-translate" class="btn-mic-large" title="Speak in Any Language (Auto-Detect)">
+              🎙️
+            </button>
+            <div style="flex: 1; padding: 0 0.5rem;">
+              <canvas id="studio-wave-canvas" class="audio-waveform-canvas"></canvas>
+            </div>
+            <button id="btn-do-translate" class="btn-primary">
+              ⚡ Translate & Explain
+            </button>
+          </div>
+        </div>
+
+        <!-- Right: Results Output Workspace -->
+        <div id="translate-results-container">
+          <!-- Injected dynamically by app.js executeTranslationStudio() -->
+        </div>
+
+      </div>
+
+      <!-- ====================================================================
+           TWO-PERSON LIVE MIC CONVERSATION BRIDGE
+           ==================================================================== -->
+      <div class="two-way-voice-bridge">
+        <div class="bridge-header">
+          <div class="bridge-title-row">
+            <div class="bridge-icon-circle">🎙️ ⇄ 🎧</div>
+            <div>
+              <h3>Two-Person Live Mic Bridge (Teacher ⟷ Student)</h3>
+              <p>Speak naturally using microphones. The system auto-identifies the speaker's language and translates to the other person's selected language in real time.</p>
+            </div>
+          </div>
+          <div class="bridge-controls-top">
+            <label class="toggle-auto-speak" title="Automatically read translations out loud">
+              <input type="checkbox" id="bridge-auto-speak-toggle" checked>
+              <span>🔊 Auto-Speak Aloud</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Two Interactive Microphone Cockpits -->
+        <div class="bridge-cockpits-grid">
+          
+          <!-- Person 1: The Other Person (Teacher / Parent) -->
+          <div class="cockpit-card speaker-other" id="cockpit-p1">
+            <div class="cockpit-header">
+              <div class="speaker-profile">
+                <span class="speaker-avatar-circle">👩‍🏫</span>
+                <div>
+                  <div class="speaker-name">Person 1 (Teacher / Other Person)</div>
+                  <div class="detected-lang-pill" id="p1-detected-pill">
+                    <span class="indicator-dot online"></span> 🔍 Auto-Detects Language (English / Hindi / etc.)
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cockpit-body">
+              <div class="speech-bubble-preview" id="p1-speech-preview">
+                <em>Click mic below and speak in English, Hindi, or any language...</em>
+              </div>
+            </div>
+
+            <div class="cockpit-footer">
+              <button id="btn-p1-mic" class="btn-bridge-mic other-mic">
+                <span class="mic-glyph">🎙️</span> Speak (Auto-Detect)
+              </button>
+              <div class="bridge-wave-wrapper">
+                <canvas id="p1-wave-canvas" class="bridge-mini-wave"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Directional Translation Flow Indicator -->
+          <div class="bridge-connector">
+            <div class="bridge-flow-badge" id="bridge-flow-indicator">
+              ⚡ Live AI Bridge Active
+            </div>
+            <div class="bridge-arrows">⇄</div>
+          </div>
+
+          <!-- Person 2: Student in Selected Mother Tongue -->
+          <div class="cockpit-card speaker-student" id="cockpit-p2">
+            <div class="cockpit-header">
+              <div class="speaker-profile">
+                <span class="speaker-avatar-circle">🎒</span>
+                <div>
+                  <div class="speaker-name">Person 2 (Student / Child)</div>
+                  <div class="target-lang-pill" id="p2-target-pill">
+                    🇮🇳 Selected: <strong id="p2-lang-label">Tamil (தமிழ்)</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="cockpit-body">
+              <div class="speech-bubble-preview translated" id="p2-speech-preview">
+                <em>Translation & audio response will play aloud in student's mother tongue...</em>
+              </div>
+            </div>
+
+            <div class="cockpit-footer">
+              <button id="btn-p2-mic" class="btn-bridge-mic student-mic">
+                <span class="mic-glyph">🎙️</span> Reply in Mother Tongue
+              </button>
+              <div class="bridge-wave-wrapper">
+                <canvas id="p2-wave-canvas" class="bridge-mini-wave"></canvas>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Live Dialogue Chat Stream -->
+        <div class="bridge-dialogue-section">
+          <div class="dialogue-header">
+            <h4>💬 Live Bilingual Dialogue Stream</h4>
+            <button class="btn-clear-dialogue" id="btn-clear-dialogue">Clear Dialogue</button>
+          </div>
+          <div class="dialogue-scroll" id="dialogue-scroll">
+            <div class="dialogue-empty-state">
+              Tap either microphone above to start a live two-way spoken conversation!
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================================================
+         VIEW 3: MITRA AI VERNACULAR TUTOR
+         ======================================================================== -->
+    <section id="view-tutor" class="tab-view">
+      <div class="section-header">
+        <span class="section-tag">Interactive Companion • 🌐 Any Language In ➔ Mother Tongue Out</span>
+        <h2>Meet Mitra (மித்ரா / मित्र) — Your AI Learning Buddy</h2>
+        <p>Ask in <strong>ANY language</strong> (English, Hindi, Telugu, etc.) — Mitra automatically converts your question into your selected mother tongue and explains foundational concepts using fun cultural stories.</p>
+      </div>
+
+      <div class="tutor-layout">
+        
+        <!-- Left Mascot Profile & Quick Actions -->
+        <div class="tutor-mascot-panel">
+          <div id="mitra-mascot-container" class="mascot-avatar mood-greeting">
+            🦉
+            <div class="mascot-mood-badge">👋</div>
+          </div>
+
+          <h3 class="tutor-name">Mitra (நண்பன் மித்ரா)</h3>
+          <span class="tutor-badge">Adaptive AI Tutor</span>
+          <p class="tutor-bio">“Ask me anything in any language — I will convert it and teach you in your mother tongue with kitchen and village stories!”</p>
+
+          <div class="tutor-action-chips">
+            <button class="tutor-chip" data-prompt="Why does rain fall from the sky?">🌧️ Why does rain fall?</button>
+            <button class="tutor-chip" data-prompt="How do plants cook their food?">🍃 How do plants make food?</button>
+            <button class="tutor-chip" data-prompt="What is a fraction? Explain with mangoes!">🥭 What is a fraction (1/2)?</button>
+            <button class="tutor-chip" data-prompt="Give me an easier example from my village!">🥥 Give an easier local example</button>
+          </div>
+        </div>
+
+        <!-- Right Chat Stream -->
+        <div class="tutor-chat-panel">
+          <div id="tutor-chat-stream" class="chat-messages-scroll">
+            <!-- Messages injected dynamically by tutorChat.js -->
+          </div>
+
+          <canvas id="tutor-wave-canvas" class="audio-waveform-canvas" style="height: 24px; margin: 0 1.5rem;"></canvas>
+
+          <div class="tutor-chat-input-bar">
+            <button id="btn-tutor-mic" class="btn-mic-large" style="width: 44px; height: 44px; font-size: 1.2rem;" title="Speak in ANY language — converts to your mother tongue!">
+              🎙️
+            </button>
+            <input type="text" id="tutor-input-box" class="tutor-input" placeholder="Ask Mitra in ANY language (English, Hindi, etc.) — converts to your mother tongue!">
+            <button id="btn-tutor-send" class="btn-send-tutor" title="Send Question">
+              ➔
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================================================
+         VIEW 4: STUDENT LEARNING DASHBOARD
+         ======================================================================== -->
+    <section id="view-dashboard" class="tab-view">
+      
+      <!-- Student Profile Strip -->
+      <div class="student-profile-strip">
+        <div class="profile-left">
+          <div class="profile-avatar-circle">👦🏽</div>
+          <div class="profile-info">
+            <h3>Aarav Kumar (ஆரவ் குமார்)</h3>
+            <div class="profile-meta-pills">
+              <span>🎒 Grade: Class 3</span> • 
+              <span>🗣️ Mother Tongue: <strong id="dash-mother-tongue">Tamil (தமிழ்)</strong></span> • 
+              <span>🏆 Level 4 Explorer</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-stats-group">
+          <div class="stat-bubble">
+            <div class="num" style="color: #FFB800;">🔥 5</div>
+            <div class="label">Day Streak</div>
+          </div>
+          <div class="stat-bubble">
+            <div class="num" style="color: #60A5FA;">⭐ <span class="nav-star-count">140</span></div>
+            <div class="label">Stars Earned</div>
+          </div>
+          <div class="stat-bubble">
+            <div class="num" style="color: #34D399;">🎖️ 6</div>
+            <div class="label">Badges</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Minigame Match-the-Pair -->
+      <div id="minigame-container"></div>
+
+      <!-- Subjects Progress Cards -->
+      <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
+        <h3>My Subjects in Mother Tongue</h3>
+        <p>All core topics aligned with regional curriculum standards.</p>
+      </div>
+
+      <div id="dashboard-subjects-grid" class="subjects-grid">
+        <!-- Rendered by app.js -->
+      </div>
+
+      <!-- Badges Showcase -->
+      <div class="badges-container">
+        <h3>My Unlocked Badges 🏆</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Rewards earned through voice questions and vernacular understanding.</p>
+        <div id="dashboard-badges-grid" class="badges-grid">
+          <!-- Rendered by app.js -->
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================================================
+         VIEW 5: TEACHER HUB & AI LESSON GENERATOR
+         ======================================================================== -->
+    <section id="view-teacher" class="tab-view">
+      <div class="section-header">
+        <span class="section-tag">Teacher Co-Pilot</span>
+        <h2>AI Vernacular Lesson Generator & Classroom Hub</h2>
+        <p>Empower teachers to instantly transform textbook topics into localized lesson plans, mother-tongue glossaries, and zero-cost classroom activities.</p>
+      </div>
+
+      <div class="teacher-workspace-layout">
+        
+        <!-- Left: Generator Form -->
+        <div class="teacher-form-card">
+          <h3 style="margin-bottom: 1.25rem;">📝 Generate Localized Lesson</h3>
+
+          <div class="form-field">
+            <label>Topic / Concept</label>
+            <input type="text" id="teacher-topic-input" value="The Water Cycle" placeholder="e.g. The Water Cycle, Fractions, Plants...">
+          </div>
+
+          <div class="form-field">
+            <label>Target Grade</label>
+            <select id="teacher-grade-select">
+              <option value="Class 1">Class 1 (Age 6)</option>
+              <option value="Class 2">Class 2 (Age 7)</option>
+              <option value="Class 3">Class 3 (Age 8)</option>
+              <option value="Class 4" selected>Class 4 (Age 9)</option>
+              <option value="Class 5">Class 5 (Age 10)</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>Instruction Medium / Mother Tongue</label>
+            <select id="teacher-lesson-lang"></select>
+          </div>
+
+          <div class="form-field">
+            <label>Difficulty Level</label>
+            <select id="teacher-diff-select">
+              <option value="Beginner" selected>Beginner (Story-first, visual)</option>
+              <option value="Intermediate">Intermediate (Hands-on experiments)</option>
+              <option value="Advanced">Advanced (Scientific terminology)</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>Regional Cultural Anchor / Context</label>
+            <input type="text" id="teacher-context-input" value="Local Vaigai river & household kitchen pots" placeholder="e.g. Village market, river, monsoon festival...">
+          </div>
+
+          <button id="btn-generate-lesson" class="btn-generate-lesson">
+            ✨ Generate Complete Lesson Plan
+          </button>
+        </div>
+
+        <!-- Right: Lesson Plan Output Studio -->
+        <div id="teacher-lesson-output">
+          <!-- Populated by app.js generateTeacherLesson() -->
+        </div>
+
+      </div>
+
+      <!-- Classroom Diagnostics & Heatmap -->
+      <div class="teacher-analytics-section">
+        <div class="analytics-card">
+          <h3 style="margin-bottom: 1rem;">📊 Class Language Distribution (34 Students)</h3>
+          <div id="teacher-lang-chart"></div>
+        </div>
+
+        <div class="analytics-card">
+          <h3 style="margin-bottom: 1rem;">⚠️ Frequently Misunderstood Concepts Heatmap</h3>
+          <div id="teacher-misconceptions-list"></div>
+        </div>
+      </div>
+
+    </section>
+
+
+    <!-- ========================================================================
+         VIEW 6: PARENT PORTAL
+         ======================================================================== -->
+    <section id="view-parent" class="tab-view">
+      <div class="section-header">
+        <span class="section-tag">Family Learning Bridge</span>
+        <h2>Parent View — Ammā & Appā Portal</h2>
+        <p>Simple, visual, low-cognitive-load insights into what your child understood today, plus easy conversational dinner questions.</p>
+      </div>
+
+      <div id="parent-dashboard-content">
+        <!-- Rendered by app.js renderParentDashboard() -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MOTHER-TONGUE FIRST VOICE ONBOARDING MODAL
+       ========================================================================== -->
+  <div id="modal-mother-tongue-first" class="onboarding-modal-overlay active" role="dialog" aria-modal="true">
+    <div class="onboarding-modal-content">
+      <button class="modal-close-corner" id="btn-close-onboarding" title="Skip to Website">&times;</button>
+      
+      <!-- Modal Header -->
+      <div class="onboarding-header-group">
+        <div class="onboarding-mascot-badge">
+          <span>🦉</span> <strong>Mission Agent Mother-Tongue</strong> • Voice-First Learning
+        </div>
+        <h2 class="onboarding-title">What is your Mother Tongue?</h2>
+        <p class="onboarding-subtitle">
+          Select or speak your language. <strong>Mission Agent Mother-Tongue</strong> automatically adapts all lessons, quizzes, and AI explanations to your chosen native language!
+        </p>
+      </div>
+
+      <!-- Step 1: Speak Your Language -->
+      <div id="onboarding-step-1">
+        <!-- Microphone Radar Box -->
+        <div class="onboarding-mic-stage">
+          <div class="mic-radar-anchor">
+            <button id="btn-onboarding-mic" class="btn-onboarding-mic" title="Click to Speak in Any Language">
+              🎙️
+            </button>
+            <div class="mic-radar-ring"></div>
+          </div>
+          <div class="onboarding-mic-hint" id="onboarding-mic-hint">Click the Microphone & Speak</div>
+          <div class="onboarding-mic-subhint" id="onboarding-mic-subhint">
+            Say your language name (e.g. <em>"Tamil"</em>, <em>"Hindi"</em>, <em>"Telugu"</em>) or speak a sentence (e.g. <em>"வணக்கம்"</em>, <em>"नमस्ते"</em>, <em>"Hello"</em>)
+          </div>
+          <canvas id="onboarding-wave-canvas" class="onboarding-wave-canvas"></canvas>
+        </div>
+
+        <!-- Detected Language Spotlight Banner -->
+        <div id="onboarding-detected-banner" class="detected-language-spotlight" style="display: none;">
+          <div class="detected-row-top">
+            <div class="detected-flag-title">
+              <span class="detected-flag-circle" id="onboarding-detected-flag">🇮🇳</span>
+              <div>
+                <span class="detected-name-main" id="onboarding-detected-name">Tamil</span>
+                <span class="detected-native-script" id="onboarding-detected-native">(தமிழ்)</span>
+              </div>
+            </div>
+            <span class="detected-confidence-badge" id="onboarding-detected-confidence">99% Confidence</span>
+          </div>
+          <div class="detected-transcript-quote">
+            🗣️ <strong>Heard:</strong> "<span id="onboarding-detected-transcript"></span>"
+          </div>
+          <div class="detected-script-tag" id="onboarding-detected-script">
+            Script: Indic Native Script (Tamil)
+          </div>
+        </div>
+
+        <!-- Or Select Below -->
+        <div class="onboarding-divider">
+          <span>Click Any Language to Choose Immediately</span>
+        </div>
+
+        <div class="onboarding-lang-grid" id="onboarding-lang-grid">
+          <button class="btn-lang-choice selected" data-code="ta">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Tamil</span>
+              <span class="lang-choice-native">தமிழ்</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="hi">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Hindi</span>
+              <span class="lang-choice-native">हिन्दी</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="te">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Telugu</span>
+              <span class="lang-choice-native">తెలుగు</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="kn">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Kannada</span>
+              <span class="lang-choice-native">ಕನ್ನಡ</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="ml">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Malayalam</span>
+              <span class="lang-choice-native">മലയാളം</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="bn">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Bengali</span>
+              <span class="lang-choice-native">বাংলা</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="mr">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Marathi</span>
+              <span class="lang-choice-native">मराठी</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="gu">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Gujarati</span>
+              <span class="lang-choice-native">ગુજરાતી</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="pa">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Punjabi</span>
+              <span class="lang-choice-native">ਪੰਜਾਬੀ</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="or">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Odia</span>
+              <span class="lang-choice-native">ଓଡ଼ିଆ</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="as">
+            <span class="lang-choice-flag">🇮🇳</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">Assamese</span>
+              <span class="lang-choice-native">অসমীয়া</span>
+            </div>
+          </button>
+          <button class="btn-lang-choice" data-code="en">
+            <span class="lang-choice-flag">🌐</span>
+            <div class="lang-choice-names">
+              <span class="lang-choice-eng">English</span>
+              <span class="lang-choice-native">English</span>
+            </div>
+          </button>
+        </div>
+
+        <div style="display: flex; gap: 0.8rem; margin-top: 1.25rem;">
+          <button id="btn-confirm-mother-tongue" class="btn-enter-platform" style="flex: 1;">
+            <span>✨</span> Apply <span id="onboarding-confirm-lang-name">Tamil (தமிழ்)</span> & Explore
+          </button>
+          <button id="btn-quick-close-onboarding" class="btn-secondary" style="padding: 0.85rem 1.4rem; font-weight: 700; border-radius: var(--radius-pill); cursor: pointer;">
+            Close ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Immediate Mother-Tongue Interaction & Output -->
+      <div id="onboarding-step-2" style="display: none;">
+        <div class="onboarding-step-interaction">
+          <!-- Mitra Welcome in Mother Tongue -->
+          <div class="mitra-welcome-bubble">
+            <div class="mitra-avatar-circle">🦉</div>
+            <div style="flex: 1;">
+              <div class="mitra-greeting-text" id="mitra-onboarding-greeting">
+                வணக்கம்! உங்கள் தாய்மொழி தமிழ் தேர்ந்தெடுக்கப்பட்டது. என்னிடம் எதையும் கேளுங்கள்!
+              </div>
+              <button class="btn-replay-greeting" id="btn-replay-greeting">
+                🔊 Listen Again
+              </button>
+            </div>
+          </div>
+
+          <!-- Ask a Question in Mother Tongue -->
+          <label style="font-size: 0.85rem; font-weight: 700; color: #1E293B; display: block; margin-bottom: 0.5rem;">
+            🎙️ Ask Mitra any question in your mother tongue:
+          </label>
+          <div class="interaction-input-row">
+            <button id="btn-interaction-mic" class="btn-interaction-mic" title="Speak question">
+              🎙️
+            </button>
+            <input type="text" id="interaction-input-box" class="interaction-input-box" placeholder="Ask in your mother tongue or English...">
+            <button id="btn-interaction-submit" class="btn-interaction-submit">
+              Ask ➔
+            </button>
+          </div>
+
+          <!-- Suggested Quick Topics in Mother Tongue -->
+          <div class="onboarding-preset-chips" id="onboarding-preset-chips">
+            <!-- Chips generated dynamically in selected language -->
+          </div>
+
+          <!-- Pedagogical Output Box (Generated by AI) -->
+          <div id="onboarding-output-box" class="onboarding-output-box" style="display: none;">
+            <div class="output-pedagogy-title" id="output-pedagogy-title"></div>
+            <div class="output-metaphor-bubble" id="output-metaphor-bubble"></div>
+            <div class="output-explanation-text" id="output-explanation-text"></div>
+            <div class="output-actions-row">
+              <button class="btn-read-aloud-mt" id="btn-read-aloud-mt">
+                🔊 Read Aloud in Mother Tongue
+              </button>
+              <span style="font-size: 0.8rem; color: #78350F; font-weight: 700;" id="output-quiz-prompt">
+                ⭐ Star Reward Unlocked!
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <button id="btn-finish-onboarding" class="btn-enter-platform">
+          🚀 Enter Mission Agent Mother-Tongue with <span id="onboarding-final-lang-name">Tamil</span> ➔
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       PERMANENT SECURED HOST LINK MODAL
+       ========================================================================== -->
+  <div id="modal-host-link" class="onboarding-modal-overlay" role="dialog" aria-modal="true">
+    <div class="host-modal-content">
+      <button class="modal-close-corner" id="btn-close-host-modal">&times;</button>
+      
+      <div class="host-badge-header">
+        <span>🔒</span> SSL / TLS 1.3 End-to-End Encrypted Host
+      </div>
+      <h3 style="font-size: 1.5rem; color: #1E2958; margin-bottom: 0.4rem;">Permanent Secured Host Link</h3>
+      <p style="color: #64748B; font-size: 0.9rem;">
+        This secured HTTPS host allows seamless voice input and microphone access from any mobile phone, tablet, or remote PC worldwide.
+      </p>
+
+      <div class="host-url-box">
+        <input type="text" id="modal-host-url-input" class="host-url-input" readonly value="https://...">
+        <button id="btn-copy-host-link" class="btn-copy-host">📋 Copy Link</button>
+      </div>
+
+      <!-- Live QR Code for Instant Mobile Phone Testing -->
+      <div class="qr-code-wrapper">
+        <img id="host-qr-code-img" class="qr-code-img" src="" alt="Scan QR to open VernacLearn on Phone">
+        <span style="font-size: 0.78rem; font-weight: 700; color: #64748B;">📱 Scan to test microphone on smartphone</span>
+      </div>
+
+      <div class="host-features-grid">
+        <div class="host-feat-item">
+          <span>🎙️</span> <strong>Microphone:</strong> Enabled & Verified
+        </div>
+        <div class="host-feat-item">
+          <span>🛡️</span> <strong>TLS 1.3:</strong> Cloudflare Zero-Trust
+        </div>
+        <div class="host-feat-item">
+          <span>⚡</span> <strong>Backend:</strong> REST APIs Active
+        </div>
+        <div class="host-feat-item">
+          <span>🌐</span> <strong>Global CDN:</strong> Anycast Edge
+        </div>
+      </div>
+
+      <div class="host-permanent-guide-callout">
+        💡 <strong>Permanent Setup Tip:</strong> Double-click <code>start_permanent_host.bat</code> or run <code>.\start_permanent_host.ps1</code> to launch both the full-stack server and Cloudflare tunnel anytime.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       3. MODULAR SCRIPT IMPORTS
+       ========================================================================== -->
+  <script type="module" src="js/app.js"></script>
+
+</body>
+</html>
