@@ -130,6 +130,36 @@
             Children like <strong class="student-name-slot">Aarav</strong> grasp foundational concepts faster when taught in their mother tongue with familiar cultural metaphors, not cold word-for-word translations.
           </p>
 
+          <!-- Interactive Hero Learner & Language Setup Bar -->
+          <div class="hero-learner-setup-bar">
+            <div class="setup-bar-inner">
+              <div class="setup-bar-col">
+                <label for="hero-student-name-input">👦🏽 Student Name (மாணவர் பெயர்):</label>
+                <input type="text" id="hero-student-name-input" placeholder="Enter student name..." value="Aarav" autocomplete="name">
+              </div>
+              <div class="setup-bar-col">
+                <label for="hero-lang-select">🗣️ Mother Tongue (தாய்மொழி):</label>
+                <select id="hero-lang-select">
+                  <option value="ta" selected>🇮🇳 Tamil (தமிழ்)</option>
+                  <option value="hi">🇮🇳 Hindi (हिन्दी)</option>
+                  <option value="te">🇮🇳 Telugu (తెలుగు)</option>
+                  <option value="kn">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                  <option value="ml">🇮🇳 Malayalam (മലയാളം)</option>
+                  <option value="bn">🇮🇳 Bengali (বাংলা)</option>
+                  <option value="mr">🇮🇳 Marathi (मराठी)</option>
+                  <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+                  <option value="pa">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+                  <option value="or">🇮🇳 Odia (ଓଡ଼ିଆ)</option>
+                  <option value="as">🇮🇳 Assamese (অসমীয়া)</option>
+                  <option value="en">🌐 English (English)</option>
+                </select>
+              </div>
+              <button id="btn-hero-save-profile" class="btn-hero-setup-save" title="Apply Name and Language Across All Hubs">
+                ✨ Apply & Personalize All
+              </button>
+            </div>
+          </div>
+
           <div class="hero-cta-group">
             <button class="btn-primary" onclick="window.vernacApp.switchTab('translate')">
               🚀 Try AI Translation
@@ -541,7 +571,7 @@
             </h3>
             <div class="profile-meta-pills">
               <span>🎒 Grade: Class 3</span> • 
-              <span>🗣️ Mother Tongue: <strong id="dash-mother-tongue">Tamil (தமிழ்)</strong></span> • 
+              <span>🗣️ Mother Tongue: <strong id="dash-mother-tongue">Tamil (தமிழ்)</strong> <button id="btn-edit-student-lang" class="btn-edit-inline-lang" title="Click to Change Mother Tongue">🌐 Change</button></span> • 
               <span>🏆 <span class="student-name-slot">Aarav</span>'s Level 4 Explorer</span>
             </div>
           </div>
@@ -813,14 +843,62 @@
         </p>
       </div>
 
-      <!-- Student Name Input Stage -->
-      <div class="onboarding-name-stage">
-        <label for="onboarding-student-name">
-          <span>👦🏽</span> <strong>What is your name? (மாணவர் பெயர் / आपका नाम):</strong>
-        </label>
-        <div class="onboarding-name-input-row">
-          <input type="text" id="onboarding-student-name" placeholder="Type your name (e.g. Aarav, Ananya, Kavin, Rahul...)" value="Aarav">
-          <span class="onboarding-name-subhint">Used to personalize your Student Hub & Parent Portal</span>
+      <!-- Unified Learner Details Input Card (Student Name & Mother Tongue Language) -->
+      <div class="onboarding-setup-card">
+        <div class="setup-card-header">
+          <span class="setup-header-badge">👤 Learner Profile Setup</span>
+          <p class="setup-header-sub">Enter the student's name and choose their native mother tongue language:</p>
+        </div>
+
+        <div class="setup-card-row">
+          <!-- Input 1: Student Name -->
+          <div class="setup-field-block">
+            <label for="onboarding-student-name">
+              <span class="field-icon">👦🏽</span>
+              <strong>Student Name:</strong>
+              <span class="field-sublabel">(மாணவர் பெயர் / नाम)</span>
+            </label>
+            <div class="setup-input-wrapper">
+              <input type="text" id="onboarding-student-name" class="setup-text-input" placeholder="Enter student name (e.g. Aarav, Ananya, Kavin...)" value="Aarav" autocomplete="name">
+            </div>
+            <span class="setup-field-hint">Personalizes Student Hub, Mitra AI Tutor & Parent View</span>
+          </div>
+
+          <!-- Input 2: Mother Tongue Language -->
+          <div class="setup-field-block">
+            <label for="onboarding-lang-select">
+              <span class="field-icon">🗣️</span>
+              <strong>Mother Tongue Language:</strong>
+              <span class="field-sublabel">(தாய்மொழி / मातृभाषा)</span>
+            </label>
+            <div class="setup-input-wrapper">
+              <select id="onboarding-lang-select" class="setup-select-input">
+                <option value="ta" selected>🇮🇳 Tamil (தமிழ்)</option>
+                <option value="hi">🇮🇳 Hindi (हिन्दी)</option>
+                <option value="te">🇮🇳 Telugu (తెలుగు)</option>
+                <option value="kn">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+                <option value="ml">🇮🇳 Malayalam (മലയാളം)</option>
+                <option value="bn">🇮🇳 Bengali (বাংলা)</option>
+                <option value="mr">🇮🇳 Marathi (मराठी)</option>
+                <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+                <option value="pa">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+                <option value="or">🇮🇳 Odia (ଓଡ଼ିଆ)</option>
+                <option value="as">🇮🇳 Assamese (অসমীয়া)</option>
+                <option value="en">🌐 English (English)</option>
+              </select>
+            </div>
+            <span class="setup-field-hint">Adapts all lessons, quizzes & pedagogy to this language</span>
+          </div>
+        </div>
+
+        <!-- Primary Start Learning CTA Button -->
+        <div class="setup-card-action-bar">
+          <button id="btn-confirm-mother-tongue" class="btn-onboarding-primary-submit">
+            <span>🚀</span> Start Learning as <strong id="onboarding-confirm-student-name">Aarav</strong> in <strong id="onboarding-confirm-lang-name">Tamil (தமிழ்)</strong>
+          </button>
+          <button id="btn-quick-close-onboarding" class="btn-onboarding-close-subtle" title="Close and enter website">
+            Close ✕
+          </button>
         </div>
       </div>
 
@@ -863,7 +941,7 @@
 
         <!-- Or Select Below -->
         <div class="onboarding-divider">
-          <span>Click Any Language to Choose Immediately</span>
+          <span>Or Click Any Language to Select</span>
         </div>
 
         <div class="onboarding-lang-grid" id="onboarding-lang-grid">
@@ -950,15 +1028,6 @@
               <span class="lang-choice-eng">English</span>
               <span class="lang-choice-native">English</span>
             </div>
-          </button>
-        </div>
-
-        <div style="display: flex; gap: 0.8rem; margin-top: 1.25rem;">
-          <button id="btn-confirm-mother-tongue" class="btn-enter-platform" style="flex: 1;">
-            <span>✨</span> Apply <span id="onboarding-confirm-lang-name">Tamil (தமிழ்)</span> & Explore
-          </button>
-          <button id="btn-quick-close-onboarding" class="btn-secondary" style="padding: 0.85rem 1.4rem; font-weight: 700; border-radius: var(--radius-pill); cursor: pointer;">
-            Close ✕
           </button>
         </div>
       </div>
@@ -1153,21 +1222,48 @@
        ========================================================================== -->
   <script type="module" src="js/app.js"></script>
 
-  <!-- Quick Name Edit Modal -->
+  <!-- Quick Name & Language Edit Modal -->
   <div id="modal-edit-student-name" class="onboarding-modal-overlay" role="dialog" aria-modal="true" style="display: none;">
-    <div class="onboarding-modal-content" style="max-width: 480px; text-align: center;">
+    <div class="onboarding-modal-content" style="max-width: 520px; text-align: center;">
       <button class="modal-close-corner" id="btn-close-edit-name" title="Close">&times;</button>
       <div style="font-size: 2.8rem; margin-bottom: 0.5rem;">👦🏽</div>
-      <h3 style="margin-bottom: 0.4rem; font-size: 1.35rem; color: var(--color-primary);">Change Student Name</h3>
+      <h3 style="margin-bottom: 0.4rem; font-size: 1.35rem; color: var(--color-primary);">Update Student & Language</h3>
       <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.25rem; line-height: 1.5;">
-        Enter the student's name to personalize all hubs: <strong>Student Hub</strong>, <strong>Mitra AI Tutor</strong>, <strong>Parent View</strong>, and <strong>Teacher Hub</strong>.
+        Change student name and mother tongue language. Updates will apply instantly across <strong>Student Hub</strong>, <strong>Mitra AI Tutor</strong>, <strong>Parent View</strong>, and <strong>Teacher Hub</strong>.
       </p>
-      <div class="onboarding-name-input-row" style="margin-bottom: 1.5rem;">
-        <input type="text" id="quick-edit-student-name" placeholder="Type name (e.g. Aarav, Ananya, Kavin, Rahul...)" style="font-size: 1.15rem; text-align: center; padding: 0.8rem 1rem; font-weight: 700;">
+      
+      <div class="quick-edit-fields-group" style="text-align: left; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 1rem;">
+        <div>
+          <label for="quick-edit-student-name" style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.35rem;">
+            👦🏽 Student Name (மாணவர் பெயர்):
+          </label>
+          <input type="text" id="quick-edit-student-name" placeholder="Type student name (e.g. Aarav, Ananya, Kavin...)" style="width: 100%; font-size: 1.05rem; padding: 0.75rem 1rem; font-weight: 600; border-radius: var(--radius-md); border: 2px solid #CBD5E1; outline: none; background: #FFFFFF; color: #0F172A;">
+        </div>
+
+        <div>
+          <label for="quick-edit-student-lang" style="font-size: 0.85rem; font-weight: 700; color: var(--text-main); display: block; margin-bottom: 0.35rem;">
+            🗣️ Mother Tongue Language (தாய்மொழி):
+          </label>
+          <select id="quick-edit-student-lang" style="width: 100%; font-size: 1.05rem; padding: 0.75rem 1rem; font-weight: 600; border-radius: var(--radius-md); border: 2px solid #CBD5E1; background: #FFFFFF; color: #0F172A; outline: none;">
+            <option value="ta">🇮🇳 Tamil (தமிழ்)</option>
+            <option value="hi">🇮🇳 Hindi (हिन्दी)</option>
+            <option value="te">🇮🇳 Telugu (తెలుగు)</option>
+            <option value="kn">🇮🇳 Kannada (ಕನ್ನಡ)</option>
+            <option value="ml">🇮🇳 Malayalam (മലയാളം)</option>
+            <option value="bn">🇮🇳 Bengali (বাংলা)</option>
+            <option value="mr">🇮🇳 Marathi (मराठी)</option>
+            <option value="gu">🇮🇳 Gujarati (ગુજરાતી)</option>
+            <option value="pa">🇮🇳 Punjabi (ਪੰਜਾਬੀ)</option>
+            <option value="or">🇮🇳 Odia (ଓଡ଼ିଆ)</option>
+            <option value="as">🇮🇳 Assamese (অসমীয়া)</option>
+            <option value="en">🌐 English (English)</option>
+          </select>
+        </div>
       </div>
+
       <div style="display: flex; gap: 0.75rem; justify-content: center;">
         <button id="btn-save-edit-name" class="btn-primary" style="padding: 0.75rem 1.75rem; font-weight: 700; cursor: pointer;">
-          💾 Save & Update All Pages
+          💾 Save & Update All Hubs
         </button>
         <button id="btn-cancel-edit-name" class="btn-secondary" style="padding: 0.75rem 1.2rem; cursor: pointer;">
           Cancel

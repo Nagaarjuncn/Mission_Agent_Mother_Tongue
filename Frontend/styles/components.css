@@ -4264,6 +4264,298 @@ body.dark-mode .teacher-student-spotlight-bar {
   color: #93C5FD !important;
 }
 
+/* ==========================================================================
+   UNIFIED ONBOARDING LEARNER SETUP CARD
+   ========================================================================== */
+.onboarding-setup-card {
+  background: linear-gradient(135deg, rgba(0, 168, 204, 0.08) 0%, rgba(255, 184, 0, 0.1) 100%);
+  border: 2px solid rgba(0, 168, 204, 0.35);
+  border-radius: 20px;
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 24px rgba(0, 168, 204, 0.08);
+  text-align: left;
+}
+
+.setup-card-header {
+  margin-bottom: 1rem;
+}
+
+.setup-header-badge {
+  display: inline-block;
+  background: #00A8CC;
+  color: #FFFFFF;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  margin-bottom: 0.35rem;
+}
+
+.setup-header-sub {
+  font-size: 0.88rem;
+  color: #475569;
+  margin: 0;
+  font-weight: 500;
+}
+
+.setup-card-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+@media (max-width: 640px) {
+  .setup-card-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+.setup-field-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.setup-field-block label {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1E2958;
+  margin-bottom: 0.45rem;
+}
+
+.field-sublabel {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #64748B;
+}
+
+.setup-text-input,
+.setup-select-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 2px solid #CBD5E1;
+  background: #FFFFFF;
+  color: #0F172A;
+  outline: none;
+  transition: all 0.2s ease;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.setup-text-input:focus,
+.setup-select-input:focus {
+  border-color: #00A8CC;
+  box-shadow: 0 0 0 3px rgba(0, 168, 204, 0.2);
+}
+
+.setup-field-hint {
+  font-size: 0.75rem;
+  color: #64748B;
+  margin-top: 0.35rem;
+  line-height: 1.3;
+}
+
+.setup-card-action-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.btn-onboarding-primary-submit {
+  flex: 1;
+  background: linear-gradient(135deg, #00A8CC 0%, #0088A8 50%, #1E2958 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 14px;
+  padding: 0.95rem 1.4rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  box-shadow: 0 8px 20px rgba(0, 168, 204, 0.35);
+  transition: all 0.25s ease;
+}
+
+.btn-onboarding-primary-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 168, 204, 0.5);
+}
+
+.btn-onboarding-primary-submit:active {
+  transform: scale(0.98);
+}
+
+.btn-onboarding-close-subtle {
+  background: #F1F5F9;
+  border: 1px solid #CBD5E1;
+  color: #64748B;
+  padding: 0.95rem 1.25rem;
+  border-radius: 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-onboarding-close-subtle:hover {
+  background: #E2E8F0;
+  color: #0F172A;
+}
+
+/* ==========================================================================
+   HERO LEARNER SETUP BAR (HOMEPAGE)
+   ========================================================================== */
+.hero-learner-setup-bar {
+  background: #FFFFFF;
+  border: 2px solid rgba(0, 168, 204, 0.35);
+  border-radius: 18px;
+  padding: 1rem 1.25rem;
+  margin: 1.25rem 0 1.5rem 0;
+  box-shadow: 0 10px 30px rgba(0, 168, 204, 0.12);
+  width: 100%;
+  max-width: 680px;
+}
+
+.setup-bar-inner {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.setup-bar-col {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+}
+
+.setup-bar-col label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1E2958;
+  margin-bottom: 0.35rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.setup-bar-col input,
+.setup-bar-col select {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 10px;
+  border: 1.5px solid #CBD5E1;
+  background: #F8FAFC;
+  color: #0F172A;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.setup-bar-col input:focus,
+.setup-bar-col select:focus {
+  background: #FFFFFF;
+  border-color: #00A8CC;
+  box-shadow: 0 0 0 3px rgba(0, 168, 204, 0.18);
+}
+
+.btn-hero-setup-save {
+  background: linear-gradient(135deg, #00A8CC 0%, #1E2958 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 10px;
+  padding: 0.72rem 1.15rem;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 168, 204, 0.3);
+}
+
+.btn-hero-setup-save:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 168, 204, 0.45);
+}
+
+.btn-edit-inline-lang {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  border-radius: var(--radius-pill);
+  padding: 0.2rem 0.65rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.btn-edit-inline-lang:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+/* Dark Mode Overrides */
+body.dark-mode .onboarding-setup-card {
+  background: linear-gradient(135deg, rgba(0, 168, 204, 0.12) 0%, rgba(30, 41, 59, 0.6) 100%);
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+body.dark-mode .setup-field-block label,
+body.dark-mode .setup-bar-col label {
+  color: #F1F5F9;
+}
+
+body.dark-mode .field-sublabel,
+body.dark-mode .setup-header-sub,
+body.dark-mode .setup-field-hint {
+  color: #94A3B8;
+}
+
+body.dark-mode .setup-text-input,
+body.dark-mode .setup-select-input,
+body.dark-mode .setup-bar-col input,
+body.dark-mode .setup-bar-col select {
+  background: #1E293B;
+  border-color: #475569;
+  color: #F8FAFC;
+}
+
+body.dark-mode .hero-learner-setup-bar {
+  background: #0F172A;
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .btn-onboarding-close-subtle {
+  background: #1E293B;
+  border-color: #475569;
+  color: #94A3B8;
+}
+
+body.dark-mode .btn-onboarding-close-subtle:hover {
+  background: #334155;
+  color: #F8FAFC;
+}
+
 
 
 

@@ -143,12 +143,17 @@ class VernacApp {
   // ==========================================================================
   // STUDENT NAME ONBOARDING & PERSONALIZATION CONTROLLER (UNIVERSAL CROSS-HUB)
   // ==========================================================================
+  // ==========================================================================
+  // STUDENT NAME & PROFILE PERSONALIZATION CONTROLLER (UNIVERSAL CROSS-HUB)
+  // ==========================================================================
   initStudentName() {
     const nameInput = document.getElementById('onboarding-student-name');
     if (nameInput) {
-      nameInput.value = this.studentName;
+      nameInput.value = this.studentName || 'Aarav';
       nameInput.addEventListener('input', (e) => {
         const val = e.target.value.trim();
+        const previewName = document.getElementById('onboarding-confirm-student-name');
+        if (previewName) previewName.textContent = val || 'Student';
         if (val) {
           this.studentName = val;
           try { localStorage.setItem('vernac_student_name', val); } catch (err) {}
@@ -161,6 +166,42 @@ class VernacApp {
       });
     }
 
+    // Home page interactive hero learner setup bar
+    const heroNameInput = document.getElementById('hero-student-name-input');
+    const heroLangSelect = document.getElementById('hero-lang-select');
+    const btnHeroSave = document.getElementById('btn-hero-save-profile');
+    if (heroNameInput) heroNameInput.value = this.studentName || 'Aarav';
+    if (heroLangSelect) heroLangSelect.value = this.currentLang || 'ta';
+
+    if (btnHeroSave) {
+      const applyHeroAction = () => {
+        const n = (heroNameInput && heroNameInput.value.trim()) ? heroNameInput.value.trim() : (this.studentName || 'Aarav');
+        const l = (heroLangSelect && heroLangSelect.value) ? heroLangSelect.value : (this.currentLang || 'ta');
+        this.setStudentName(n, true);
+        this.setGlobalLanguage(l);
+        try {
+          localStorage.setItem('vernac_user_lang', l);
+          localStorage.setItem('vernac_student_name', n);
+          speechEngine.playCelebrationSound();
+        } catch (err) {}
+        this.showProfileToast(n, l);
+      };
+
+      btnHeroSave.onclick = (e) => {
+        e.preventDefault();
+        applyHeroAction();
+      };
+
+      if (heroNameInput) {
+        heroNameInput.onkeydown = (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            applyHeroAction();
+          }
+        };
+      }
+    }
+
     // Top Navbar student pill click -> open quick edit modal
     const btnNavProfile = document.getElementById('btn-nav-student-profile');
     if (btnNavProfile) {
@@ -170,19 +211,41 @@ class VernacApp {
       };
     }
 
-    // Quick edit modal bindings
+    // Student Hub inline change language button
+    const btnEditLang = document.getElementById('btn-edit-student-lang');
+    if (btnEditLang) {
+      btnEditLang.onclick = (e) => {
+        e.preventDefault();
+        const modal = document.getElementById('modal-mother-tongue-first');
+        if (modal) {
+          modal.style.display = 'flex';
+          modal.classList.add('active');
+        }
+        try { speechEngine.playPopSound(); } catch (err) {}
+      };
+    }
+
+    // Quick edit modal bindings (Name + Language)
     const modalEditName = document.getElementById('modal-edit-student-name');
     const inputEditName = document.getElementById('quick-edit-student-name');
+    const selectEditLang = document.getElementById('quick-edit-student-lang');
     const btnSaveEditName = document.getElementById('btn-save-edit-name');
     const btnCancelEditName = document.getElementById('btn-cancel-edit-name');
     const btnCloseEditName = document.getElementById('btn-close-edit-name');
 
-    if (btnSaveEditName && inputEditName) {
+    if (btnSaveEditName) {
       const saveAction = () => {
-        const newName = inputEditName.value.trim();
-        if (newName) {
-          this.setStudentName(newName, true);
-        }
+        const newName = (inputEditName && inputEditName.value.trim()) ? inputEditName.value.trim() : (this.studentName || 'Aarav');
+        const newLang = (selectEditLang && selectEditLang.value) ? selectEditLang.value : (this.currentLang || 'ta');
+        this.setStudentName(newName, true);
+        this.setGlobalLanguage(newLang);
+        try {
+          localStorage.setItem('vernac_user_lang', newLang);
+          localStorage.setItem('vernac_student_name', newName);
+          speechEngine.playCelebrationSound();
+        } catch (err) {}
+        this.showProfileToast(newName, newLang);
+
         if (modalEditName) {
           modalEditName.style.display = 'none';
           modalEditName.classList.remove('active');
@@ -192,12 +255,14 @@ class VernacApp {
         e.preventDefault();
         saveAction();
       };
-      inputEditName.onkeydown = (e) => {
-        if (e.key === 'Enter') {
-          e.preventDefault();
-          saveAction();
-        }
-      };
+      if (inputEditName) {
+        inputEditName.onkeydown = (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            saveAction();
+          }
+        };
+      }
     }
 
     if (btnCancelEditName && modalEditName) {
@@ -226,9 +291,29 @@ class VernacApp {
     this.updateStudentNameInAllViews();
   }
 
+  showProfileToast(name, langCode) {
+    const meta = speechEngine.getLanguageMetadata(langCode || this.currentLang || 'ta');
+    const toast = document.createElement('div');
+    toast.className = 'star-reward-toast';
+    toast.innerHTML = `
+      <div class="toast-star-icon">${meta.flag}</div>
+      <div class="toast-content">
+        <div class="toast-title">Learner Profile Updated!</div>
+        <div class="toast-msg">Student: <strong>${name}</strong> • Mother Tongue: <strong>${meta.name} (${meta.nativeName})</strong></div>
+      </div>
+    `;
+    document.body.appendChild(toast);
+    setTimeout(() => toast.classList.add('toast-show'), 50);
+    setTimeout(() => {
+      toast.classList.remove('toast-show');
+      setTimeout(() => toast.remove(), 400);
+    }, 3500);
+  }
+
   openQuickNameEditModal() {
     const modal = document.getElementById('modal-edit-student-name');
     const input = document.getElementById('quick-edit-student-name');
+    const select = document.getElementById('quick-edit-student-lang');
     if (modal) {
       modal.style.display = 'flex';
       modal.classList.add('active');
@@ -236,6 +321,9 @@ class VernacApp {
     if (input) {
       input.value = this.studentName || 'Aarav';
       setTimeout(() => input.focus(), 100);
+    }
+    if (select) {
+      select.value = this.currentLang || 'ta';
     }
     try { speechEngine.playPopSound(); } catch (err) {}
   }
@@ -250,6 +338,10 @@ class VernacApp {
     const nameInput = document.getElementById('onboarding-student-name');
     if (nameInput && nameInput.value !== this.studentName) {
       nameInput.value = this.studentName;
+    }
+    const heroNameInput = document.getElementById('hero-student-name-input');
+    if (heroNameInput && heroNameInput.value !== this.studentName) {
+      heroNameInput.value = this.studentName;
     }
     const quickInput = document.getElementById('quick-edit-student-name');
     if (quickInput && quickInput.value !== this.studentName) {
@@ -283,6 +375,14 @@ class VernacApp {
     const nameInput = document.getElementById('onboarding-student-name');
     if (nameInput && nameInput.value !== name) {
       nameInput.value = name;
+    }
+    const heroNameInput = document.getElementById('hero-student-name-input');
+    if (heroNameInput && heroNameInput.value !== name) {
+      heroNameInput.value = name;
+    }
+    const onboardingConfirmName = document.getElementById('onboarding-confirm-student-name');
+    if (onboardingConfirmName) {
+      onboardingConfirmName.textContent = name;
     }
 
     // 4. Update Student Hub Profile Header
@@ -341,6 +441,13 @@ class VernacApp {
     if (sandboxSelect) sandboxSelect.innerHTML = optionsHtml;
     if (teacherLangSelect) teacherLangSelect.innerHTML = optionsHtml;
 
+    const onboardingSelect = document.getElementById('onboarding-lang-select');
+    const heroSelect = document.getElementById('hero-lang-select');
+    const quickSelect = document.getElementById('quick-edit-student-lang');
+    if (onboardingSelect) onboardingSelect.innerHTML = optionsHtml;
+    if (heroSelect) heroSelect.innerHTML = optionsHtml;
+    if (quickSelect) quickSelect.innerHTML = optionsHtml;
+
     if (sourceSelect) {
       sourceSelect.innerHTML = `
         <option value="auto" selected>✨ 🔍 Auto-Detect Speaker's Language</option>
@@ -357,11 +464,17 @@ class VernacApp {
     const targetSelect = document.getElementById('target-lang-select');
     const sandboxSelect = document.getElementById('sandbox-lang-select');
     const teacherLangSelect = document.getElementById('teacher-lesson-lang');
+    const onboardingSelect = document.getElementById('onboarding-lang-select');
+    const heroSelect = document.getElementById('hero-lang-select');
+    const quickSelect = document.getElementById('quick-edit-student-lang');
 
     if (globalSelect) globalSelect.value = langCode;
     if (targetSelect) targetSelect.value = langCode;
     if (sandboxSelect) sandboxSelect.value = langCode;
     if (teacherLangSelect) teacherLangSelect.value = langCode;
+    if (onboardingSelect) onboardingSelect.value = langCode;
+    if (heroSelect) heroSelect.value = langCode;
+    if (quickSelect) quickSelect.value = langCode;
 
     // Highlight button in onboarding modal
     const langGrid = document.getElementById('onboarding-lang-grid');
@@ -2389,16 +2502,26 @@ ${l.homework}
     const btnConfirm = document.getElementById('btn-confirm-mother-tongue');
     const confirmLangName = document.getElementById('onboarding-confirm-lang-name');
 
+    const confirmStudentName = document.getElementById('onboarding-confirm-student-name');
+    const onboardingNameInput = document.getElementById('onboarding-student-name');
+    const onboardingLangSelect = document.getElementById('onboarding-lang-select');
+    const btnQuickClose = document.getElementById('btn-quick-close-onboarding');
+
     const step1 = document.getElementById('onboarding-step-1');
     const step2 = document.getElementById('onboarding-step-2');
 
     let selectedLangCode = this.currentLang || 'ta';
     let detectedMeta = speechEngine.getLanguageMetadata(selectedLangCode);
 
-    // Helper: Select language immediately and enter website
-    const selectLanguageAndEnter = (code) => {
+    // Helper: Update language selection visually WITHOUT closing the modal
+    const setSelectedLanguageOnly = (code, playSound = true) => {
       if (!code) return;
       selectedLangCode = code;
+
+      // Update dropdown value
+      if (onboardingLangSelect && onboardingLangSelect.value !== code) {
+        onboardingLangSelect.value = code;
+      }
 
       // Update grid selection visually
       if (langGrid) {
@@ -2412,51 +2535,77 @@ ${l.homework}
         confirmLangName.textContent = `${detectedMeta.name} (${detectedMeta.nativeName})`;
       }
 
-      // Stop speech & mic immediately
+      const activeName = (onboardingNameInput && onboardingNameInput.value.trim()) ? onboardingNameInput.value.trim() : (this.studentName || 'Aarav');
+      if (confirmStudentName) {
+        confirmStudentName.textContent = activeName;
+      }
+
+      if (playSound) {
+        try { speechEngine.playPopSound(); } catch (err) {}
+      }
+    };
+
+    // Helper: Save student name + language and enter platform
+    const selectLanguageAndEnter = (code) => {
+      const finalCode = code || selectedLangCode || this.currentLang || 'ta';
+      selectedLangCode = finalCode;
+
+      // 1. Capture and save student name
+      const studentNameVal = (onboardingNameInput && onboardingNameInput.value.trim()) ? onboardingNameInput.value.trim() : (this.studentName || 'Aarav');
+      this.setStudentName(studentNameVal, true);
+
+      // 2. Set global language
+      this.setGlobalLanguage(finalCode);
+
+      try {
+        localStorage.setItem('vernac_user_lang', finalCode);
+        localStorage.setItem('vernac_student_name', studentNameVal);
+        localStorage.setItem('vernac_onboarding_completed', 'true');
+      } catch (err) {}
+
+      // Stop mic & speech
       speechEngine.stopListening();
       speechEngine.stopSpeaking();
       if (btnMic) {
         btnMic.classList.remove('listening');
       }
-
-      // 1. First capture and apply student name entered on onboarding screen
-      const nameInput = document.getElementById('onboarding-student-name');
-      const studentNameVal = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : (this.studentName || 'Aarav');
-      this.setStudentName(studentNameVal, true);
-
-      // 2. Then apply language globally (triggers dashboard renders with the new student name)
-      this.setGlobalLanguage(code);
-
-      try {
-        localStorage.setItem('vernac_user_lang', code);
-        localStorage.setItem('vernac_onboarding_completed', 'true');
-      } catch (err) {}
-
       try {
         speechEngine.playCelebrationSound();
       } catch (err) {}
 
-      // Immediately close the onboarding modal so the user enters the website
+      // Close modal
       modal.classList.remove('active');
       modal.style.display = 'none';
 
-      // Show rewarding toast feedback
-      const toast = document.createElement('div');
-      toast.className = 'star-reward-toast';
-      toast.innerHTML = `
-        <div class="toast-star-icon">${detectedMeta.flag}</div>
-        <div class="toast-content">
-          <div class="toast-title">${detectedMeta.name} (${detectedMeta.nativeName}) Selected!</div>
-          <div class="toast-msg">Welcome ${this.studentName || 'Student'}! AI lessons and quizzes are now set to your mother tongue.</div>
-        </div>
-      `;
-      document.body.appendChild(toast);
-      setTimeout(() => toast.classList.add('toast-show'), 50);
-      setTimeout(() => {
-        toast.classList.remove('toast-show');
-        setTimeout(() => toast.remove(), 400);
-      }, 3500);
+      // Show toast
+      this.showProfileToast(studentNameVal, finalCode);
     };
+
+    // Initialize visual state in modal
+    if (onboardingNameInput) {
+      onboardingNameInput.value = this.studentName || 'Aarav';
+      onboardingNameInput.addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        if (confirmStudentName) {
+          confirmStudentName.textContent = val || 'Student';
+        }
+      });
+      onboardingNameInput.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          selectLanguageAndEnter(selectedLangCode);
+        }
+      });
+    }
+
+    if (onboardingLangSelect) {
+      onboardingLangSelect.value = selectedLangCode;
+      onboardingLangSelect.addEventListener('change', (e) => {
+        setSelectedLanguageOnly(e.target.value, true);
+      });
+    }
+
+    setSelectedLanguageOnly(selectedLangCode, false);
 
     // Navbar trigger
     if (btnNavTrigger) {
@@ -2464,54 +2613,64 @@ ${l.homework}
         e.preventDefault();
         modal.style.display = 'flex';
         modal.classList.add('active');
-        const nameInput = document.getElementById('onboarding-student-name');
-        if (nameInput) {
-          nameInput.value = this.studentName || 'Aarav';
+        if (onboardingNameInput) {
+          onboardingNameInput.value = this.studentName || 'Aarav';
         }
-        step1.style.display = 'block';
-        step2.style.display = 'none';
-        if (langGrid) {
-          langGrid.querySelectorAll('.btn-lang-choice').forEach(b => {
-            b.classList.toggle('selected', b.getAttribute('data-code') === this.currentLang);
-          });
-        }
+        setSelectedLanguageOnly(this.currentLang || 'ta', false);
+        if (step1) step1.style.display = 'block';
+        if (step2) step2.style.display = 'none';
         try { speechEngine.playPopSound(); } catch (err) {}
       };
     }
 
-    // Modal backdrop click -> dismiss cleanly
+    // Modal backdrop click -> save & enter
     modal.onclick = (e) => {
       if (e.target === modal) {
         e.preventDefault();
-        selectLanguageAndEnter(selectedLangCode || this.currentLang || 'ta');
+        selectLanguageAndEnter(selectedLangCode);
       }
     };
 
-    // Close button
+    // Close corner button -> save & enter
     if (btnClose) {
       btnClose.onclick = (e) => {
         e.preventDefault();
-        selectLanguageAndEnter(selectedLangCode || this.currentLang || 'ta');
+        selectLanguageAndEnter(selectedLangCode);
       };
     }
 
-    // Render language choice grid (or bind to pre-rendered HTML)
-    // "Click Any Language to Choose Immediately"
+    // Quick close button
+    if (btnQuickClose) {
+      btnQuickClose.onclick = (e) => {
+        e.preventDefault();
+        selectLanguageAndEnter(selectedLangCode);
+      };
+    }
+
+    // Primary confirm button -> save & enter
+    if (btnConfirm) {
+      btnConfirm.onclick = (e) => {
+        e.preventDefault();
+        selectLanguageAndEnter(selectedLangCode);
+      };
+    }
+
+    // Language grid buttons: CLICKING SELECTS LANGUAGE WITHOUT CLOSING MODAL!
     if (langGrid) {
       const bindLanguageGridButtons = () => {
         langGrid.querySelectorAll('.btn-lang-choice').forEach(btn => {
           btn.onclick = (e) => {
             e.preventDefault();
             const code = btn.getAttribute('data-code');
-            selectLanguageAndEnter(code);
+            setSelectedLanguageOnly(code, true);
           };
         });
       };
 
-      // If grid has no children, populate it dynamically
+      // Populate if empty
       if (!langGrid.children || langGrid.children.length === 0) {
         langGrid.innerHTML = SUPPORTED_LANGUAGES.map(lang => `
-          <button class="btn-lang-choice ${lang.code === selectedLangCode ? 'selected' : ''}" data-code="${lang.code}" title="Choose ${lang.name} immediately">
+          <button class="btn-lang-choice ${lang.code === selectedLangCode ? 'selected' : ''}" data-code="${lang.code}" title="Choose ${lang.name}">
             <span class="lang-choice-flag">${lang.flag}</span>
             <div class="lang-choice-names">
               <span class="lang-choice-eng">${lang.name}</span>
@@ -2562,32 +2721,16 @@ ${l.homework}
             
             if (detected) {
               detectedLanguageObj = detected;
-              detectedMeta = detected;
-              selectedLangCode = detected.code;
+              setSelectedLanguageOnly(detected.code, false);
 
               if (detectedFlag) detectedFlag.textContent = detected.flag;
               if (detectedName) detectedName.textContent = detected.name;
               if (detectedNative) detectedNative.textContent = `(${detected.nativeName})`;
               if (detectedConf) detectedConf.textContent = `${Math.round(detected.confidence * 100)}% Confidence`;
               if (detectedScript) detectedScript.textContent = `Identified Script: ${detected.scriptName}`;
-              if (confirmLangName) confirmLangName.textContent = `${detected.name} (${detected.nativeName})`;
-
-              // Highlight grid button
-              if (langGrid) {
-                langGrid.querySelectorAll('.btn-lang-choice').forEach(b => {
-                  b.classList.toggle('selected', b.getAttribute('data-code') === detected.code);
-                });
-              }
-
-              // Immediately switch global language to detected speech
-              this.setGlobalLanguage(detected.code);
-              try {
-                localStorage.setItem('vernac_user_lang', detected.code);
-                localStorage.setItem('vernac_onboarding_completed', 'true');
-              } catch (err) {}
 
               if (hintEl) {
-                hintEl.textContent = `✅ Heard: "${transcript}" → ${detected.name} (${detected.nativeName})!`;
+                hintEl.textContent = `✅ Heard: "${transcript}" → ${detected.name} (${detected.nativeName})! Click 'Start Learning' below.`;
               }
             }
           },
@@ -2598,24 +2741,20 @@ ${l.homework}
 
             if (detectedLanguageObj) {
               if (hintEl) {
-                hintEl.textContent = `🎉 Mother Tongue set to ${detectedLanguageObj.name}! Entering website...`;
+                hintEl.textContent = `🎉 Mother Tongue set to ${detectedLanguageObj.name}! Click 'Start Learning' to proceed.`;
               }
               try { speechEngine.playCelebrationSound(); } catch (err) {}
-
-              setTimeout(() => {
-                selectLanguageAndEnter(detectedLanguageObj.code);
-              }, 800);
             } else if (speechTranscriptHeard) {
               const fallbackDetect = speechEngine.detectLanguage(speechTranscriptHeard);
               if (fallbackDetect) {
-                selectLanguageAndEnter(fallbackDetect.code);
+                setSelectedLanguageOnly(fallbackDetect.code, true);
               }
             } else {
               const hintEl = document.getElementById('onboarding-mic-hint');
-              if (hintEl) hintEl.textContent = 'Speak clearly into mic or click any language below to choose immediately!';
+              if (hintEl) hintEl.textContent = 'Speak clearly into mic or choose your language above!';
             }
           },
-          // simulatedText: null (never fake language override)
+          // simulatedText: null
           null,
           // onErrorCallback
           (errCode) => {
@@ -2625,34 +2764,17 @@ ${l.homework}
             const hintEl = document.getElementById('onboarding-mic-hint');
             if (hintEl) {
               if (errCode === 'not-allowed' || errCode === 'service-not-allowed') {
-                hintEl.textContent = '🎙️ Microphone access blocked. Click any language below to choose immediately!';
+                hintEl.textContent = '🎙️ Microphone access blocked. Please choose your language from the dropdown or chips above!';
               } else if (errCode === 'no-speech') {
-                hintEl.textContent = 'No voice detected. Click mic to speak again, or click any language below!';
+                hintEl.textContent = 'No voice detected. Click mic to speak again, or select above!';
               } else if (errCode === 'not-supported') {
-                hintEl.textContent = 'Speech recognition not supported in this browser. Click any language below!';
+                hintEl.textContent = 'Speech recognition not supported in this browser. Please select language above!';
               } else {
-                hintEl.textContent = 'Microphone ready. Click any language below to choose immediately!';
+                hintEl.textContent = 'Microphone ready. Speak or select your language above!';
               }
             }
           }
         );
-      };
-    }
-
-    // Quick Close button
-    const btnQuickClose = document.getElementById('btn-quick-close-onboarding');
-    if (btnQuickClose) {
-      btnQuickClose.onclick = (e) => {
-        e.preventDefault();
-        selectLanguageAndEnter(selectedLangCode || this.currentLang || 'ta');
-      };
-    }
-
-    // Confirm button -> apply and enter immediately
-    if (btnConfirm) {
-      btnConfirm.onclick = (e) => {
-        e.preventDefault();
-        selectLanguageAndEnter(selectedLangCode || this.currentLang || 'ta');
       };
     }
 
