@@ -462,13 +462,14 @@ class VernacApp {
       });
     });
 
-    // Teacher Lesson Plan Generator
+    // Teacher Lesson Plan Generator Platform
     const btnGenLesson = document.getElementById('btn-generate-lesson');
     if (btnGenLesson) {
       btnGenLesson.addEventListener('click', () => {
         this.generateTeacherLesson();
       });
     }
+    this.setupTeacherPlatform();
 
     // Minigame Match-the-Pair
     this.setupMinigame();
@@ -1198,43 +1199,516 @@ class VernacApp {
     }
   }
 
+  setupTeacherPlatform() {
+    // Topic preset chips
+    document.querySelectorAll('.topic-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.topic-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const topic = chip.getAttribute('data-topic');
+        const grade = chip.getAttribute('data-grade');
+        const subject = chip.getAttribute('data-subject');
+        const stage = chip.getAttribute('data-stage');
+
+        const topicInput = document.getElementById('teacher-topic-input');
+        const gradeSelect = document.getElementById('teacher-grade-select');
+        const subjectSelect = document.getElementById('teacher-subject-select');
+        const stageSelect = document.getElementById('teacher-stage-select');
+
+        if (topicInput && topic) topicInput.value = topic;
+        if (gradeSelect && grade) gradeSelect.value = grade;
+        if (subjectSelect && subject) subjectSelect.value = subject;
+        if (stageSelect && stage) {
+          Array.from(stageSelect.options).forEach(opt => {
+            if (opt.value.includes(stage)) stageSelect.value = opt.value;
+          });
+        }
+        this.generateTeacherLesson();
+      });
+    });
+
+    // NEP 2020 Stage select change -> auto select appropriate Grade
+    const stageSelect = document.getElementById('teacher-stage-select');
+    const gradeSelect = document.getElementById('teacher-grade-select');
+    if (stageSelect && gradeSelect) {
+      stageSelect.addEventListener('change', () => {
+        const stageVal = stageSelect.value;
+        if (stageVal.includes('Foundational')) {
+          gradeSelect.value = 'Class 2';
+        } else if (stageVal.includes('Preparatory')) {
+          gradeSelect.value = 'Class 4';
+        } else if (stageVal.includes('Middle')) {
+          gradeSelect.value = 'Class 6';
+        } else if (stageVal.includes('Secondary')) {
+          gradeSelect.value = 'Class 9';
+        }
+      });
+
+      gradeSelect.addEventListener('change', () => {
+        const gradeVal = gradeSelect.value.toLowerCase();
+        if (gradeVal.includes('balvatika') || gradeVal.includes('class 1') || gradeVal.includes('class 2')) {
+          Array.from(stageSelect.options).forEach(o => { if (o.value.includes('Foundational')) stageSelect.value = o.value; });
+        } else if (gradeVal.includes('class 3') || gradeVal.includes('class 4') || gradeVal.includes('class 5')) {
+          Array.from(stageSelect.options).forEach(o => { if (o.value.includes('Preparatory')) stageSelect.value = o.value; });
+        } else if (gradeVal.includes('class 6') || gradeVal.includes('class 7') || gradeVal.includes('class 8')) {
+          Array.from(stageSelect.options).forEach(o => { if (o.value.includes('Middle')) stageSelect.value = o.value; });
+        } else if (gradeVal.includes('class 9') || gradeVal.includes('class 10')) {
+          Array.from(stageSelect.options).forEach(o => { if (o.value.includes('Secondary')) stageSelect.value = o.value; });
+        }
+      });
+    }
+
+    // AI Topic Ideator modal triggers
+    const openIdeatorBtns = [
+      document.getElementById('btn-open-topic-ideator'),
+      document.getElementById('btn-suggest-topics-link'),
+      document.getElementById('btn-ideate-standard-topics')
+    ];
+    openIdeatorBtns.forEach(btn => {
+      if (btn) {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const modal = document.getElementById('modal-topic-ideator');
+          if (modal) {
+            modal.style.display = 'flex';
+            const curGrade = document.getElementById('teacher-grade-select')?.value;
+            const curSubject = document.getElementById('teacher-subject-select')?.value;
+            const ideatorGrade = document.getElementById('ideator-grade-select');
+            const ideatorSubj = document.getElementById('ideator-subject-select');
+            if (ideatorGrade && curGrade) ideatorGrade.value = curGrade;
+            if (ideatorSubj && curSubject) ideatorSubj.value = curSubject;
+            this.runTopicIdeator();
+          }
+        });
+      }
+    });
+
+    const closeIdeatorBtn = document.getElementById('btn-close-ideator-modal');
+    if (closeIdeatorBtn) {
+      closeIdeatorBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-topic-ideator');
+        if (modal) modal.style.display = 'none';
+      });
+    }
+
+    const submitIdeateBtn = document.getElementById('btn-ideate-submit');
+    if (submitIdeateBtn) {
+      submitIdeateBtn.addEventListener('click', () => {
+        this.runTopicIdeator();
+      });
+    }
+
+    // Saved Lessons Library modal triggers
+    const openLibraryBtn = document.getElementById('btn-open-saved-lessons');
+    if (openLibraryBtn) {
+      openLibraryBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-saved-lessons');
+        if (modal) {
+          modal.style.display = 'flex';
+          this.renderSavedLessonsLibrary();
+        }
+      });
+    }
+
+    const closeLibraryBtn = document.getElementById('btn-close-library-modal');
+    if (closeLibraryBtn) {
+      closeLibraryBtn.addEventListener('click', () => {
+        const modal = document.getElementById('modal-saved-lessons');
+        if (modal) modal.style.display = 'none';
+      });
+    }
+
+    // Studio floating toolbar actions
+    const btnStudioSpeak = document.getElementById('btn-studio-speak');
+    if (btnStudioSpeak) {
+      btnStudioSpeak.addEventListener('click', () => {
+        this.speakCurrentLessonStory();
+      });
+    }
+
+    const btnStudioSave = document.getElementById('btn-studio-save');
+    if (btnStudioSave) {
+      btnStudioSave.addEventListener('click', () => {
+        this.saveCurrentLessonToLibrary();
+      });
+    }
+
+    const btnStudioPrint = document.getElementById('btn-studio-print');
+    if (btnStudioPrint) {
+      btnStudioPrint.addEventListener('click', () => {
+        window.print();
+      });
+    }
+
+    const btnStudioCopy = document.getElementById('btn-studio-copy');
+    if (btnStudioCopy) {
+      btnStudioCopy.addEventListener('click', () => {
+        this.copyLessonPlanMarkdown();
+      });
+    }
+
+    const btnStudioWhatsapp = document.getElementById('btn-studio-whatsapp');
+    if (btnStudioWhatsapp) {
+      btnStudioWhatsapp.addEventListener('click', () => {
+        this.shareLessonToWhatsApp();
+      });
+    }
+
+    // Update saved count badge on startup
+    this.updateSavedLessonsCount();
+  }
+
+  async runTopicIdeator() {
+    const grade = document.getElementById('ideator-grade-select')?.value || 'Class 4';
+    const subject = document.getElementById('ideator-subject-select')?.value || 'Environmental Studies (EVS)';
+    const lang = document.getElementById('teacher-lesson-lang')?.value || this.currentLang || 'ta';
+    const stage = document.getElementById('teacher-stage-select')?.value || 'Preparatory Stage';
+
+    const resultsContainer = document.getElementById('ideator-results-container');
+    if (!resultsContainer) return;
+
+    resultsContainer.innerHTML = `
+      <div style="text-align: center; padding: 2rem; color: var(--text-muted);">
+        <div style="font-size: 2rem; animation: pulseDotChecking 1s infinite alternate; margin-bottom: 0.5rem;">⚡</div>
+        <p style="font-weight: 600; color: var(--color-primary);">AI Brainstorming Curriculum Topics for ${grade} (${subject})...</p>
+      </div>
+    `;
+
+    let topics = [];
+    try {
+      const apiRes = await this.apiClient.suggestTopics(grade, subject, stage, lang);
+      if (apiRes && apiRes.suggested_topics && apiRes.suggested_topics.length > 0) {
+        topics = apiRes.suggested_topics;
+      }
+    } catch (e) {
+      console.warn('[Mission Agent] Topic suggest API fallback:', e);
+    }
+
+    if (!topics || topics.length === 0) {
+      topics = pedagogyEngine.suggestTopics(grade, subject, stage, lang);
+    }
+
+    resultsContainer.innerHTML = topics.map(item => `
+      <div class="ideator-topic-card">
+        <div class="ideator-topic-info">
+          <h4>${item.topic_title}</h4>
+          <span class="ideator-vernacular-badge">🇮🇳 ${item.vernacular_title || item.topic_title}</span>
+          <div class="ideator-hook-text">🎯 <strong>Cultural Anchor:</strong> ${item.cultural_hook}</div>
+          <div style="font-size: 0.78rem; color: #059669; font-weight: 600;">✨ ${item.learning_outcome}</div>
+        </div>
+        <button class="btn-apply-topic" data-topic="${item.topic_title}" data-grade="${grade}" data-subject="${subject}">
+          Apply & Generate ➔
+        </button>
+      </div>
+    `).join('');
+
+    // Wire apply buttons
+    resultsContainer.querySelectorAll('.btn-apply-topic').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const top = btn.getAttribute('data-topic');
+        const grd = btn.getAttribute('data-grade');
+        const sbj = btn.getAttribute('data-subject');
+
+        const topicInput = document.getElementById('teacher-topic-input');
+        const gradeSelect = document.getElementById('teacher-grade-select');
+        const subjectSelect = document.getElementById('teacher-subject-select');
+
+        if (topicInput && top) topicInput.value = top;
+        if (gradeSelect && grd) gradeSelect.value = grd;
+        if (subjectSelect && sbj) subjectSelect.value = sbj;
+
+        const modal = document.getElementById('modal-topic-ideator');
+        if (modal) modal.style.display = 'none';
+
+        this.generateTeacherLesson();
+      });
+    });
+  }
+
+  getSavedLessons() {
+    try {
+      const raw = localStorage.getItem('vernac_saved_lessons');
+      if (raw) return JSON.parse(raw);
+    } catch (e) {}
+    return [];
+  }
+
+  updateSavedLessonsCount() {
+    const countEl = document.getElementById('saved-lessons-count');
+    if (countEl) {
+      const count = this.getSavedLessons().length || 1;
+      countEl.textContent = count;
+    }
+  }
+
+  renderSavedLessonsLibrary() {
+    const listContainer = document.getElementById('saved-lessons-list-container');
+    if (!listContainer) return;
+
+    let saved = this.getSavedLessons();
+    if (saved.length === 0) {
+      saved = [{
+        lesson_id: 'lesson-water-cycle-ta-001',
+        topic: 'மழை சுழற்சி & ஆவியாதல் (The Water Cycle)',
+        grade: 'Class 4',
+        subject: 'Environmental Studies (EVS)',
+        language: 'Tamil',
+        difficulty: 'Beginner',
+        pedagogical_hook: 'மதுரை வைகை ஆறும் இல்லத்துப் பானையும்',
+        created_at: '2026-09-20'
+      }];
+      localStorage.setItem('vernac_saved_lessons', JSON.stringify(saved));
+    }
+
+    this.updateSavedLessonsCount();
+
+    listContainer.innerHTML = saved.map(item => `
+      <div class="saved-lesson-item-card" data-id="${item.lesson_id}">
+        <div>
+          <h4 style="font-size: 1rem; color: #1E293B; margin-bottom: 0.2rem;">${item.topic}</h4>
+          <div style="font-size: 0.8rem; color: #64748B;">
+            ${item.grade || 'Class 4'} | ${item.subject || 'EVS'} | ${item.language || 'Tamil'} • <em>${item.created_at || 'Recent'}</em>
+          </div>
+        </div>
+        <div class="saved-lesson-actions">
+          <button class="btn-saved-load" data-id="${item.lesson_id}">📖 Load Studio</button>
+          <button class="btn-saved-delete" data-id="${item.lesson_id}">🗑️</button>
+        </div>
+      </div>
+    `).join('');
+
+    listContainer.querySelectorAll('.btn-saved-load').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.getAttribute('data-id');
+        const found = saved.find(s => s.lesson_id === id);
+        if (found) {
+          const topicInput = document.getElementById('teacher-topic-input');
+          const gradeSelect = document.getElementById('teacher-grade-select');
+          if (topicInput && found.topic) topicInput.value = found.topic;
+          if (gradeSelect && found.grade) gradeSelect.value = found.grade;
+          const modal = document.getElementById('modal-saved-lessons');
+          if (modal) modal.style.display = 'none';
+          this.generateTeacherLesson();
+        }
+      });
+    });
+
+    listContainer.querySelectorAll('.btn-saved-delete').forEach(btn => {
+      btn.addEventListener('click', async () => {
+        const id = btn.getAttribute('data-id');
+        let cur = this.getSavedLessons().filter(s => s.lesson_id !== id);
+        localStorage.setItem('vernac_saved_lessons', JSON.stringify(cur));
+        try {
+          await this.apiClient.deleteLesson(id);
+        } catch (e) {}
+        this.renderSavedLessonsLibrary();
+      });
+    });
+  }
+
+  saveCurrentLessonToLibrary() {
+    if (!this.currentActiveLesson) {
+      alert('Please generate a lesson plan first!');
+      return;
+    }
+    const saved = this.getSavedLessons();
+    const lessonToSave = {
+      ...this.currentActiveLesson,
+      lesson_id: this.currentActiveLesson.lesson_id || `lesson-${Date.now()}`,
+      created_at: new Date().toLocaleDateString()
+    };
+    // Avoid duplicate
+    const filtered = saved.filter(s => s.lesson_id !== lessonToSave.lesson_id);
+    filtered.unshift(lessonToSave);
+    localStorage.setItem('vernac_saved_lessons', JSON.stringify(filtered));
+    this.updateSavedLessonsCount();
+
+    const btn = document.getElementById('btn-studio-save');
+    if (btn) {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✅ Saved!';
+      btn.style.background = '#D1FAE5';
+      setTimeout(() => {
+        btn.innerHTML = orig;
+        btn.style.background = '';
+      }, 2000);
+    }
+    quizManager.awardStars(5, 'Lesson Plan saved to your offline/online Library!');
+  }
+
+  speakCurrentLessonStory() {
+    if (!this.currentActiveLesson || !this.currentActiveLesson.storyHook) return;
+    const btn = document.getElementById('btn-studio-speak');
+    speechEngine.prepareForSpeech();
+    if (btn) {
+      btn.innerHTML = '🔊 Speaking...';
+      btn.classList.add('playing');
+    }
+    const textToSpeak = `${this.currentActiveLesson.topic}. ${this.currentActiveLesson.storyHook}`;
+    const langCode = this.currentActiveLesson.speechCode || this.currentLang || 'ta';
+    speechEngine.speak(textToSpeak, langCode, () => {
+      if (btn) {
+        btn.innerHTML = '🔊 Listen Story';
+        btn.classList.remove('playing');
+      }
+    });
+  }
+
+  copyLessonPlanMarkdown() {
+    if (!this.currentActiveLesson) return;
+    const l = this.currentActiveLesson;
+    const md = `
+# ${l.topic}
+**Grade / Stage:** ${l.grade} (${l.standardLevel || 'Standard'}) | **Subject:** ${l.subject || 'General'}
+**Medium:** ${l.language} | **Duration:** ${l.duration || '40 Minutes'} | **Depth:** ${l.pedagogicalLevel || 'Foundational'}
+
+---
+
+## 🎯 Learning Objectives & NCF Competencies
+${(l.learningObjectives || []).map(o => `- ${o}`).join('\n')}
+
+---
+
+## 📖 1. Local Storytelling Narrative Hook (Prerana)
+**Regional Cultural Anchor:** ${l.contextHook || 'Household Metaphor'}
+
+${l.storyHook}
+
+---
+
+## 💡 2. Core Vernacular Concept Explanation (Sankalpan)
+${l.conceptExplanation}
+
+---
+
+## 📚 3. Mother-Tongue Scientific Glossary (Shabda Kosha)
+${(l.keyVocabulary || []).map(v => `- **${v.term}:** ${v.desc}`).join('\n')}
+
+---
+
+## 🧪 4. Zero-Cost Hands-On Classroom Experiment (Kriyatmak)
+${l.activity}
+
+---
+
+## 📋 5. Formative Assessment Questions (Mulyankan)
+${(l.quizQuestions || []).map((q, idx) => `**Q${idx + 1}:** ${q.q}\n- **Correct Answer:** ${q.a}`).join('\n\n')}
+
+---
+
+## 👨‍👩‍👧 6. Family & Dinner Table Connection (Griha Karya)
+${l.homework}
+    `.trim();
+
+    navigator.clipboard.writeText(md).then(() => {
+      const btn = document.getElementById('btn-studio-copy');
+      if (btn) {
+        const orig = btn.innerHTML;
+        btn.innerHTML = '✅ Copied!';
+        setTimeout(() => { btn.innerHTML = orig; }, 2000);
+      }
+    });
+  }
+
+  shareLessonToWhatsApp() {
+    if (!this.currentActiveLesson) return;
+    const l = this.currentActiveLesson;
+    const text = `📚 *Mission Agent Mother-Tongue Lesson Plan*\n\n🎯 *Topic:* ${l.topic}\n🎒 *Class:* ${l.grade} | ${l.language}\n🍲 *Cultural Anchor:* ${l.contextHook}\n\n📖 *Story Hook:* ${l.storyHook.substring(0, 140)}...\n\n🔗 Generated on Mission Agent Mother-Tongue AI Platform`;
+    const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`;
+    window.open(url, '_blank');
+  }
+
   async generateTeacherLesson() {
     const topic = document.getElementById('teacher-topic-input')?.value || 'The Water Cycle';
     const grade = document.getElementById('teacher-grade-select')?.value || 'Class 4';
-    const lang = document.getElementById('teacher-lesson-lang')?.value || 'Tamil';
+    const stage = document.getElementById('teacher-stage-select')?.value || 'Preparatory Stage (Class 3 - 5)';
+    const subject = document.getElementById('teacher-subject-select')?.value || 'Environmental Studies (EVS)';
     const diff = document.getElementById('teacher-diff-select')?.value || 'Beginner';
-    const context = document.getElementById('teacher-context-input')?.value || 'Local river & kitchen steam';
+    const lang = document.getElementById('teacher-lesson-lang')?.value || 'Tamil';
+    const duration = document.getElementById('teacher-duration-select')?.value || '40 Minutes';
+    const context = document.getElementById('teacher-context-input')?.value || 'Local river & household kitchen pots';
 
     const outputEl = document.getElementById('teacher-lesson-output');
+    const statusText = document.getElementById('studio-status-text');
     if (!outputEl) return;
 
+    if (statusText) statusText.textContent = `Generating AI Lesson for ${topic}...`;
+
     outputEl.innerHTML = `
-      <div style="text-align:center; padding: 3rem; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px dashed var(--border-color);">
-        <div style="font-size: 2.2rem; margin-bottom: 0.6rem; animation: pulseDotChecking 1s infinite alternate;">👩‍🏫</div>
-        <h4 style="color: var(--color-primary); margin-bottom: 0.3rem;">Generating Vernacular Lesson Plan via AI Engine...</h4>
-        <p style="color: var(--text-muted); font-size: 0.88rem;">Synthesizing 7-part pedagogical framework for ${grade}</p>
+      <div style="text-align:center; padding: 3.5rem 2rem; background: var(--bg-card); border-radius: var(--radius-lg); border: 1.5px dashed #A5B4FC;">
+        <div style="font-size: 2.6rem; margin-bottom: 0.8rem; animation: pulseDotChecking 1s infinite alternate;">👩‍🏫</div>
+        <h3 style="color: var(--color-primary); margin-bottom: 0.4rem;">Synthesizing AI Vernacular Lesson Plan...</h3>
+        <p style="color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto;">
+          Constructing 7-part pedagogical framework with cultural anchor, NCF competencies, chalkboard diagram, and family bridge for <strong>${grade} (${subject})</strong>.
+        </p>
       </div>
     `;
 
     let lesson = null;
     let isLiveBackend = false;
     try {
-      const apiLesson = await this.apiClient.generateLesson(topic, grade, lang, diff, context);
+      const apiLesson = await this.apiClient.generateLesson({
+        topic,
+        grade,
+        stage,
+        subject,
+        standardLevel: stage,
+        language: lang,
+        difficulty: diff,
+        pedagogicalLevel: diff,
+        duration,
+        contextNotes: context
+      });
       if (apiLesson && apiLesson.concept_explanation) {
         lesson = {
+          lesson_id: apiLesson.lesson_id,
           grade: apiLesson.grade,
+          stage: apiLesson.standard_level || stage,
+          subject: apiLesson.subject || subject,
+          standardLevel: apiLesson.standard_level || stage,
           language: apiLesson.language,
           difficulty: apiLesson.difficulty,
+          pedagogicalLevel: apiLesson.pedagogical_level || diff,
+          duration: apiLesson.duration || duration,
           topic: apiLesson.topic,
           contextHook: apiLesson.pedagogical_hook,
           storyHook: apiLesson.story_based_explanation,
           conceptExplanation: apiLesson.concept_explanation,
+          learningObjectives: apiLesson.learning_objectives || [
+            'Understand foundational concept in mother tongue.',
+            'Connect daily household observations to scientific principles.',
+            'Apply understanding in zero-cost group experiments.'
+          ],
           keyVocabulary: (apiLesson.local_vocabulary || []).map(v => ({ term: v.term, desc: v.meaning })),
           activity: apiLesson.classroom_activity,
-          homework: apiLesson.homework_activity,
+          timelineBreakdown: apiLesson.timeline_breakdown || [
+            { phase: '0-5 min', title: 'Prerana (Hook)', desc: 'Show household phenomenon to ignite curiosity.' },
+            { phase: '5-18 min', title: 'Sankalpan (Concept)', desc: 'Teach core concept with mother-tongue terms.' },
+            { phase: '18-28 min', title: 'Kriyatmak (Activity)', desc: 'Hands-on tactile experiment.' },
+            { phase: '28-35 min', title: 'Mulyankan (Quiz)', desc: 'Formative checkpoint questions.' },
+            { phase: '35-40 min', title: 'Griha Karya & Wrap', desc: 'Assign dinner table conversation.' }
+          ],
+          blackboardLayout: apiLesson.blackboard_layout || {
+            left_column: `Objectives:\n1. Core concept\n2. Real-world link`,
+            center_column: `[Diagram: ${topic}]`,
+            right_column: `Key Terms:\n• Term 1\n• Term 2\nHomework: Home bridge`
+          },
+          differentiatedGuidance: apiLesson.differentiated_guidance || {
+            support_struggling_learners: 'Provide physical tactile objects and simplify vocabulary.',
+            advanced_learners: 'Encourage independent why-and-how hypotheses.'
+          },
+          misconceptionsAddressed: apiLesson.misconceptions_addressed || [
+            'Abstract formulas must be memorized blindly -> Deep intuitive understanding through mother tongue lasts a lifetime.'
+          ],
           quizQuestions: (apiLesson.quiz_questions && apiLesson.quiz_questions.length > 0)
-            ? [{ q: apiLesson.quiz_questions[0].question, a: apiLesson.quiz_questions[0].correct_answer }]
-            : [{ q: 'How does water turn into steam?', a: 'By absorbing heat' }]
+            ? apiLesson.quiz_questions.map(q => ({
+                q: q.question,
+                a: q.correct || q.correct_answer || 'Understood',
+                options: q.options || [],
+                explanation: q.explanation || ''
+              }))
+            : [{ q: `What is the core principle of ${topic}?`, a: 'Natural living laws' }],
+          homework: apiLesson.homework_activity
         };
         isLiveBackend = true;
       }
@@ -1243,32 +1717,74 @@ class VernacApp {
     }
 
     if (!lesson) {
-      lesson = pedagogyEngine.generateLessonPlan(topic, grade, lang, diff, context);
+      lesson = pedagogyEngine.generateLessonPlan({
+        topic,
+        grade,
+        stage,
+        subject,
+        standardLevel: stage,
+        language: lang,
+        difficulty: diff,
+        pedagogicalLevel: diff,
+        duration,
+        contextNotes: context
+      });
     }
+
+    // Retain as active lesson in instance
+    this.currentActiveLesson = lesson;
+    if (statusText) statusText.textContent = `Lesson Ready: ${lesson.topic}`;
 
     outputEl.innerHTML = `
       <div class="lesson-plan-card">
+        <!-- Header Banner with Meta Badges -->
         <div class="lesson-plan-header">
           <div>
-            <span class="lesson-meta-pill">${lesson.grade} | ${lesson.language} | ${lesson.difficulty}</span>
-            <span class="lesson-meta-pill" style="background:${isLiveBackend ? '#059669' : '#4B5563'}; color:#fff; font-weight:600;">
-              ${isLiveBackend ? '⚡ Live AI Backend' : '💻 Local Template'}
-            </span>
+            <div class="lesson-meta-badges-row">
+              <span class="lesson-badge stage-badge">${lesson.stage || lesson.standardLevel || grade}</span>
+              <span class="lesson-badge">${lesson.subject || subject}</span>
+              <span class="lesson-badge level-badge">${lesson.pedagogicalLevel || diff}</span>
+              <span class="lesson-badge">⏱️ ${lesson.duration || duration}</span>
+              <span class="lesson-badge">🌐 ${lesson.language || lang}</span>
+              <span class="lesson-badge ai-badge">
+                ${isLiveBackend ? '⚡ Live AI Backend' : '💻 Local Vernacular Engine'}
+              </span>
+            </div>
             <h3 class="lesson-title">${lesson.topic}</h3>
-            <div class="lesson-context-hook">🎯 Regional Context Anchor: <em>${lesson.contextHook}</em></div>
+            <div class="lesson-context-hook">🎯 Regional Cultural Anchor: <em>${lesson.contextHook}</em></div>
           </div>
-          <button class="btn-print-lesson" onclick="window.print()">🖨️ Export PDF / Print</button>
         </div>
 
+        <!-- 0. Learning Objectives & NCF Competencies -->
+        <div class="lesson-objectives-box">
+          <h4>🎯 NEP 2020 / NCF Learning Outcomes</h4>
+          <ul class="lesson-objectives-list">
+            ${(lesson.learningObjectives || []).map(obj => `<li>${obj}</li>`).join('')}
+          </ul>
+        </div>
+
+        <!-- 1. Narrative Story Hook -->
         <div class="lesson-section">
-          <h4>📖 1. Local Storytelling Narrative Hook</h4>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem;">
+            <h4>📖 1. Local Storytelling Narrative Hook (Prerana)</h4>
+            <button id="btn-inline-speak-story" class="btn-studio-tool" style="font-size: 0.76rem;">🔊 Listen Story</button>
+          </div>
           <p class="lesson-story">${lesson.storyHook}</p>
         </div>
 
+        <!-- 2. Core Vernacular Concept Explanation -->
         <div class="lesson-section">
-          <h4>📚 2. Mother-Tongue Scientific Glossary</h4>
+          <h4>💡 2. Mother-Tongue Concept Explanation (Sankalpan)</h4>
+          <div style="background: #F8FAFC; border-left: 4px solid #3B82F6; padding: 1.1rem 1.25rem; border-radius: var(--radius-sm); font-size: 0.94rem; line-height: 1.6; color: #1E293B;">
+            ${(lesson.conceptExplanation || '').replace(/\n\n/g, '<br><br>')}
+          </div>
+        </div>
+
+        <!-- 3. Scientific Glossary Grid -->
+        <div class="lesson-section">
+          <h4>📚 3. Mother-Tongue Scientific Glossary (Shabda Kosha)</h4>
           <div class="lesson-glossary-grid">
-            ${lesson.keyVocabulary.map(v => `
+            ${(lesson.keyVocabulary || []).map(v => `
               <div class="glossary-card">
                 <strong>${v.term}</strong>
                 <span>${v.desc}</span>
@@ -1277,22 +1793,114 @@ class VernacApp {
           </div>
         </div>
 
+        <!-- 4. Zero-Cost Hands-On Activity -->
         <div class="lesson-section">
-          <h4>🧪 3. Zero-Cost Hands-On Classroom Experiment</h4>
-          <p class="lesson-activity">${lesson.activity}</p>
+          <h4>🧪 4. Zero-Cost Classroom Experiential Experiment (Kriyatmak)</h4>
+          <div style="background: #F0FDF4; border-left: 4px solid #10B981; padding: 1rem 1.25rem; border-radius: var(--radius-sm); font-size: 0.92rem; line-height: 1.6;">
+            ${lesson.activity}
+          </div>
         </div>
 
+        <!-- 5. Chalkboard Visual Layout & 40-Min Timeline -->
         <div class="lesson-section">
-          <h4>🎯 4. Formative Check & Parent Homework</h4>
-          <ul class="lesson-checklist">
-            <li><strong>Class Question:</strong> ${lesson.quizQuestions[0].q} (Ans: ${lesson.quizQuestions[0].a})</li>
-            <li><strong>Dinner Homework:</strong> ${lesson.homework}</li>
-          </ul>
+          <h4>📋 5. Teacher Chalkboard Plan & Period Timeline</h4>
+          
+          <!-- Period Timeline -->
+          <div class="lesson-timeline-strip">
+            ${(lesson.timelineBreakdown || []).map(t => `
+              <div class="timeline-step">
+                <strong>${t.phase}: ${t.title}</strong>
+                <span>${t.desc}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Realistic Classroom Blackboard Simulation -->
+          <div class="lesson-blackboard-preview">
+            <div style="font-size: 0.78rem; text-align: center; color: #A7F3D0; margin-bottom: 0.6rem; letter-spacing: 1px;">
+              ══ CLASSROOM CHALKBOARD BLUEPRINT ══
+            </div>
+            <div class="blackboard-chalk-grid">
+              <div class="chalk-col">
+                <h5>[LEFT: OBJECTIVES]</h5>
+                <pre style="white-space: pre-wrap; font-family: inherit; margin: 0;">${lesson.blackboardLayout?.left_column || '• Concept Objectives'}</pre>
+              </div>
+              <div class="chalk-col">
+                <h5>[CENTER: DIAGRAM / STEPS]</h5>
+                <pre style="white-space: pre-wrap; font-family: inherit; margin: 0; color: #FEF08A;">${lesson.blackboardLayout?.center_column || `[Visual Diagram of ${lesson.topic}]`}</pre>
+              </div>
+              <div class="chalk-col">
+                <h5>[RIGHT: VOCAB & TASK]</h5>
+                <pre style="white-space: pre-wrap; font-family: inherit; margin: 0;">${lesson.blackboardLayout?.right_column || '• Vocabulary & Homework'}</pre>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <!-- 6. Formative Assessment Questions -->
+        <div class="lesson-section">
+          <h4>🎯 6. Formative Checkpoint Questions (Mulyankan)</h4>
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            ${(lesson.quizQuestions || []).map((q, idx) => `
+              <div style="background: #F8FAFC; border: 1px solid #E2E8F0; border-radius: 8px; padding: 0.85rem 1.1rem;">
+                <div style="font-weight: 700; color: #1E293B; margin-bottom: 0.35rem;">Q${idx + 1}: ${q.q}</div>
+                ${q.options && q.options.length > 0 ? `
+                  <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 0.4rem;">
+                    ${q.options.map(opt => `<span style="font-size: 0.78rem; padding: 0.2rem 0.6rem; background: #FFF; border: 1px solid #CBD5E1; border-radius: 4px;">${opt}</span>`).join('')}
+                  </div>
+                ` : ''}
+                <div style="font-size: 0.82rem; color: #059669; font-weight: 600;">
+                  ✅ Answer: ${q.a} ${q.explanation ? `— <em>${q.explanation}</em>` : ''}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- 7. Differentiated Guidance -->
+        <div class="lesson-section">
+          <h4>🤝 7. Differentiated Learning Guidance</h4>
+          <div class="lesson-guidance-grid">
+            <div class="guidance-card support">
+              <h5>🌱 For Struggling Learners (Scaffolding):</h5>
+              <p style="margin: 0; font-size: 0.85rem; color: #1E3A8A;">${lesson.differentiatedGuidance?.support_struggling_learners || 'Use tactile real objects and physical metaphors.'}</p>
+            </div>
+            <div class="guidance-card advanced">
+              <h5>🚀 For Advanced Learners (Challenge):</h5>
+              <p style="margin: 0; font-size: 0.85rem; color: #581C87;">${lesson.differentiatedGuidance?.advanced_learners || 'Encourage students to formulate their own hypotheses.'}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 8. Misconceptions Buster -->
+        ${lesson.misconceptionsAddressed && lesson.misconceptionsAddressed.length > 0 ? `
+          <div class="lesson-misconceptions-box">
+            <h4>⚠️ Frequently Addressed Misconceptions</h4>
+            <ul style="margin: 0; padding-left: 1.25rem;">
+              ${lesson.misconceptionsAddressed.map(m => `<li>${m}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+
+        <!-- 9. Dinner Table Connection (Griha Karya) -->
+        <div class="lesson-section" style="margin-bottom: 0;">
+          <h4>👨‍👩‍👧 8. Family & Dinner Table Connection (Griha Karya)</h4>
+          <div style="background: #FFFBEB; border-left: 4px solid #F59E0B; padding: 1rem 1.25rem; border-radius: var(--radius-sm); font-size: 0.92rem;">
+            <strong>Tonight at dinner:</strong> ${lesson.homework}
+          </div>
+        </div>
+
       </div>
     `;
 
-    quizManager.awardStars(10, 'New Lesson Plan Saved to Class Library!');
+    const inlineSpeak = document.getElementById('btn-inline-speak-story');
+    if (inlineSpeak) {
+      inlineSpeak.addEventListener('click', () => {
+        this.speakCurrentLessonStory();
+      });
+    }
+
+    quizManager.awardStars(10, 'Generated Complete 7-Stage Vernacular Lesson Plan!');
   }
 
   async renderParentDashboard() {

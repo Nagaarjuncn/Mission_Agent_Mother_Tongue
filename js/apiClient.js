@@ -236,19 +236,40 @@ export class VernacApiClient {
   }
 
   // 6. Teacher Lesson Generation
-  async generateLesson(topic, grade = 'Class 4', language = 'Tamil', difficulty = 'Beginner', contextNotes = '') {
+  async generateLesson(optionsOrTopic, grade = 'Class 4', language = 'Tamil', difficulty = 'Beginner', contextNotes = '') {
+    let payload = {};
+    if (typeof optionsOrTopic === 'object' && optionsOrTopic !== null) {
+      payload = {
+        topic: optionsOrTopic.topic || 'The Water Cycle',
+        grade: optionsOrTopic.grade || 'Class 4',
+        subject: optionsOrTopic.subject || 'Environmental Studies (EVS)',
+        standard_level: optionsOrTopic.standardLevel || 'Preparatory Stage (Class 3-5)',
+        language: optionsOrTopic.language || 'Tamil',
+        difficulty: optionsOrTopic.difficulty || 'Beginner',
+        pedagogical_level: optionsOrTopic.pedagogicalLevel || 'Level 1: Foundational & Story-first',
+        duration: optionsOrTopic.duration || '40 Minutes',
+        context_notes: optionsOrTopic.contextNotes || ''
+      };
+    } else {
+      payload = {
+        topic: optionsOrTopic || 'The Water Cycle',
+        grade: grade || 'Class 4',
+        subject: 'Environmental Studies (EVS)',
+        standard_level: `${grade} Stage`,
+        language: language || 'Tamil',
+        difficulty: difficulty || 'Beginner',
+        pedagogical_level: 'Level 1: Foundational & Story-first',
+        duration: '40 Minutes',
+        context_notes: contextNotes || ''
+      };
+    }
+
     try {
       const res = await fetchWithTimeout(`${this.baseUrl}/lessons/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          topic,
-          grade,
-          language,
-          difficulty,
-          context_notes: contextNotes
-        })
-      }, 12000);
+        body: JSON.stringify(payload)
+      }, 15000);
       if (res.ok) {
         this.isBackendOnline = true;
         this._updateStatusBadge(true);
@@ -256,6 +277,45 @@ export class VernacApiClient {
       }
     } catch (e) {
       console.warn('[Mission Agent API] Lesson generation fallback:', e.message);
+    }
+    return null;
+  }
+
+  // 6b. AI Topic Suggestions & Ideator
+  async suggestTopics(grade = 'Class 4', subject = 'Environmental Studies (EVS)', standardLevel = 'Preparatory Stage', language = 'Tamil') {
+    try {
+      const res = await fetchWithTimeout(`${this.baseUrl}/lessons/suggest-topics`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          grade,
+          subject,
+          standard_level: standardLevel,
+          language
+        })
+      }, 10000);
+      if (res.ok) {
+        this.isBackendOnline = true;
+        this._updateStatusBadge(true);
+        return await res.json();
+      }
+    } catch (e) {
+      console.warn('[Mission Agent API] Suggest topics fallback:', e.message);
+    }
+    return null;
+  }
+
+  // 6c. Delete Saved Lesson
+  async deleteLesson(lessonId) {
+    try {
+      const res = await fetchWithTimeout(`${this.baseUrl}/lessons/${encodeURIComponent(lessonId)}`, {
+        method: 'DELETE'
+      }, 8000);
+      if (res.ok) {
+        return await res.json();
+      }
+    } catch (e) {
+      console.warn('[Mission Agent API] Delete lesson fallback:', e.message);
     }
     return null;
   }

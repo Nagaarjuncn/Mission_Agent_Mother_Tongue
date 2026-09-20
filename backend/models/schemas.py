@@ -150,16 +150,24 @@ class TutorHintResponse(BaseModel):
 class LessonGenerateRequest(BaseModel):
     topic: str = Field(..., json_schema_extra={"example": "The Water Cycle"})
     grade: str = Field(default="Class 4", json_schema_extra={"example": "Class 4"})
+    subject: Optional[str] = Field(default="Environmental Studies (EVS)", json_schema_extra={"example": "Environmental Studies (EVS)"})
+    standard_level: Optional[str] = Field(default="Preparatory Stage (Class 3-5)", json_schema_extra={"example": "Preparatory Stage (Class 3-5)"})
     language: str = Field(default="Tamil", json_schema_extra={"example": "Tamil"})
     difficulty: str = Field(default="Beginner", json_schema_extra={"example": "Beginner"})
+    pedagogical_level: Optional[str] = Field(default="Level 1: Foundational & Story-first", json_schema_extra={"example": "Level 1: Foundational & Story-first"})
+    duration: Optional[str] = Field(default="40 Minutes", json_schema_extra={"example": "40 Minutes"})
     context_notes: Optional[str] = Field(default="", json_schema_extra={"example": "Emphasize local river and monsoon"})
 
 class LessonPlanResponse(BaseModel):
     lesson_id: str
     topic: str
     grade: str
+    subject: Optional[str] = "Environmental Studies (EVS)"
+    standard_level: Optional[str] = "Class 4 (Preparatory Stage)"
     language: str
     difficulty: str
+    pedagogical_level: Optional[str] = "Level 1: Foundational"
+    duration: Optional[str] = "40 Minutes"
     created_at: str
     pedagogical_hook: str
     concept_explanation: str
@@ -169,9 +177,35 @@ class LessonPlanResponse(BaseModel):
     visual_learning_prompts: List[str]
     quiz_questions: List[Dict[str, Any]]
     homework_activity: str
+    learning_objectives: Optional[List[str]] = []
+    timeline_breakdown: Optional[List[Dict[str, str]]] = []
+    blackboard_layout: Optional[Dict[str, Any]] = None
+    differentiated_guidance: Optional[Dict[str, str]] = None
+    misconceptions_addressed: Optional[List[str]] = []
+    is_ai_generated: bool = True
 
 class LessonSaveRequest(BaseModel):
     lesson: LessonPlanResponse
+
+class TopicSuggestRequest(BaseModel):
+    grade: str = Field(default="Class 4", json_schema_extra={"example": "Class 4"})
+    subject: str = Field(default="Environmental Studies (EVS)", json_schema_extra={"example": "Environmental Studies (EVS)"})
+    standard_level: Optional[str] = Field(default="Preparatory Stage", json_schema_extra={"example": "Preparatory Stage"})
+    language: Optional[str] = Field(default="Tamil", json_schema_extra={"example": "Tamil"})
+
+class SuggestedTopicItem(BaseModel):
+    topic_title: str
+    vernacular_title: str
+    cultural_hook: str
+    difficulty: str
+    standard_level: str
+    learning_outcome: str
+
+class TopicSuggestResponse(BaseModel):
+    grade: str
+    subject: str
+    language: str
+    suggested_topics: List[SuggestedTopicItem]
 
 # ==========================================
 # 5. Voice & Speech Schemas

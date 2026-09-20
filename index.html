@@ -576,64 +576,170 @@
 
 
     <!-- ========================================================================
-         VIEW 5: TEACHER HUB & AI LESSON GENERATOR
+         VIEW 5: TEACHER HUB & AI LESSON & CURRICULUM PLATFORM
          ======================================================================== -->
     <section id="view-teacher" class="tab-view">
-      <div class="section-header">
-        <span class="section-tag">Teacher Co-Pilot</span>
-        <h2>AI Vernacular Lesson Generator & Classroom Hub</h2>
-        <p>Empower teachers to instantly transform textbook topics into localized lesson plans, mother-tongue glossaries, and zero-cost classroom activities.</p>
+      <div class="section-header teacher-platform-header">
+        <div class="teacher-header-badge-row">
+          <span class="section-tag">✨ AI Curriculum & Lesson Co-Pilot Platform</span>
+          <div class="teacher-header-quick-actions">
+            <button id="btn-open-topic-ideator" class="btn-teacher-top-action" title="AI Curriculum Topic Brainstormer">
+              💡 AI Topic Ideator
+            </button>
+            <button id="btn-open-saved-lessons" class="btn-teacher-top-action" title="View Saved Lessons Library">
+              📂 Saved Library (<span id="saved-lessons-count">1</span>)
+            </button>
+          </div>
+        </div>
+        <h2>AI Vernacular Lesson Studio & Curriculum Hub</h2>
+        <p>Empower educators to brainstorm NEP 2020 syllabus topics and generate complete 7-stage localized lesson plans with cultural narratives, mother-tongue scientific glossaries, zero-cost experiential experiments, chalkboard layouts, and parent bridges.</p>
       </div>
 
       <div class="teacher-workspace-layout">
         
-        <!-- Left: Generator Form -->
+        <!-- Left: AI Generator Controls Card -->
         <div class="teacher-form-card">
-          <h3 style="margin-bottom: 1.25rem;">📝 Generate Localized Lesson</h3>
+          <div class="form-card-title-bar">
+            <h3>📝 AI Lesson Plan Generator</h3>
+            <span class="badge-ai-live">⚡ AI Assisted</span>
+          </div>
 
+          <!-- Topic Input & Quick Chips -->
           <div class="form-field">
-            <label>Topic / Concept</label>
-            <input type="text" id="teacher-topic-input" value="The Water Cycle" placeholder="e.g. The Water Cycle, Fractions, Plants...">
+            <div class="label-with-action">
+              <label for="teacher-topic-input">Topic / Subject Concept</label>
+              <button type="button" id="btn-suggest-topics-link" class="link-btn-suggest">✨ Suggest Topics</button>
+            </div>
+            <input type="text" id="teacher-topic-input" value="The Water Cycle" placeholder="e.g. The Water Cycle, Plant Photosynthesis, Fractions...">
+            
+            <!-- Quick Preset Topic Inspiration Chips -->
+            <div class="topic-preset-chips" id="topic-preset-chips">
+              <span class="topic-chip active" data-topic="The Water Cycle" data-stage="Preparatory" data-grade="Class 4" data-subject="Environmental Studies (EVS)">💧 Water Cycle</span>
+              <span class="topic-chip" data-topic="Photosynthesis & Green Leaves" data-stage="Preparatory" data-grade="Class 4" data-subject="Environmental Studies (EVS)">🌱 Photosynthesis</span>
+              <span class="topic-chip" data-topic="Fractions with Sweet Mangoes" data-stage="Preparatory" data-grade="Class 4" data-subject="Mathematics">🥭 Fractions</span>
+              <span class="topic-chip" data-topic="States of Matter in the Kitchen" data-stage="Middle" data-grade="Class 6" data-subject="General Science / Science & Technology">🌍 Matter States</span>
+              <span class="topic-chip" data-topic="Electric Circuits & Festive Lights" data-stage="Middle" data-grade="Class 6" data-subject="General Science / Science & Technology">⚡ Circuits</span>
+              <span class="topic-chip" data-topic="Our Five Senses & Festive Sweets" data-stage="Foundational" data-grade="Class 2" data-subject="Environmental Studies (EVS)">👃 Five Senses</span>
+            </div>
+          </div>
+
+          <!-- Standard Level & Grade Selection Grid -->
+          <div class="form-grid-2col">
+            <div class="form-field">
+              <label for="teacher-stage-select">Curriculum Standard Stage (NEP 2020)</label>
+              <select id="teacher-stage-select">
+                <option value="Foundational Stage (Balvatika - Class 2)">Foundational Stage (Ages 3–8)</option>
+                <option value="Preparatory Stage (Class 3 - 5)" selected>Preparatory Stage (Ages 8–11)</option>
+                <option value="Middle Stage (Class 6 - 8)">Middle Stage (Ages 11–14)</option>
+                <option value="Secondary Stage (Class 9 - 10)">Secondary Stage (Ages 14–16)</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="teacher-grade-select">Specific Class / Grade</label>
+              <select id="teacher-grade-select">
+                <option value="Balvatika / Anganwadi (KG)">Balvatika / Anganwadi</option>
+                <option value="Class 1">Class 1 (Age 6)</option>
+                <option value="Class 2">Class 2 (Age 7)</option>
+                <option value="Class 3">Class 3 (Age 8)</option>
+                <option value="Class 4" selected>Class 4 (Age 9)</option>
+                <option value="Class 5">Class 5 (Age 10)</option>
+                <option value="Class 6">Class 6 (Age 11)</option>
+                <option value="Class 7">Class 7 (Age 12)</option>
+                <option value="Class 8">Class 8 (Age 13)</option>
+                <option value="Class 9">Class 9 (Age 14)</option>
+                <option value="Class 10">Class 10 (Age 15)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Subject & Pedagogical Depth Grid -->
+          <div class="form-grid-2col">
+            <div class="form-field">
+              <label for="teacher-subject-select">Subject / Academic Domain</label>
+              <select id="teacher-subject-select">
+                <option value="Environmental Studies (EVS)" selected>Environmental Studies (EVS)</option>
+                <option value="General Science / Science & Technology">General Science / Science & Tech</option>
+                <option value="Mathematics & Numeracy">Mathematics & Numeracy</option>
+                <option value="Social Science & Heritage">Social Science & Heritage</option>
+                <option value="Language Arts & Communication">Language Arts & Stories</option>
+              </select>
+            </div>
+
+            <div class="form-field">
+              <label for="teacher-diff-select">Pedagogical Level (Bloom's Taxonomy)</label>
+              <select id="teacher-diff-select">
+                <option value="Beginner" selected>Level 1: Foundational (Story-first, visual, sensory)</option>
+                <option value="Intermediate">Level 2: Exploratory (Hands-on, inquiry, why & how)</option>
+                <option value="Advanced">Level 3: Advanced Mastery (Critical thinking, problems)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Language Medium & Class Duration -->
+          <div class="form-grid-2col">
+            <div class="form-field">
+              <label for="teacher-lesson-lang">Instruction Medium / Mother Tongue</label>
+              <select id="teacher-lesson-lang"></select>
+            </div>
+
+            <div class="form-field">
+              <label for="teacher-duration-select">Period Duration</label>
+              <select id="teacher-duration-select">
+                <option value="30 Minutes">30-Min Micro-Lesson</option>
+                <option value="40 Minutes" selected>40-Min Standard Period</option>
+                <option value="60 Minutes">60-Min Deep-Dive / Lab</option>
+              </select>
+            </div>
           </div>
 
           <div class="form-field">
-            <label>Target Grade</label>
-            <select id="teacher-grade-select">
-              <option value="Class 1">Class 1 (Age 6)</option>
-              <option value="Class 2">Class 2 (Age 7)</option>
-              <option value="Class 3">Class 3 (Age 8)</option>
-              <option value="Class 4" selected>Class 4 (Age 9)</option>
-              <option value="Class 5">Class 5 (Age 10)</option>
-            </select>
+            <label for="teacher-context-input">Regional Cultural Anchor / Context</label>
+            <input type="text" id="teacher-context-input" value="Local Vaigai river & household kitchen pots" placeholder="e.g. Village market, river, monsoon festival, grandmother's kitchen...">
           </div>
 
-          <div class="form-field">
-            <label>Instruction Medium / Mother Tongue</label>
-            <select id="teacher-lesson-lang"></select>
+          <!-- Primary & Secondary Generation Action Buttons -->
+          <div class="teacher-action-buttons">
+            <button id="btn-generate-lesson" class="btn-generate-lesson">
+              ✨ Generate Complete 7-Stage Lesson Plan
+            </button>
+            <button type="button" id="btn-ideate-standard-topics" class="btn-secondary-ideate">
+              💡 AI Brainstorm 5 Topics for this Standard
+            </button>
           </div>
-
-          <div class="form-field">
-            <label>Difficulty Level</label>
-            <select id="teacher-diff-select">
-              <option value="Beginner" selected>Beginner (Story-first, visual)</option>
-              <option value="Intermediate">Intermediate (Hands-on experiments)</option>
-              <option value="Advanced">Advanced (Scientific terminology)</option>
-            </select>
-          </div>
-
-          <div class="form-field">
-            <label>Regional Cultural Anchor / Context</label>
-            <input type="text" id="teacher-context-input" value="Local Vaigai river & household kitchen pots" placeholder="e.g. Village market, river, monsoon festival...">
-          </div>
-
-          <button id="btn-generate-lesson" class="btn-generate-lesson">
-            ✨ Generate Complete Lesson Plan
-          </button>
         </div>
 
         <!-- Right: Lesson Plan Output Studio -->
-        <div id="teacher-lesson-output">
-          <!-- Populated by app.js generateTeacherLesson() -->
+        <div class="teacher-output-column">
+          <!-- Studio Floating Action Toolbar -->
+          <div class="studio-action-toolbar" id="studio-action-toolbar">
+            <div class="toolbar-left-status">
+              <span class="toolbar-status-dot"></span> 
+              <span id="studio-status-text">Lesson Studio Ready</span>
+            </div>
+            <div class="toolbar-actions">
+              <button id="btn-studio-speak" class="btn-studio-tool" title="Read Aloud Narrative Hook in Mother Tongue">
+                🔊 Listen Story
+              </button>
+              <button id="btn-studio-save" class="btn-studio-tool" title="Save this Lesson Plan to My Library">
+                💾 Save Plan
+              </button>
+              <button id="btn-studio-print" class="btn-studio-tool" title="Export as PDF or Print">
+                🖨️ Export PDF
+              </button>
+              <button id="btn-studio-copy" class="btn-studio-tool" title="Copy Lesson Plan as Markdown">
+                📋 Copy Text
+              </button>
+              <button id="btn-studio-whatsapp" class="btn-studio-tool whatsapp-tool" title="Share Summary to WhatsApp Teacher Group">
+                💬 WhatsApp
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Output Container -->
+          <div id="teacher-lesson-output">
+            <!-- Populated by app.js generateTeacherLesson() -->
+          </div>
         </div>
 
       </div>
@@ -652,6 +758,7 @@
       </div>
 
     </section>
+
 
 
     <!-- ========================================================================
@@ -930,6 +1037,85 @@
 
       <div class="host-permanent-guide-callout">
         💡 <strong>Permanent Setup Tip:</strong> Double-click <code>start_permanent_host.bat</code> or run <code>.\start_permanent_host.ps1</code> to launch both the full-stack server and Cloudflare tunnel anytime.
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       AI TOPIC IDEATOR MODAL
+       ========================================================================== -->
+  <div id="modal-topic-ideator" class="onboarding-modal-overlay" role="dialog" aria-modal="true" style="display: none;">
+    <div class="host-modal-content ideator-modal-content">
+      <button class="modal-close-corner" id="btn-close-ideator-modal">&times;</button>
+      
+      <div class="host-badge-header" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15)); color: #6366F1;">
+        <span>✨</span> AI Curriculum Topic Ideator (NEP 2020)
+      </div>
+      <h3 style="font-size: 1.45rem; color: var(--text-primary); margin-bottom: 0.3rem;">Brainstorm Vernacular Topics</h3>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.2rem;">
+        Generate culturally anchored syllabus topic ideas for your standard level and subject with 1-click lesson generation.
+      </p>
+
+      <div class="ideator-controls-grid">
+        <div class="form-field">
+          <label for="ideator-grade-select">Target Class / Grade</label>
+          <select id="ideator-grade-select">
+            <option value="Balvatika / Anganwadi (KG)">Balvatika / Anganwadi (Foundational)</option>
+            <option value="Class 1">Class 1 (Foundational)</option>
+            <option value="Class 2">Class 2 (Foundational)</option>
+            <option value="Class 3">Class 3 (Preparatory)</option>
+            <option value="Class 4" selected>Class 4 (Preparatory)</option>
+            <option value="Class 5">Class 5 (Preparatory)</option>
+            <option value="Class 6">Class 6 (Middle)</option>
+            <option value="Class 7">Class 7 (Middle)</option>
+            <option value="Class 8">Class 8 (Middle)</option>
+            <option value="Class 9">Class 9 (Secondary)</option>
+            <option value="Class 10">Class 10 (Secondary)</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="ideator-subject-select">Subject Domain</label>
+          <select id="ideator-subject-select">
+            <option value="Environmental Studies (EVS)" selected>Environmental Studies (EVS)</option>
+            <option value="General Science / Science & Technology">General Science / Science & Tech</option>
+            <option value="Mathematics & Numeracy">Mathematics & Numeracy</option>
+            <option value="Social Science & Heritage">Social Science & Heritage</option>
+          </select>
+        </div>
+
+        <div class="form-field ideator-submit-field">
+          <button id="btn-ideate-submit" class="btn-primary" style="width: 100%; padding: 0.75rem 1rem; border-radius: 8px; font-weight: 700; cursor: pointer;">
+            ⚡ Brainstorm Topics
+          </button>
+        </div>
+      </div>
+
+      <!-- Ideated Topics Output Container -->
+      <div id="ideator-results-container" class="ideator-results-container">
+        <!-- Rendered by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       SAVED LESSON PLANS LIBRARY MODAL
+       ========================================================================== -->
+  <div id="modal-saved-lessons" class="onboarding-modal-overlay" role="dialog" aria-modal="true" style="display: none;">
+    <div class="host-modal-content saved-library-modal-content">
+      <button class="modal-close-corner" id="btn-close-library-modal">&times;</button>
+      
+      <div class="host-badge-header" style="background: rgba(16, 185, 129, 0.15); color: #059669;">
+        <span>📂</span> Saved Lesson Plans Library
+      </div>
+      <h3 style="font-size: 1.45rem; color: var(--text-primary); margin-bottom: 0.3rem;">Your Vernacular Curriculum Repository</h3>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1rem;">
+        View, reload into studio, export as PDF/Print, or share any of your saved lesson plans.
+      </p>
+
+      <!-- Saved List -->
+      <div id="saved-lessons-list-container" class="saved-lessons-list-container">
+        <!-- Rendered by app.js -->
       </div>
     </div>
   </div>
