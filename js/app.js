@@ -12,6 +12,19 @@ class VernacApp {
     this.currentRole = 'student'; // 'student' | 'teacher' | 'parent'
     this.currentTab = 'home';
     this.currentLang = 'ta';
+
+    let savedName = 'Aarav';
+    try {
+      savedName = localStorage.getItem('vernac_student_name') || 'Aarav';
+    } catch (e) {}
+    this.studentName = savedName;
+
+    let savedTheme = 'bright';
+    try {
+      savedTheme = localStorage.getItem('vernac_theme_mode') || 'bright';
+    } catch (e) {}
+    this.currentTheme = savedTheme;
+
     this.apiClient = apiClient;
     this.tutorChat = tutorChat;
     this.quizManager = quizManager;
@@ -21,6 +34,20 @@ class VernacApp {
 
   async init() {
     window.vernacApp = this;
+
+    // 0. Theme initialization (Bright / Dark Mode)
+    try {
+      this.initTheme();
+    } catch (e) {
+      console.warn('initTheme warning:', e);
+    }
+
+    // 0.1 Student Name personalization
+    try {
+      this.initStudentName();
+    } catch (e) {
+      console.warn('initStudentName warning:', e);
+    }
 
     // 1. Critical UI and Mother-Tongue setup immediately
     try {
@@ -51,6 +78,9 @@ class VernacApp {
     try {
       this.tutorChat.init('tutor-chat-stream', 'mitra-mascot-container');
       this.tutorChat.setLanguage(this.currentLang);
+      if (typeof this.tutorChat.setStudentName === 'function') {
+        this.tutorChat.setStudentName(this.studentName);
+      }
     } catch (e) {
       console.warn('tutorChat warning:', e);
     }
@@ -67,6 +97,130 @@ class VernacApp {
     this.renderTeacherDashboard().catch(console.error);
     this.renderParentDashboard().catch(console.error);
     this.runSandboxDemo('Why does rain fall from the sky?').catch(console.error);
+  }
+
+  // ==========================================================================
+  // THEME (BRIGHT / DARK MODE) CONTROLLER
+  // ==========================================================================
+  initTheme() {
+    this.applyTheme(this.currentTheme);
+    const btnToggle = document.getElementById('btn-theme-toggle');
+    if (btnToggle) {
+      btnToggle.onclick = (e) => {
+        e.preventDefault();
+        this.toggleTheme();
+      };
+    }
+  }
+
+  applyTheme(theme) {
+    this.currentTheme = theme;
+    const isDark = theme === 'dark';
+    if (isDark) {
+      document.body.classList.add('dark-mode');
+      document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.body.classList.remove('dark-mode');
+      document.documentElement.removeAttribute('data-theme');
+    }
+
+    const iconEl = document.getElementById('theme-toggle-icon');
+    const textEl = document.getElementById('theme-toggle-text');
+    if (iconEl) iconEl.textContent = isDark ? '☀️' : '🌙';
+    if (textEl) textEl.textContent = isDark ? 'Bright' : 'Dark';
+
+    try {
+      localStorage.setItem('vernac_theme_mode', theme);
+    } catch (e) {}
+  }
+
+  toggleTheme() {
+    const nextTheme = this.currentTheme === 'dark' ? 'bright' : 'dark';
+    this.applyTheme(nextTheme);
+    try { speechEngine.playPopSound(); } catch (err) {}
+  }
+
+  // ==========================================================================
+  // STUDENT NAME ONBOARDING & PERSONALIZATION CONTROLLER
+  // ==========================================================================
+  initStudentName() {
+    const nameInput = document.getElementById('onboarding-student-name');
+    if (nameInput) {
+      nameInput.value = this.studentName;
+      nameInput.addEventListener('input', (e) => {
+        const val = e.target.value.trim();
+        if (val) {
+          this.setStudentName(val, false);
+        }
+      });
+    }
+    this.updateStudentNameInAllViews();
+  }
+
+  setStudentName(name, updateUI = true) {
+    if (!name || !name.trim()) return;
+    this.studentName = name.trim();
+    try {
+      localStorage.setItem('vernac_student_name', this.studentName);
+    } catch (e) {}
+
+    const nameInput = document.getElementById('onboarding-student-name');
+    if (nameInput && nameInput.value !== this.studentName) {
+      nameInput.value = this.studentName;
+    }
+
+    if (this.tutorChat && typeof this.tutorChat.setStudentName === 'function') {
+      this.tutorChat.setStudentName(this.studentName);
+    }
+
+    this.updateStudentNameInAllViews();
+    if (updateUI) {
+      this.renderParentDashboard();
+    }
+  }
+
+  updateStudentNameInAllViews() {
+    const name = this.studentName || 'Aarav';
+
+    // 1. Student Hub Profile Header
+    const studentProfileName = document.getElementById('student-profile-name');
+    if (studentProfileName) {
+      studentProfileName.textContent = `${name} (${this.getNativeStudentSnippet(name)})`;
+    }
+
+    // 2. Parent Portal Student Name
+    const parentContainer = document.getElementById('parent-dashboard-content');
+    if (parentContainer) {
+      const pTrack = parentContainer.querySelector('.parent-banner-text p strong');
+      if (pTrack) pTrack.textContent = `${name}'s`;
+      const pAudioHeader = parentContainer.querySelector('.parent-audio-snippet .audio-track-info strong');
+      if (pAudioHeader) {
+        const currentLangObj = SUPPORTED_LANGUAGES.find(l => l.code === this.currentLang);
+        const lName = currentLangObj ? currentLangObj.name : 'Tamil';
+        pAudioHeader.textContent = `🎙️ ${name} explaining Evaporation in ${lName}:`;
+      }
+    }
+  }
+
+  getNativeStudentSnippet(name) {
+    const roleMap = {
+      ta: 'மாணவர்',
+      hi: 'विद्यार्थी',
+      te: 'విద్యార్థి',
+      kn: 'ವಿದ್ಯಾರ್ಥಿ',
+      ml: 'വിദ്യാർത്ഥി',
+      bn: 'শিক্ষার্থী',
+      mr: 'विद्यार्थी',
+      gu: 'વિદ્યાર્થી',
+      pa: 'ਵਿਦਿਆਰਥੀ',
+      or: 'ଛାତ୍ର',
+      as: 'ছাত্ৰ',
+      en: 'Student'
+    };
+    if (name === 'Aarav' && this.currentLang === 'ta') {
+      return 'ஆரவ் குமார்';
+    }
+    return roleMap[this.currentLang] || 'Student';
   }
 
   renderLanguageSelectors() {
@@ -1040,6 +1194,13 @@ class VernacApp {
     }
     const lang = this.currentLang || 'ta';
 
+    // Personalize student profile header name
+    const activeStudentName = this.studentName || profile.name || 'Aarav';
+    const profileNameEl = document.getElementById('student-profile-name');
+    if (profileNameEl) {
+      profileNameEl.textContent = `${activeStudentName} (${this.getNativeStudentSnippet(activeStudentName)})`;
+    }
+
     const localizedSubjects = {
       hi: [
         { name: 'विज्ञान (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'बारिश के बादलों का रहस्य (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
@@ -1923,7 +2084,16 @@ ${l.homework}
     const parentContainer = document.getElementById('parent-dashboard-content');
     if (!parentContainer) return;
 
+    const activeStudentName = this.studentName || data.studentName || 'Aarav';
+    data = {
+      ...data,
+      studentName: activeStudentName
+    };
+
     const lang = this.currentLang || 'ta';
+    const langObj = SUPPORTED_LANGUAGES.find(l => l.code === lang);
+    const currLangName = langObj ? langObj.name : 'Tamil';
+
     const greetings = {
       ta: 'வணக்கம் அம்மா / அப்பா! (Welcome Parents)',
       hi: 'नमस्ते माता-पिता! (Welcome Parents)',
@@ -1959,7 +2129,7 @@ ${l.homework}
       <div class="parent-welcome-banner">
         <div class="parent-banner-text">
           <h2>${greetingText}</h2>
-          <p>Tracking <strong>${data.studentName}'s</strong> learning journey in his native mother tongue.</p>
+          <p>Tracking <strong>${activeStudentName}'s</strong> learning journey in native mother tongue.</p>
         </div>
         <div class="parent-stats-pills">
           <div class="parent-stat-box">
@@ -1988,16 +2158,16 @@ ${l.homework}
 
         <div class="parent-card">
           <div class="parent-card-header">
-            <h3>🎧 Listen to What Aarav Learned Today</h3>
+            <h3 id="parent-voice-header">🎧 Listen to What ${activeStudentName} Learned Today</h3>
             <span class="parent-chip">Voice Recording</span>
           </div>
           <div class="parent-audio-snippet">
             <div class="audio-track-info">
-              <strong>🎙️ Aarav explaining Evaporation in Tamil:</strong>
+              <strong>🎙️ ${activeStudentName} explaining Evaporation in ${currLangName}:</strong>
               <p>“அம்மா, அடுப்பில் வைக்கும் ரசத்தின் ஆவி மேலே போய் தட்டில் பட்டு மழையாகும்!”</p>
             </div>
             <button class="btn-play-child-voice" id="btn-play-aarav">
-              ▶️ Play Recording (Tamil)
+              ▶️ Play ${activeStudentName}'s Voice (${currLangName})
             </button>
           </div>
         </div>
@@ -2139,6 +2309,12 @@ ${l.homework}
       // Apply language globally right away
       this.setGlobalLanguage(code);
 
+      // Persist and apply student name entered on the onboarding screen
+      const nameInput = document.getElementById('onboarding-student-name');
+      if (nameInput && nameInput.value.trim()) {
+        this.setStudentName(nameInput.value.trim(), false);
+      }
+
       try {
         localStorage.setItem('vernac_user_lang', code);
         localStorage.setItem('vernac_onboarding_completed', 'true');
@@ -2159,7 +2335,7 @@ ${l.homework}
         <div class="toast-star-icon">${detectedMeta.flag}</div>
         <div class="toast-content">
           <div class="toast-title">${detectedMeta.name} (${detectedMeta.nativeName}) Selected!</div>
-          <div class="toast-msg">Welcome to VernacLearn! AI lessons and quizzes are now set to your mother tongue.</div>
+          <div class="toast-msg">Welcome ${this.studentName || 'Student'}! AI lessons and quizzes are now set to your mother tongue.</div>
         </div>
       `;
       document.body.appendChild(toast);
@@ -2176,6 +2352,10 @@ ${l.homework}
         e.preventDefault();
         modal.style.display = 'flex';
         modal.classList.add('active');
+        const nameInput = document.getElementById('onboarding-student-name');
+        if (nameInput) {
+          nameInput.value = this.studentName || 'Aarav';
+        }
         step1.style.display = 'block';
         step2.style.display = 'none';
         if (langGrid) {

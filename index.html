@@ -87,6 +87,11 @@
           🔒 <span id="nav-host-label">Secured Link</span>
         </button>
 
+        <!-- Bright / Dark Mode Toggle -->
+        <button id="btn-theme-toggle" class="btn-theme-toggle" title="Switch between Bright and Dark Mode" aria-label="Toggle Bright / Dark Mode">
+          <span id="theme-toggle-icon">🌙</span> <span id="theme-toggle-text">Dark</span>
+        </button>
+
         <!-- Hackathon Golden Demo Pulsing Button -->
         <button class="btn-launch-demo" id="btn-header-demo">
           <span>✨</span> 3-Min Demo
@@ -525,7 +530,7 @@
         <div class="profile-left">
           <div class="profile-avatar-circle">👦🏽</div>
           <div class="profile-info">
-            <h3>Aarav Kumar (ஆரவ் குமார்)</h3>
+            <h3 id="student-profile-name">Aarav Kumar (ஆரவ் குமார்)</h3>
             <div class="profile-meta-pills">
               <span>🎒 Grade: Class 3</span> • 
               <span>🗣️ Mother Tongue: <strong id="dash-mother-tongue">Tamil (தமிழ்)</strong></span> • 
@@ -794,6 +799,17 @@
         <p class="onboarding-subtitle">
           Select or speak your language. <strong>Mission Agent Mother-Tongue</strong> automatically adapts all lessons, quizzes, and AI explanations to your chosen native language!
         </p>
+      </div>
+
+      <!-- Student Name Input Stage -->
+      <div class="onboarding-name-stage">
+        <label for="onboarding-student-name">
+          <span>👦🏽</span> <strong>What is your name? (மாணவர் பெயர் / आपका नाम):</strong>
+        </label>
+        <div class="onboarding-name-input-row">
+          <input type="text" id="onboarding-student-name" placeholder="Type your name (e.g. Aarav, Ananya, Kavin, Rahul...)" value="Aarav">
+          <span class="onboarding-name-subhint">Used to personalize your Student Hub & Parent Portal</span>
+        </div>
       </div>
 
       <!-- Step 1: Speak Your Language -->

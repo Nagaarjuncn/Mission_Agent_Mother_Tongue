@@ -8,11 +8,22 @@ import { apiClient } from './apiClient.js';
 export class TutorChat {
   constructor() {
     this.currentLanguage = 'ta';
+    let savedName = 'Aarav';
+    try {
+      savedName = localStorage.getItem('vernac_student_name') || 'Aarav';
+    } catch (e) {}
+    this.studentName = savedName;
     this.messages = [];
     this.chatContainer = null;
     this.mascotMood = 'greeting'; // greeting, thinking, happy, cheering
     this.mascotEl = null;
     this.currentTopic = 'General Science';
+  }
+
+  setStudentName(name) {
+    if (!name || !name.trim()) return;
+    this.studentName = name.trim();
+    this.resetConversation();
   }
 
   init(containerId, mascotId) {
@@ -46,7 +57,24 @@ export class TutorChat {
     this.chatContainer.innerHTML = '';
     const profile = TUTOR_PROFILES[this.currentLanguage] || TUTOR_PROFILES['ta'];
 
-    this.addTutorMessage(profile.greeting, true);
+    let greeting = profile.greeting || 'Hello friend!';
+    if (this.studentName && this.studentName !== 'Aarav') {
+      greeting = greeting
+        .replace('குட்டி நண்பா', this.studentName)
+        .replace('प्यारे दोस्त', this.studentName)
+        .replace('నేస్తమా', this.studentName)
+        .replace('ಗೆಳೆಯ', this.studentName)
+        .replace('കൂട്ടുകാരാ', this.studentName)
+        .replace('ছোট্ট বন্ধু', this.studentName)
+        .replace('मित्रा', this.studentName)
+        .replace('મિત્ર', this.studentName)
+        .replace('ਪਿਆਰੇ ਦੋਸਤ', this.studentName)
+        .replace('ସାଙ୍ଗ', this.studentName)
+        .replace('মৰমৰ বন্ধু', this.studentName)
+        .replace('little friend', this.studentName);
+    }
+
+    this.addTutorMessage(greeting, true);
     this.setMood('greeting');
   }
 
