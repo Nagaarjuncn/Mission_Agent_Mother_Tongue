@@ -87,6 +87,11 @@
           🔒 <span id="nav-host-label">Secured Link</span>
         </button>
 
+        <!-- Active Student Pill with Quick Edit -->
+        <button id="btn-nav-student-profile" class="btn-nav-student-pill" title="Click to Change Student Name">
+          <span>👦🏽</span> <span class="nav-student-label">Student:</span> <strong class="student-name-slot" id="nav-student-name-display">Aarav</strong> <span>✏️</span>
+        </button>
+
         <!-- Bright / Dark Mode Toggle -->
         <button id="btn-theme-toggle" class="btn-theme-toggle" title="Switch between Bright and Dark Mode" aria-label="Toggle Bright / Dark Mode">
           <span id="theme-toggle-icon">🌙</span> <span id="theme-toggle-text">Dark</span>
@@ -115,14 +120,14 @@
       <div class="hero-container">
         <div class="hero-text-content">
           <div class="hero-pill-badge">
-            <span>🇮🇳</span> AI-Powered Primary Vernacular Education
+            <span>🇮🇳</span> Welcome, <strong class="student-name-slot">Aarav</strong>! AI Vernacular Learning
           </div>
           <h2 class="hero-title">
             Learn in the Language <br>
             <span class="highlight">You Think In.</span>
           </h2>
           <p class="hero-subheadline">
-            Children grasp foundational concepts faster when taught in their mother tongue with familiar cultural metaphors, not cold word-for-word translations.
+            Children like <strong class="student-name-slot">Aarav</strong> grasp foundational concepts faster when taught in their mother tongue with familiar cultural metaphors, not cold word-for-word translations.
           </p>
 
           <div class="hero-cta-group">
@@ -423,7 +428,7 @@
               <div class="speaker-profile">
                 <span class="speaker-avatar-circle">🎒</span>
                 <div>
-                  <div class="speaker-name">Person 2 (Student / Child)</div>
+                  <div class="speaker-name">Person 2 (<span class="student-name-slot">Aarav</span> - Student)</div>
                   <div class="target-lang-pill" id="p2-target-pill">
                     🇮🇳 Selected: <strong id="p2-lang-label">Tamil (தமிழ்)</strong>
                   </div>
@@ -486,8 +491,8 @@
           </div>
 
           <h3 class="tutor-name">Mitra (நண்பன் மித்ரா)</h3>
-          <span class="tutor-badge">Adaptive AI Tutor</span>
-          <p class="tutor-bio">“Ask me anything in any language — I will convert it and teach you in your mother tongue with kitchen and village stories!”</p>
+          <span class="tutor-badge">Personalized AI Tutor for <strong class="student-name-slot">Aarav</strong></span>
+          <p class="tutor-bio">“Hello <span class="student-name-slot">Aarav</span>! Ask me anything in any language — I will convert it and teach you in your mother tongue with kitchen and village stories!”</p>
 
           <div class="tutor-action-chips">
             <button class="tutor-chip" data-prompt="Why does rain fall from the sky?">🌧️ Why does rain fall?</button>
@@ -530,11 +535,14 @@
         <div class="profile-left">
           <div class="profile-avatar-circle">👦🏽</div>
           <div class="profile-info">
-            <h3 id="student-profile-name">Aarav Kumar (ஆரவ் குமார்)</h3>
+            <h3 id="student-profile-name">
+              <span class="student-name-slot">Aarav</span>
+              <button id="btn-edit-student-name" class="btn-edit-inline-name" title="Click to Change Student Name">✏️ Edit Name</button>
+            </h3>
             <div class="profile-meta-pills">
               <span>🎒 Grade: Class 3</span> • 
               <span>🗣️ Mother Tongue: <strong id="dash-mother-tongue">Tamil (தமிழ்)</strong></span> • 
-              <span>🏆 Level 4 Explorer</span>
+              <span>🏆 <span class="student-name-slot">Aarav</span>'s Level 4 Explorer</span>
             </div>
           </div>
         </div>
@@ -560,7 +568,7 @@
 
       <!-- Subjects Progress Cards -->
       <div class="section-header" style="text-align: left; margin-bottom: 1.5rem;">
-        <h3>My Subjects in Mother Tongue</h3>
+        <h3><span class="student-name-slot">Aarav</span>'s Subjects in Mother Tongue</h3>
         <p>All core topics aligned with regional curriculum standards.</p>
       </div>
 
@@ -570,7 +578,7 @@
 
       <!-- Badges Showcase -->
       <div class="badges-container">
-        <h3>My Unlocked Badges 🏆</h3>
+        <h3><span class="student-name-slot">Aarav</span>'s Unlocked Badges 🏆</h3>
         <p style="color: var(--text-muted); font-size: 0.9rem;">Rewards earned through voice questions and vernacular understanding.</p>
         <div id="dashboard-badges-grid" class="badges-grid">
           <!-- Rendered by app.js -->
@@ -598,6 +606,10 @@
         </div>
         <h2>AI Vernacular Lesson Studio & Curriculum Hub</h2>
         <p>Empower educators to brainstorm NEP 2020 syllabus topics and generate complete 7-stage localized lesson plans with cultural narratives, mother-tongue scientific glossaries, zero-cost experiential experiments, chalkboard layouts, and parent bridges.</p>
+      </div>
+
+      <div class="teacher-student-spotlight-bar">
+        <span>🎯</span> <strong>Student Spotlight:</strong> Lesson plans dynamically tailored for <strong class="student-name-slot" style="margin: 0 0.25rem;">Aarav</strong> and Class 3 peers in Mother Tongue.
       </div>
 
       <div class="teacher-workspace-layout">
@@ -1140,6 +1152,29 @@
        3. MODULAR SCRIPT IMPORTS
        ========================================================================== -->
   <script type="module" src="js/app.js"></script>
+
+  <!-- Quick Name Edit Modal -->
+  <div id="modal-edit-student-name" class="onboarding-modal-overlay" role="dialog" aria-modal="true" style="display: none;">
+    <div class="onboarding-modal-content" style="max-width: 480px; text-align: center;">
+      <button class="modal-close-corner" id="btn-close-edit-name" title="Close">&times;</button>
+      <div style="font-size: 2.8rem; margin-bottom: 0.5rem;">👦🏽</div>
+      <h3 style="margin-bottom: 0.4rem; font-size: 1.35rem; color: var(--color-primary);">Change Student Name</h3>
+      <p style="color: var(--text-muted); font-size: 0.88rem; margin-bottom: 1.25rem; line-height: 1.5;">
+        Enter the student's name to personalize all hubs: <strong>Student Hub</strong>, <strong>Mitra AI Tutor</strong>, <strong>Parent View</strong>, and <strong>Teacher Hub</strong>.
+      </p>
+      <div class="onboarding-name-input-row" style="margin-bottom: 1.5rem;">
+        <input type="text" id="quick-edit-student-name" placeholder="Type name (e.g. Aarav, Ananya, Kavin, Rahul...)" style="font-size: 1.15rem; text-align: center; padding: 0.8rem 1rem; font-weight: 700;">
+      </div>
+      <div style="display: flex; gap: 0.75rem; justify-content: center;">
+        <button id="btn-save-edit-name" class="btn-primary" style="padding: 0.75rem 1.75rem; font-weight: 700; cursor: pointer;">
+          💾 Save & Update All Pages
+        </button>
+        <button id="btn-cancel-edit-name" class="btn-secondary" style="padding: 0.75rem 1.2rem; cursor: pointer;">
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>

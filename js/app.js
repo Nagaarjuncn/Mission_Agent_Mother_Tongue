@@ -141,7 +141,7 @@ class VernacApp {
   }
 
   // ==========================================================================
-  // STUDENT NAME ONBOARDING & PERSONALIZATION CONTROLLER
+  // STUDENT NAME ONBOARDING & PERSONALIZATION CONTROLLER (UNIVERSAL CROSS-HUB)
   // ==========================================================================
   initStudentName() {
     const nameInput = document.getElementById('onboarding-student-name');
@@ -150,11 +150,94 @@ class VernacApp {
       nameInput.addEventListener('input', (e) => {
         const val = e.target.value.trim();
         if (val) {
-          this.setStudentName(val, false);
+          this.studentName = val;
+          try { localStorage.setItem('vernac_student_name', val); } catch (err) {}
+          document.querySelectorAll('.student-name-slot').forEach(el => {
+            el.textContent = val;
+          });
+          const navDisplay = document.getElementById('nav-student-name-display');
+          if (navDisplay) navDisplay.textContent = val;
         }
       });
     }
+
+    // Top Navbar student pill click -> open quick edit modal
+    const btnNavProfile = document.getElementById('btn-nav-student-profile');
+    if (btnNavProfile) {
+      btnNavProfile.onclick = (e) => {
+        e.preventDefault();
+        this.openQuickNameEditModal();
+      };
+    }
+
+    // Quick edit modal bindings
+    const modalEditName = document.getElementById('modal-edit-student-name');
+    const inputEditName = document.getElementById('quick-edit-student-name');
+    const btnSaveEditName = document.getElementById('btn-save-edit-name');
+    const btnCancelEditName = document.getElementById('btn-cancel-edit-name');
+    const btnCloseEditName = document.getElementById('btn-close-edit-name');
+
+    if (btnSaveEditName && inputEditName) {
+      const saveAction = () => {
+        const newName = inputEditName.value.trim();
+        if (newName) {
+          this.setStudentName(newName, true);
+        }
+        if (modalEditName) {
+          modalEditName.style.display = 'none';
+          modalEditName.classList.remove('active');
+        }
+      };
+      btnSaveEditName.onclick = (e) => {
+        e.preventDefault();
+        saveAction();
+      };
+      inputEditName.onkeydown = (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          saveAction();
+        }
+      };
+    }
+
+    if (btnCancelEditName && modalEditName) {
+      btnCancelEditName.onclick = (e) => {
+        e.preventDefault();
+        modalEditName.style.display = 'none';
+        modalEditName.classList.remove('active');
+      };
+    }
+    if (btnCloseEditName && modalEditName) {
+      btnCloseEditName.onclick = (e) => {
+        e.preventDefault();
+        modalEditName.style.display = 'none';
+        modalEditName.classList.remove('active');
+      };
+    }
+    if (modalEditName) {
+      modalEditName.onclick = (e) => {
+        if (e.target === modalEditName) {
+          modalEditName.style.display = 'none';
+          modalEditName.classList.remove('active');
+        }
+      };
+    }
+
     this.updateStudentNameInAllViews();
+  }
+
+  openQuickNameEditModal() {
+    const modal = document.getElementById('modal-edit-student-name');
+    const input = document.getElementById('quick-edit-student-name');
+    if (modal) {
+      modal.style.display = 'flex';
+      modal.classList.add('active');
+    }
+    if (input) {
+      input.value = this.studentName || 'Aarav';
+      setTimeout(() => input.focus(), 100);
+    }
+    try { speechEngine.playPopSound(); } catch (err) {}
   }
 
   setStudentName(name, updateUI = true) {
@@ -168,6 +251,10 @@ class VernacApp {
     if (nameInput && nameInput.value !== this.studentName) {
       nameInput.value = this.studentName;
     }
+    const quickInput = document.getElementById('quick-edit-student-name');
+    if (quickInput && quickInput.value !== this.studentName) {
+      quickInput.value = this.studentName;
+    }
 
     if (this.tutorChat && typeof this.tutorChat.setStudentName === 'function') {
       this.tutorChat.setStudentName(this.studentName);
@@ -176,19 +263,47 @@ class VernacApp {
     this.updateStudentNameInAllViews();
     if (updateUI) {
       this.renderParentDashboard();
+      this.renderStudentDashboard();
     }
   }
 
   updateStudentNameInAllViews() {
     const name = this.studentName || 'Aarav';
 
-    // 1. Student Hub Profile Header
-    const studentProfileName = document.getElementById('student-profile-name');
-    if (studentProfileName) {
-      studentProfileName.textContent = `${name} (${this.getNativeStudentSnippet(name)})`;
+    // 1. Update ALL .student-name-slot elements across all views (Home, Translate, Tutor, Dashboard, Teacher, Parent)
+    document.querySelectorAll('.student-name-slot').forEach(el => {
+      el.textContent = name;
+    });
+
+    // 2. Update navbar display
+    const navDisplay = document.getElementById('nav-student-name-display');
+    if (navDisplay) navDisplay.textContent = name;
+
+    // 3. Update input fields
+    const nameInput = document.getElementById('onboarding-student-name');
+    if (nameInput && nameInput.value !== name) {
+      nameInput.value = name;
     }
 
-    // 2. Parent Portal Student Name
+    // 4. Update Student Hub Profile Header
+    const studentProfileName = document.getElementById('student-profile-name');
+    if (studentProfileName) {
+      studentProfileName.innerHTML = `<span class="student-name-slot">${name}</span> <button id="btn-edit-student-name" class="btn-edit-inline-name" title="Click to Change Student Name">✏️ Edit Name</button>`;
+      const btnEdit = document.getElementById('btn-edit-student-name');
+      if (btnEdit) {
+        btnEdit.onclick = (e) => {
+          e.preventDefault();
+          this.openQuickNameEditModal();
+        };
+      }
+    }
+
+    // 5. Update Mitra Tutor
+    if (this.tutorChat && typeof this.tutorChat.setStudentName === 'function') {
+      this.tutorChat.setStudentName(name);
+    }
+
+    // 6. Update Parent Portal Student Name
     const parentContainer = document.getElementById('parent-dashboard-content');
     if (parentContainer) {
       const pTrack = parentContainer.querySelector('.parent-banner-text p strong');
@@ -199,28 +314,13 @@ class VernacApp {
         const lName = currentLangObj ? currentLangObj.name : 'Tamil';
         pAudioHeader.textContent = `🎙️ ${name} explaining Evaporation in ${lName}:`;
       }
+      const pAudioBtn = document.getElementById('btn-play-aarav');
+      if (pAudioBtn) {
+        const currentLangObj = SUPPORTED_LANGUAGES.find(l => l.code === this.currentLang);
+        const lName = currentLangObj ? currentLangObj.name : 'Tamil';
+        pAudioBtn.textContent = `▶️ Play ${name}'s Voice (${lName})`;
+      }
     }
-  }
-
-  getNativeStudentSnippet(name) {
-    const roleMap = {
-      ta: 'மாணவர்',
-      hi: 'विद्यार्थी',
-      te: 'విద్యార్థి',
-      kn: 'ವಿದ್ಯಾರ್ಥಿ',
-      ml: 'വിദ്യാർത്ഥി',
-      bn: 'শিক্ষার্থী',
-      mr: 'विद्यार्थी',
-      gu: 'વિદ્યાર્થી',
-      pa: 'ਵਿਦਿਆਰਥੀ',
-      or: 'ଛାତ୍ର',
-      as: 'ছাত্ৰ',
-      en: 'Student'
-    };
-    if (name === 'Aarav' && this.currentLang === 'ta') {
-      return 'ஆரவ் குமார்';
-    }
-    return roleMap[this.currentLang] || 'Student';
   }
 
   renderLanguageSelectors() {
@@ -448,6 +548,9 @@ class VernacApp {
     document.querySelectorAll('.tab-view').forEach(view => {
       view.classList.toggle('active', view.id === `view-${tabId}`);
     });
+
+    // Refresh dynamic content for the active tab with the current student name
+    this.updateStudentNameInAllViews();
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -1198,8 +1301,18 @@ class VernacApp {
     const activeStudentName = this.studentName || profile.name || 'Aarav';
     const profileNameEl = document.getElementById('student-profile-name');
     if (profileNameEl) {
-      profileNameEl.textContent = `${activeStudentName} (${this.getNativeStudentSnippet(activeStudentName)})`;
+      profileNameEl.innerHTML = `<span class="student-name-slot">${activeStudentName}</span> <button id="btn-edit-student-name" class="btn-edit-inline-name" title="Click to Change Student Name">✏️ Edit Name</button>`;
+      const btnEdit = document.getElementById('btn-edit-student-name');
+      if (btnEdit) {
+        btnEdit.onclick = (e) => {
+          e.preventDefault();
+          this.openQuickNameEditModal();
+        };
+      }
     }
+    document.querySelectorAll('.student-name-slot').forEach(el => {
+      el.textContent = activeStudentName;
+    });
 
     const localizedSubjects = {
       hi: [
@@ -2202,7 +2315,7 @@ ${l.homework}
     minigameContainer.innerHTML = `
       <div class="minigame-box">
         <div class="minigame-header">
-          <h4>🎮 Match-the-Pair: English to Mother Tongue!</h4>
+          <h4>🎮 <span class="student-name-slot">${this.studentName || 'Aarav'}</span>'s Match-the-Pair: English to Mother Tongue!</h4>
           <span id="minigame-score">0 / 4 Matched</span>
         </div>
         <div class="minigame-columns">
@@ -2306,14 +2419,13 @@ ${l.homework}
         btnMic.classList.remove('listening');
       }
 
-      // Apply language globally right away
-      this.setGlobalLanguage(code);
-
-      // Persist and apply student name entered on the onboarding screen
+      // 1. First capture and apply student name entered on onboarding screen
       const nameInput = document.getElementById('onboarding-student-name');
-      if (nameInput && nameInput.value.trim()) {
-        this.setStudentName(nameInput.value.trim(), false);
-      }
+      const studentNameVal = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : (this.studentName || 'Aarav');
+      this.setStudentName(studentNameVal, true);
+
+      // 2. Then apply language globally (triggers dashboard renders with the new student name)
+      this.setGlobalLanguage(code);
 
       try {
         localStorage.setItem('vernac_user_lang', code);

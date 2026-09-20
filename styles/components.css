@@ -4190,5 +4190,80 @@ body.dark-mode .qr-code-wrapper {
   border-color: #475569 !important;
 }
 
+/* ==========================================================================
+   STUDENT NAME PERSONALIZATION & EDIT PILL STYLING
+   ========================================================================== */
+.btn-nav-student-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 0.4rem 0.85rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  user-select: none;
+}
+
+.btn-nav-student-pill:hover {
+  border-color: #00A8CC;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-edit-inline-name {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #FFFFFF;
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.btn-edit-inline-name:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.teacher-student-spotlight-bar {
+  background: linear-gradient(135deg, #EFF6FF, #E0F2FE);
+  border: 1.5px solid #93C5FD;
+  color: #1E40AF;
+  border-radius: var(--radius-md);
+  padding: 0.65rem 1.15rem;
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+body.dark-mode .btn-nav-student-pill {
+  background: #1E293B !important;
+  border-color: #475569 !important;
+  color: #F8FAFC !important;
+}
+
+body.dark-mode .teacher-student-spotlight-bar {
+  background: linear-gradient(135deg, #1E293B, #0F172A) !important;
+  border-color: #38BDF8 !important;
+  color: #93C5FD !important;
+}
+
+
 
 

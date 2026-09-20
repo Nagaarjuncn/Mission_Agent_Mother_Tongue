@@ -58,7 +58,7 @@ export class TutorChat {
     const profile = TUTOR_PROFILES[this.currentLanguage] || TUTOR_PROFILES['ta'];
 
     let greeting = profile.greeting || 'Hello friend!';
-    if (this.studentName && this.studentName !== 'Aarav') {
+    if (this.studentName) {
       greeting = greeting
         .replace('குட்டி நண்பா', this.studentName)
         .replace('प्यारे दोस्त', this.studentName)
