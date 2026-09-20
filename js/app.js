@@ -11,7 +11,12 @@ class VernacApp {
   constructor() {
     this.currentRole = 'student'; // 'student' | 'teacher' | 'parent'
     this.currentTab = 'home';
-    this.currentLang = 'ta';
+
+    let savedLang = 'ta';
+    try {
+      savedLang = localStorage.getItem('vernac_user_lang') || 'ta';
+    } catch (e) {}
+    this.currentLang = savedLang;
 
     let savedName = 'Aarav';
     try {
@@ -47,6 +52,13 @@ class VernacApp {
       this.initStudentName();
     } catch (e) {
       console.warn('initStudentName warning:', e);
+    }
+
+    // 0.2 Global Language initialization
+    try {
+      this.setGlobalLanguage(this.currentLang);
+    } catch (e) {
+      console.warn('setGlobalLanguage init warning:', e);
     }
 
     // 1. Critical UI and Mother-Tongue setup immediately
@@ -373,11 +385,11 @@ class VernacApp {
 
     // 3. Update input fields
     const nameInput = document.getElementById('onboarding-student-name');
-    if (nameInput && nameInput.value !== name) {
+    if (nameInput && document.activeElement !== nameInput) {
       nameInput.value = name;
     }
     const heroNameInput = document.getElementById('hero-student-name-input');
-    if (heroNameInput && heroNameInput.value !== name) {
+    if (heroNameInput && document.activeElement !== heroNameInput) {
       heroNameInput.value = name;
     }
     const onboardingConfirmName = document.getElementById('onboarding-confirm-student-name');
@@ -387,15 +399,32 @@ class VernacApp {
 
     // 4. Update Student Hub Profile Header
     const studentProfileName = document.getElementById('student-profile-name');
-    if (studentProfileName) {
+    const inlineBox = document.getElementById('inline-student-name-input');
+    if (studentProfileName && !inlineBox) {
       studentProfileName.innerHTML = `<span class="student-name-slot">${name}</span> <button id="btn-edit-student-name" class="btn-edit-inline-name" title="Click to Change Student Name">✏️ Edit Name</button>`;
       const btnEdit = document.getElementById('btn-edit-student-name');
       if (btnEdit) {
         btnEdit.onclick = (e) => {
           e.preventDefault();
-          this.openQuickNameEditModal();
+          this.toggleInlineStudentNameEdit(true);
         };
       }
+    }
+
+    // 4.1 Update Student Hub Mother Tongue label & inline select
+    const mtEl = document.getElementById('dash-mother-tongue');
+    const dashSelect = document.getElementById('dash-lang-inline-select');
+    const matched = SUPPORTED_LANGUAGES.find(l => l.code === (this.currentLang || 'ta'));
+    if (mtEl && matched) {
+      mtEl.textContent = `${matched.name} (${matched.nativeName})`;
+      mtEl.title = "Click to Switch Mother Tongue";
+      mtEl.onclick = (e) => {
+        e.preventDefault();
+        this.openQuickNameEditModal();
+      };
+    }
+    if (dashSelect && dashSelect.value !== (this.currentLang || 'ta')) {
+      dashSelect.value = this.currentLang || 'ta';
     }
 
     // 5. Update Mitra Tutor
@@ -408,19 +437,104 @@ class VernacApp {
     if (parentContainer) {
       const pTrack = parentContainer.querySelector('.parent-banner-text p strong');
       if (pTrack) pTrack.textContent = `${name}'s`;
+      const currentLangObj = SUPPORTED_LANGUAGES.find(l => l.code === this.currentLang);
+      const lName = currentLangObj ? currentLangObj.name : 'Tamil';
       const pAudioHeader = parentContainer.querySelector('.parent-audio-snippet .audio-track-info strong');
       if (pAudioHeader) {
-        const currentLangObj = SUPPORTED_LANGUAGES.find(l => l.code === this.currentLang);
-        const lName = currentLangObj ? currentLangObj.name : 'Tamil';
         pAudioHeader.textContent = `🎙️ ${name} explaining Evaporation in ${lName}:`;
       }
       const pAudioBtn = document.getElementById('btn-play-aarav');
       if (pAudioBtn) {
-        const currentLangObj = SUPPORTED_LANGUAGES.find(l => l.code === this.currentLang);
-        const lName = currentLangObj ? currentLangObj.name : 'Tamil';
         pAudioBtn.textContent = `▶️ Play ${name}'s Voice (${lName})`;
       }
+      const pVoiceHeader = document.getElementById('parent-voice-header');
+      if (pVoiceHeader) {
+        pVoiceHeader.textContent = `🎧 Listen to What ${name} Learned Today`;
+      }
     }
+
+    // 7. Update Teacher Spotlight
+    const teacherSpotlight = document.querySelector('.teacher-student-spotlight-bar .student-name-slot');
+    if (teacherSpotlight) {
+      teacherSpotlight.textContent = name;
+    }
+  }
+
+  toggleInlineStudentNameEdit(enable = true) {
+    const profileNameEl = document.getElementById('student-profile-name');
+    if (!profileNameEl) return;
+
+    if (!enable) {
+      const activeName = this.studentName || 'Aarav';
+      profileNameEl.innerHTML = `
+        <span class="student-name-slot">${activeName}</span>
+        <button id="btn-edit-student-name" class="btn-edit-inline-name" title="Click to Change Student Name">✏️ Edit Name</button>
+      `;
+      const btn = document.getElementById('btn-edit-student-name');
+      if (btn) {
+        btn.onclick = (e) => {
+          e.preventDefault();
+          this.toggleInlineStudentNameEdit(true);
+        };
+      }
+      return;
+    }
+
+    const currentName = this.studentName || 'Aarav';
+    profileNameEl.innerHTML = `
+      <div class="inline-edit-name-box">
+        <input type="text" id="inline-student-name-input" class="inline-name-input" value="${currentName}" placeholder="Enter student name..." maxlength="30" />
+        <button id="btn-save-inline-name" class="btn-inline-save" title="Save Name">💾 Save</button>
+        <button id="btn-cancel-inline-name" class="btn-inline-cancel" title="Cancel">✕</button>
+      </div>
+    `;
+
+    const input = document.getElementById('inline-student-name-input');
+    const btnSave = document.getElementById('btn-save-inline-name');
+    const btnCancel = document.getElementById('btn-cancel-inline-name');
+
+    if (input) {
+      input.focus();
+      input.select();
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          this.saveInlineStudentNameEdit();
+        } else if (e.key === 'Escape') {
+          e.preventDefault();
+          this.toggleInlineStudentNameEdit(false);
+        }
+      });
+    }
+
+    if (btnSave) {
+      btnSave.onclick = (e) => {
+        e.preventDefault();
+        this.saveInlineStudentNameEdit();
+      };
+    }
+
+    if (btnCancel) {
+      btnCancel.onclick = (e) => {
+        e.preventDefault();
+        this.toggleInlineStudentNameEdit(false);
+      };
+    }
+  }
+
+  saveInlineStudentNameEdit() {
+    const input = document.getElementById('inline-student-name-input');
+    const val = input ? input.value.trim() : '';
+    const newName = val || this.studentName || 'Aarav';
+
+    this.setStudentName(newName, true);
+    try {
+      localStorage.setItem('vernac_student_name', newName);
+      speechEngine.playCelebrationSound();
+    } catch (e) {}
+
+    this.toggleInlineStudentNameEdit(false);
+    this.showProfileToast(newName, this.currentLang);
   }
 
   renderLanguageSelectors() {
@@ -429,6 +543,7 @@ class VernacApp {
     const targetSelect = document.getElementById('target-lang-select');
     const sandboxSelect = document.getElementById('sandbox-lang-select');
     const teacherLangSelect = document.getElementById('teacher-lesson-lang');
+    const dashSelect = document.getElementById('dash-lang-inline-select');
 
     const optionsHtml = SUPPORTED_LANGUAGES.map(lang => 
       `<option value="${lang.code}" ${lang.code === this.currentLang ? 'selected' : ''}>
@@ -440,6 +555,7 @@ class VernacApp {
     if (targetSelect) targetSelect.innerHTML = optionsHtml;
     if (sandboxSelect) sandboxSelect.innerHTML = optionsHtml;
     if (teacherLangSelect) teacherLangSelect.innerHTML = optionsHtml;
+    if (dashSelect) dashSelect.innerHTML = optionsHtml;
 
     const onboardingSelect = document.getElementById('onboarding-lang-select');
     const heroSelect = document.getElementById('hero-lang-select');
@@ -460,6 +576,10 @@ class VernacApp {
   setGlobalLanguage(langCode) {
     if (!langCode) return;
     this.currentLang = langCode;
+    try {
+      localStorage.setItem('vernac_user_lang', langCode);
+    } catch (e) {}
+
     const globalSelect = document.getElementById('global-lang-select');
     const targetSelect = document.getElementById('target-lang-select');
     const sandboxSelect = document.getElementById('sandbox-lang-select');
@@ -467,6 +587,7 @@ class VernacApp {
     const onboardingSelect = document.getElementById('onboarding-lang-select');
     const heroSelect = document.getElementById('hero-lang-select');
     const quickSelect = document.getElementById('quick-edit-student-lang');
+    const dashSelect = document.getElementById('dash-lang-inline-select');
 
     if (globalSelect) globalSelect.value = langCode;
     if (targetSelect) targetSelect.value = langCode;
@@ -475,6 +596,7 @@ class VernacApp {
     if (onboardingSelect) onboardingSelect.value = langCode;
     if (heroSelect) heroSelect.value = langCode;
     if (quickSelect) quickSelect.value = langCode;
+    if (dashSelect) dashSelect.value = langCode;
 
     // Highlight button in onboarding modal
     const langGrid = document.getElementById('onboarding-lang-grid');
@@ -501,7 +623,6 @@ class VernacApp {
       tutorInputEl.placeholder = `Ask Mitra in ANY language (English, Hindi, etc.) — converts to ${matched.name} (${matched.nativeName})!`;
     }
 
-
     // Refresh Person 2 in Two-Way Live Mic Bridge
     const p2Label = document.getElementById('p2-lang-label');
     if (p2Label && matched) {
@@ -526,9 +647,10 @@ class VernacApp {
     // Update Hero visual cards with localized metaphors
     this.updateHeroFloatingCards(langCode);
 
-    // Re-render Student Dashboard with subjects in chosen mother tongue
+    // Re-render Dashboards with subjects in chosen mother tongue
     this.renderStudentDashboard();
     this.renderParentDashboard();
+    this.updateStudentNameInAllViews();
   }
 
   updateHeroFloatingCards(langCode) {
@@ -662,8 +784,16 @@ class VernacApp {
       view.classList.toggle('active', view.id === `view-${tabId}`);
     });
 
-    // Refresh dynamic content for the active tab with the current student name
+    // Refresh dynamic content for the active tab with the current student name and language
     this.updateStudentNameInAllViews();
+
+    if (tabId === 'dashboard') {
+      this.renderStudentDashboard();
+    } else if (tabId === 'parent') {
+      this.renderParentDashboard();
+    } else if (tabId === 'teacher') {
+      this.renderTeacherDashboard();
+    }
 
     // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -693,6 +823,14 @@ class VernacApp {
     if (globalSelect) {
       globalSelect.addEventListener('change', (e) => {
         this.setGlobalLanguage(e.target.value);
+      });
+    }
+
+    const dashLangSelect = document.getElementById('dash-lang-inline-select');
+    if (dashLangSelect) {
+      dashLangSelect.addEventListener('change', (e) => {
+        this.setGlobalLanguage(e.target.value);
+        try { speechEngine.playPopSound(); } catch (err) {}
       });
     }
 
@@ -1413,13 +1551,14 @@ class VernacApp {
     // Personalize student profile header name
     const activeStudentName = this.studentName || profile.name || 'Aarav';
     const profileNameEl = document.getElementById('student-profile-name');
-    if (profileNameEl) {
+    const inlineBox = document.getElementById('inline-student-name-input');
+    if (profileNameEl && !inlineBox) {
       profileNameEl.innerHTML = `<span class="student-name-slot">${activeStudentName}</span> <button id="btn-edit-student-name" class="btn-edit-inline-name" title="Click to Change Student Name">✏️ Edit Name</button>`;
       const btnEdit = document.getElementById('btn-edit-student-name');
       if (btnEdit) {
         btnEdit.onclick = (e) => {
           e.preventDefault();
-          this.openQuickNameEditModal();
+          this.toggleInlineStudentNameEdit(true);
         };
       }
     }
@@ -1427,7 +1566,29 @@ class VernacApp {
       el.textContent = activeStudentName;
     });
 
+    // Update Mother Tongue badge on Student Hub profile banner
+    const mtEl = document.getElementById('dash-mother-tongue');
+    const matched = SUPPORTED_LANGUAGES.find(l => l.code === lang);
+    if (mtEl && matched) {
+      mtEl.textContent = `${matched.name} (${matched.nativeName})`;
+      mtEl.title = "Click to Switch Mother Tongue";
+      mtEl.onclick = (e) => {
+        e.preventDefault();
+        this.openQuickNameEditModal();
+      };
+    }
+    const dashSelect = document.getElementById('dash-lang-inline-select');
+    if (dashSelect && dashSelect.value !== lang) {
+      dashSelect.value = lang;
+    }
+
     const localizedSubjects = {
+      ta: [
+        { name: 'அறிவியல் (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'மழை மேகங்களின் ரகசியம் (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
+        { name: 'கணிதம் (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'பின்னங்கள்: மாம்பழப் பகிர்வு (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
+        { name: 'சூழ்நிலையியல் (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'நமது வீட்டு மூலிகைகள்: துளசி, வேம்பு (Herbs)', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
+        { name: 'தாய்மொழி தமிழ் (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'பாரதியார் பாடல்களும் சொல்வளமும்', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
+      ],
       hi: [
         { name: 'विज्ञान (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'बारिश के बादलों का रहस्य (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
         { name: 'गणित (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'भिन्न: मीठे आम का बंटवारा (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
@@ -1469,6 +1630,24 @@ class VernacApp {
         { name: 'ગણિત (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'અપૂર્ણાંક: કેરીના ટુકડાઓની વહેંચણી (Fractions)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
         { name: 'પર્યાવરણ (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'આપણી ઔષધીય વનસ્પતિઓ: તુલસી અને લીમડો', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
         { name: 'માતૃભાષા ગુજરાતી (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'ગુજરાતી કાવ્યો અને શબ્દભંડોળ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
+      ],
+      pa: [
+        { name: 'ਵਿਗਿਆਨ (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'ਮੀਂਹ ਦੇ ਬੱਦਲਾਂ ਦਾ ਭੇਤ (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
+        { name: 'ਗਣਿਤ (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'ਭਿੰਨਾਂ: ਮਿੱਠੇ ਅੰਬਾਂ ਦੀ ਵੰਡ (Fractions)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
+        { name: 'ਵਾਤਾਵਰਣ ਸਿੱਖਿਆ (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'ਸਾਡੇ ਘਰੇਲੂ ਔਸ਼ਧੀ ਬੂਟੇ: ਤੁਲਸੀ ਅਤੇ ਨਿੰਮ', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
+        { name: 'ਮਾਤ-ਭਾਸ਼ਾ ਪੰਜਾਬੀ (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'ਪੰਜਾਬੀ ਲੋਕ-ਗੀਤ ਅਤੇ ਸ਼ਬਦ-ਭੰਡਾਰ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
+      ],
+      or: [
+        { name: 'ବିଜ୍ଞାନ (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'ବର୍ଷା ବାଦଲର ରହସ୍ୟ (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
+        { name: 'ଗଣିତ (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'ଭଗ୍ନାଂଶ: ମିଠା ଆମ୍ବ ବଣ୍ଟା (Fractions)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
+        { name: 'ପରିବେଶ ବିଜ୍ଞାନ (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'ଆମ ଘରୋଇ ଔଷଧୀୟ ଗଛ: ତୁଳସୀ ଓ ନିମ', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
+        { name: 'ମାତୃଭାଷା ଓଡ଼ିଆ (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'ଉତ୍କଳ ଗୌରବ କବିତା ଓ ନୂତନ ଶବ୍ଦାବଳୀ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
+      ],
+      as: [
+        { name: 'বিজ্ঞান (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'বৰষুণ ডাৱৰৰ ৰহস্য (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
+        { name: 'গণিত (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'ভগ্নাংশ: মিঠা আম ভাগ কৰা (Fractions)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
+        { name: 'পৰিৱেশ অধ্যয়ন (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'আমাৰ ঘৰুৱা বনৌষধি: তুলসী আৰু নিম', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
+        { name: 'মাতৃভাষা অসমীয়া (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'জ্যোতি সংগীত আৰু নতুন শব্দকোষ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
       ],
       en: [
         { name: 'Science', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'Secret of Rain Clouds (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
@@ -2348,8 +2527,21 @@ ${l.homework}
       as: 'আজি ৰাতি সোধক: "গৰম চাহৰ ধোঁৱা ওপৰলৈ গৈ কি হয়?"',
       en: 'Tonight at dinner, ask: "Where does the steam from the hot soup pot go in the sky?"'
     };
-    const greetingText = greetings[lang] || data.parentGreeting;
-    const promptText = prompts[lang] || data.dinnerTablePrompt;
+    const voiceSnippets = {
+      ta: { text: "அம்மா, அடுப்பில் வைக்கும் ரசத்தின் ஆவி மேலே போய் தட்டில் பட்டு மழையாகும்!", code: "ta-IN" },
+      hi: { text: "माँ, पतीले की भाप ऊपर जाकर ठंडी थाली से टकराकर बारिश की बूंदें बन जाती है!", code: "hi-IN" },
+      te: { text: "అమ్మా, పొయ్యి మీద చారు ఆవిరి పైకి వెళ్లి చల్లటి మూతకు తగిలి వర్షంలా పడుతుంది!", code: "te-IN" },
+      kn: { text: "ಅಮ್ಮಾ, ಒಲೆಯ ಮೇಲಿನ ರಸದ ಹಬೆ ಮೇಲೆ ಹೋಗಿ ತಣ್ಣನೆಯ ತಟ್ಟೆಗೆ ತಾಗಿ ಮಳೆಯಂತೆ ತೊಟ್ಟಿಕ್ಕುತ್ತದೆ!", code: "kn-IN" },
+      ml: { text: "അമ്മേ, തിളയ്ക്കുന്ന ചായയുടെ ആവി മുകളിലേക്ക് പോയി തണുത്ത തട്ടിൽ തട്ടി മഴത്തുള്ളികളാകുന്നു!", code: "ml-IN" },
+      bn: { text: "মা, ভাতের হাঁড়ির গরম বাষ্প উপরে উঠে ঠান্ডা ঢাকনায় লেগে বৃষ্টির মতো ফোঁটা হয়!", code: "bn-IN" },
+      mr: { text: "आई, पातेल्याची वाफ वर जाऊन थंड झाकणाला लागल्यावर पावसाचे थेंब बनते!", code: "mr-IN" },
+      gu: { text: "મમ્મી, તપેલીની વરાળ ઉપર જઈ ઠંડા ઢાંકણા સાથે અથડાઈને વરસાદના ટીપાં બને છે!", code: "gu-IN" },
+      pa: { text: "ਮਾਂ ਜੀ, ਦਾਲ ਦੀ ਭਾਫ਼ ਉੱਤੇ ਜਾ ਕੇ ਠੰਢੇ ਢੱਕਣ ਨਾਲ ਟਕਰਾ ਕੇ ਮੀਂਹ ਦੀਆਂ ਬੂੰਦਾਂ ਬਣ ਜਾਂਦੀ ਹੈ!", code: "pa-IN" },
+      or: { text: "ମାଆ, ହାଣ୍ଡିର ଭାମ୍ପ ଉପରକୁ ଯାଇ ଥଣ୍ଡା ଢାଙ୍କୁଣୀରେ ବାଜି ବର୍ଷା ବିନ୍ଦୁ ହୁଏ!", code: "or-IN" },
+      as: { text: "মা, গৰম চাহৰ ধোঁৱা ওপৰলৈ গৈ ঠাণ্ডা ঢাকনিত লাগি বৰষুণৰ টোপাল হয়!", code: "as-IN" },
+      en: { text: "Mom, the steam rising from the soup pot hits the cool lid and turns into rain droplets!", code: "en-IN" }
+    };
+    const currentVoiceSnippet = voiceSnippets[lang] || voiceSnippets['ta'];
 
     parentContainer.innerHTML = `
       <div class="parent-welcome-banner">
@@ -2390,7 +2582,7 @@ ${l.homework}
           <div class="parent-audio-snippet">
             <div class="audio-track-info">
               <strong>🎙️ ${activeStudentName} explaining Evaporation in ${currLangName}:</strong>
-              <p>“அம்மா, அடுப்பில் வைக்கும் ரசத்தின் ஆவி மேலே போய் தட்டில் பட்டு மழையாகும்!”</p>
+              <p>“${currentVoiceSnippet.text}”</p>
             </div>
             <button class="btn-play-child-voice" id="btn-play-aarav">
               ▶️ Play ${activeStudentName}'s Voice (${currLangName})
@@ -2404,7 +2596,7 @@ ${l.homework}
     if (playBtn) {
       playBtn.onclick = () => {
         playBtn.classList.add('playing');
-        speechEngine.speak("அம்மா, அடுப்பில் வைக்கும் ரசத்தின் ஆவி மேலே போய் தட்டில் பட்டு மழையாகும்!", 'ta-IN', () => {
+        speechEngine.speak(currentVoiceSnippet.text, currentVoiceSnippet.code, () => {
           playBtn.classList.remove('playing');
         });
       };

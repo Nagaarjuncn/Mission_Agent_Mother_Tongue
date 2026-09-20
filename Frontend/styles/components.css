@@ -4556,6 +4556,129 @@ body.dark-mode .btn-onboarding-close-subtle:hover {
   color: #F8FAFC;
 }
 
+/* ==========================================================================
+   STUDENT HUB INLINE PROFILE & LANGUAGE EDITING STYLES
+   ========================================================================== */
+.profile-info h3 {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 0.35rem;
+}
+
+.profile-info .btn-edit-inline-name,
+button#btn-edit-student-name {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.12) 100%) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.6) !important;
+  color: #FFFFFF !important;
+  border-radius: 9999px !important;
+  padding: 0.35rem 0.85rem !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.35rem !important;
+  transition: all 0.2s ease !important;
+  text-decoration: none !important;
+  outline: none !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.profile-info .btn-edit-inline-name:hover,
+button#btn-edit-student-name:hover {
+  background: rgba(255, 255, 255, 0.35) !important;
+  border-color: #FFFFFF !important;
+  transform: translateY(-1px) scale(1.04) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important;
+}
+
+.inline-edit-name-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.25rem 0.5rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+
+.inline-name-input {
+  background: #FFFFFF;
+  color: #0F172A;
+  border: 2px solid #00A8CC;
+  border-radius: 8px;
+  padding: 0.35rem 0.75rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  outline: none;
+  min-width: 160px;
+}
+
+.btn-inline-save {
+  background: #10B981;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-inline-save:hover {
+  background: #059669;
+  transform: scale(1.05);
+}
+
+.btn-inline-cancel {
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.btn-inline-cancel:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.dash-inline-lang-select {
+  background: rgba(15, 23, 42, 0.85) !important;
+  color: #38BDF8 !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.6) !important;
+  border-radius: 9999px !important;
+  padding: 0.25rem 0.75rem !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  outline: none !important;
+  cursor: pointer !important;
+  margin-left: 0.4rem !important;
+  transition: all 0.2s ease !important;
+  display: inline-block !important;
+  vertical-align: middle !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+}
+
+.dash-inline-lang-select:hover,
+.dash-inline-lang-select:focus {
+  background: rgba(15, 23, 42, 0.95) !important;
+  border-color: #00E5FF !important;
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.25) !important;
+  color: #FFFFFF !important;
+}
+
+.dash-inline-lang-select option {
+  background: #0F172A;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+}
+
 
 
 
