@@ -2511,6 +2511,8 @@ ${l.homework}
       pa: 'ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ਮਾਪਿਓ! (Welcome Parents)',
       or: 'ନମସ୍କାର ଅଭିଭାବକବୃନ୍ଦ! (Welcome Parents)',
       as: 'নমস্কাৰ অভিভাৱকসকল! (Welcome Parents)',
+      sat: 'ᱡᱚᱦᱟᱨ ᱟᱭᱳ / ᱵᱟᱵᱟ! (Welcome Parents)',
+      khr: 'गोड़ लागो माय-बाप! (Welcome Parents)',
       en: 'Welcome Parents & Families!'
     };
     const prompts = {
@@ -2525,6 +2527,8 @@ ${l.homework}
       pa: 'ਅੱਜ ਰਾਤ ਰੋਟੀ ਵੇਲੇ ਪੁੱਛੋ: "ਦਾਲ ਉਬਲਣ ਵੇਲੇ ਢੱਕਣ ਉੱਤੇ ਪਾਣੀ ਦੀਆਂ ਬੂੰਦਾਂ ਕਿਉਂ ਆਉਂਦੀਆਂ ਹਨ?"',
       or: 'ଆଜି ରାତିରେ ପଚାରନ୍ତୁ: "ହାଣ୍ଡିର ଭାମ୍ପ ଉପରକୁ ଯାଇ କଣ ହୁଏ?"',
       as: 'আজি ৰাতি সোধক: "গৰম চাহৰ ধোঁৱা ওপৰলৈ গৈ কি হয়?"',
+      sat: 'ᱛᱮᱦᱮᱧ ᱧᱤᱫᱟᱹ ᱫᱟᱠᱟ ᱩᱛᱩ ᱡᱚᱠᱷᱚᱱ: "ᱪᱩᱞᱦᱟᱹ ᱠᱷᱚᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱱ ᱵᱷᱟᱯ ᱥᱮᱨᱢᱟ ᱨᱮ ᱚᱠᱟ ᱥᱮᱫ ᱪᱟᱞᱟᱜᱼᱟ?" ᱢᱮᱱᱛᱮ ᱜᱤᱫᱽᱨᱟᱹ ᱠᱩᱞᱤᱭᱮᱢ!',
+      khr: 'आज रात रंधन करे बेरा पूछा: "डेगची के भाप ऊपर जाके की बनो है?"',
       en: 'Tonight at dinner, ask: "Where does the steam from the hot soup pot go in the sky?"'
     };
     const voiceSnippets = {
@@ -2539,6 +2543,8 @@ ${l.homework}
       pa: { text: "ਮਾਂ ਜੀ, ਦਾਲ ਦੀ ਭਾਫ਼ ਉੱਤੇ ਜਾ ਕੇ ਠੰਢੇ ਢੱਕਣ ਨਾਲ ਟਕਰਾ ਕੇ ਮੀਂਹ ਦੀਆਂ ਬੂੰਦਾਂ ਬਣ ਜਾਂਦੀ ਹੈ!", code: "pa-IN" },
       or: { text: "ମାଆ, ହାଣ୍ଡିର ଭାମ୍ପ ଉପରକୁ ଯାଇ ଥଣ୍ଡା ଢାଙ୍କୁଣୀରେ ବାଜି ବର୍ଷା ବିନ୍ଦୁ ହୁଏ!", code: "or-IN" },
       as: { text: "মা, গৰম চাহৰ ধোঁৱা ওপৰলৈ গৈ ঠাণ্ডা ঢাকনিত লাগি বৰষুণৰ টোপাল হয়!", code: "as-IN" },
+      sat: { text: "ᱟᱭᱳ, ᱪᱩᱞᱦᱟᱹ ᱫᱟᱠᱟ ᱵᱷᱟᱯ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ!", code: "sat-IN" },
+      khr: { text: "माय, डेगची के भाप ऊपर जाके ठंडी ढक्कन से टकराके पानी के बूंद बन जाहो है!", code: "khr-IN" },
       en: { text: "Mom, the steam rising from the soup pot hits the cool lid and turns into rain droplets!", code: "en-IN" }
     };
     const currentVoiceSnippet = voiceSnippets[lang] || voiceSnippets['ta'];

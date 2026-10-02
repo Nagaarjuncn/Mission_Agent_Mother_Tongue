@@ -11,6 +11,8 @@ export const SUPPORTED_LANGUAGES = [
   { code: 'pa', name: 'Punjabi', nativeName: 'ਪੰਜਾਬੀ', speechCode: 'pa-IN', flag: '🇮🇳' },
   { code: 'or', name: 'Odia', nativeName: 'ଓଡ଼ିଆ', speechCode: 'or-IN', flag: '🇮🇳' },
   { code: 'as', name: 'Assamese', nativeName: 'অসমীয়া', speechCode: 'as-IN', flag: '🇮🇳' },
+  { code: 'sat', name: 'Santhali', nativeName: 'ᱥᱟᱱᱛᱟᱲᱤ (Ol Chiki)', speechCode: 'sat-IN', flag: '🇮🇳' },
+  { code: 'khr', name: 'Khortha', nativeName: 'खोरठा', speechCode: 'khr-IN', flag: '🇮🇳' },
   { code: 'en', name: 'English', nativeName: 'English', speechCode: 'en-IN', flag: '🌐' }
 ];
 
@@ -26,6 +28,8 @@ export const TUTOR_PROFILES = {
   pa: { name: 'ਮਿੱਤਰ (Mitra)', greeting: 'ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ ਪਿਆਰੇ ਦੋਸਤ! ਅੱਜ ਅਸੀਂ ਕੀ ਨਵਾਂ ਸਿੱਖਾਂਗੇ?' },
   or: { name: 'ମିତ୍ର (Mitra)', greeting: 'ନମସ୍କାର ସାଙ୍ଗ! ଆଜି ଆମେ କେଉଁ ନୂଆ କଥା ଶିଖିବା?' },
   as: { name: 'মিত্ৰ (Mitra)', greeting: 'নমস্কাৰ মৰমৰ বন্ধু! আজি আমি কি নতুন কথা শিকিম?' },
+  sat: { name: 'ᱜᱟᱛᱮ ᱢᱤᱛᱨᱟ (Gate Mitra)', greeting: 'ᱡᱚᱦᱟᱨ ᱠᱟᱹᱴᱤᱡ ᱜᱟᱛᱮ! ᱛᱮᱦᱮᱧ ᱫᱚ ᱪᱮᱫ ᱱᱟᱣᱟ ᱠᱟᱛᱷᱟ ᱵᱚᱱ ᱪᱮᱫᱚᱜᱼᱟ?' },
+  khr: { name: 'संगी मित्रा (Sangi Mitra)', greeting: 'गोड़ लागो ही बाबू! आज हमनी की नया और मज़ागर चीज़ सीखब?' },
   en: { name: 'Mitra (AI Buddy)', greeting: 'Hello little friend! What exciting thing would you like to explore today?' }
 };
 
@@ -234,6 +238,44 @@ export const PEDAGOGY_KNOWLEDGE_BASE = [
           successMsg: 'বৰ ধুনীয়া! শুদ্ধ উত্তৰ! ⭐'
         }
       },
+      sat: {
+        literal: 'ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ?',
+        phonetic: 'Serma khon da\' cedag jạṛig-a?',
+        pedagogyTitle: 'ᱟᱭᱳᱣᱟᱜ ᱪᱩᱞᱦᱟᱹ ᱫᱟᱠᱟ ᱵᱷᱟᱯ ᱟᱨ ᱥᱮᱨᱢᱟ ᱨᱮᱱᱟᱜ ᱨᱤᱢᱤᱞ! 🍲☁️',
+        vernacularExplanation: 'ᱟᱵᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱫᱟᱠᱟ ᱩᱛᱩ ᱡᱚᱠᱷᱚᱱ ᱪᱮᱛᱟᱱ ᱛᱮ ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ ᱧᱮᱞ ᱟᱠᱟᱫᱟᱢ? ᱛᱷᱟᱹᱨᱤ ᱛᱮ ᱯᱚᱴᱚᱢ ᱞᱮᱠᱷᱟᱱ ᱚᱱᱟ ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ-ᱴᱷᱤᱯᱤᱨ ᱡᱟᱹᱲᱤᱜᱼᱟ!\n\nᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱦᱚᱸ ᱜᱟᱰᱟ ᱟᱨ ᱯᱩᱠᱷᱨᱤ ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱵᱷᱟᱯ ᱵᱮᱱᱟᱣᱟ, ᱚᱱᱟ ᱪᱮᱛᱟᱱ ᱨᱮ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ᱾ ᱨᱤᱢᱤᱞ ᱦᱟᱢᱟᱞ ᱞᱮᱱᱠᱷᱟᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤ ᱦᱩᱭᱩᱜᱼᱟ!',
+        localMetaphor: 'ᱪᱩᱞᱦᱟᱹ ᱫᱟᱠᱟ ᱴᱩᱠᱩᱡ ᱪᱮᱛᱟᱱ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱡᱟᱣᱨᱟᱜ ᱠᱟᱱ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ᱾',
+        culturalKeywords: [
+          { term: 'ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ (Evaporation)', meaning: 'ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ' },
+          { term: 'ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ (Condensation)', meaning: 'ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ' },
+          { term: 'ᱫᱟᱜ ᱡᱟᱹᱲᱤ (Precipitation)', meaning: 'ᱨᱤᱢᱤᱞ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩᱨᱩᱜ' }
+        ],
+        quiz: {
+          question: 'ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱞᱚᱞᱚ ᱛᱮ ᱜᱟᱰᱟ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱪᱮᱫ ᱵᱮᱱᱟᱣᱜᱼᱟ?',
+          options: ['ᱨᱤᱢᱤᱞ (Clouds)', 'ᱫᱷᱤᱨᱤ', 'ᱥᱟᱦᱟᱱ'],
+          correctIndex: 0,
+          hint: 'ᱩᱭᱦᱟᱹᱨ ᱢᱮ: ᱞᱚᱞᱚ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱮ ᱪᱮᱫ ᱵᱮᱱᱟᱣᱜᱼᱟ?',
+          successMsg: 'ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ! ᱥᱟᱹᱨᱤ ᱛᱮᱞᱟ! ⭐ ᱟᱢ ᱫᱚ ᱢᱤᱫ ᱠᱟᱹᱴᱤᱡ ᱵᱤᱜᱽᱭᱟᱱᱤ ᱠᱟᱱᱟᱢ!'
+        }
+      },
+      khr: {
+        literal: 'अकास से पानी काहे बरसे है?',
+        phonetic: 'Akaas se paani kaahe barse hai?',
+        pedagogyTitle: 'माय के गरम चाय के डेगची और अकास के बदरी! 🍲☁️',
+        vernacularExplanation: 'जब घरे माय चाय या भात पकावो है, त डेगची से भाप ऊपर उड़ो है ना? ओकर ऊपर जब ढक्कन राख देबी, त भाप ठंडा होके पानी के नन्हा-नन्हा बूंद बन जाहो है!\n\nअइसने सुरुज भगवान नदी-पोखरा के पानी के गरमाय के भाप बना के अकास में उड़ावो हथ, जे ऊपर जाके बदरी बनो है। जब बदरी भारी होवो है, त झम-झम पानि बरसे है!',
+        localMetaphor: 'उबलता डेगची के भाप और ढक्कन पर जमल पानी के बूंद, ठीक जेसन अकास से बरसे वाला पानि।',
+        culturalKeywords: [
+          { term: 'भाप बनल (Evaporation)', meaning: 'घाम से पानी के भाप बन के उड़ेक' },
+          { term: 'बदरी बनल (Condensation)', meaning: 'भाप के ठंडा होके बदरी बनेक' },
+          { term: 'पानि बरसेक (Precipitation)', meaning: 'बदरी से पानि झम-झम गिरेक' }
+        ],
+        quiz: {
+          question: 'नदी-पोखरा के पानी घाम से भाप बन के अकास में की बनो है?',
+          options: ['बदरी (Badal)', 'सुरुज', 'तारा'],
+          correctIndex: 0,
+          hint: 'सोचा: जब सड़क पर के पानी धूप में सूखे है त कहाँ जा है?',
+          successMsg: 'शाबाश संगी! बिल्कुल सही जवाब! ⭐'
+        }
+      },
       en: {
         literal: 'Why does rain fall from the sky?',
         phonetic: 'Why does rain fall from the sky?',
@@ -385,6 +427,24 @@ export const PEDAGOGY_KNOWLEDGE_BASE = [
         culturalKeywords: [{ term: 'আধা (1/2)', meaning: 'দুভাগৰ এভাগ' }, { term: 'এক-চতুৰ্থাংশ (1/4)', meaning: 'চাৰিভাগৰ এভাগ' }],
         quiz: { question: 'এখন ৰুটিক ২ সমান ভাগ কৰিলে এটা ভাগ কি?', options: ['আধা (1/2)', 'সম্পূৰ্ণ (1)', 'এক-চতুৰ্থাংশ (1/4)'], correctIndex: 0, hint: 'দুটাত এটা ভাগ', successMsg: 'বৰ সুন্দৰ! শুদ্ধ উত্তৰ! ⭐' }
       },
+      sat: {
+        literal: 'ᱦᱟᱹᱴᱤᱧ (Fraction): ᱢᱤᱫᱴᱟᱝ ᱡᱤᱱᱤᱥ ᱥᱚᱢᱟᱱ ᱛᱮ ᱦᱟᱹᱴᱤᱧ᱾',
+        phonetic: 'Hạṭiń endrag enna?',
+        pedagogyTitle: 'ᱥᱟᱨᱡᱚᱢ ᱫᱟᱨᱮ ᱩᱢᱩᱞ ᱨᱮ ᱩᱞ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ! 🥭',
+        vernacularExplanation: 'ᱵᱟᱵᱟ ᱦᱟᱴ ᱠᱷᱚᱱ ᱢᱤᱫᱴᱟᱝ ᱢᱟᱨᱟᱝ ᱦᱮᱲᱮᱢ ᱩᱞ ᱟᱹᱜᱩ ᱟᱠᱟᱫᱟ᱾ ᱟᱢ ᱟᱨ ᱟᱢ ᱨᱤᱱ ᱵᱚᱭᱦᱟ ᱥᱚᱢᱟᱱ ᱛᱮ ᱠᱮᱪᱟᱜ ᱠᱟᱛᱮ ᱡᱚᱢ ᱞᱮᱠᱷᱟᱱ, ᱢᱤᱫ ᱦᱚᱲ ᱫᱚ \'ᱟᱫᱷᱟ\' (1/2) ᱧᱟᱢᱟ᱾ ᱯᱩᱱ ᱦᱚᱲ ᱛᱮ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ \'ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ\' (1/4) ᱧᱟᱢᱚᱜᱼᱟ! ᱡᱟᱦᱟᱸᱱ ᱡᱤᱱᱤᱥ ᱥᱚᱢᱟᱱ ᱛᱮ ᱦᱟᱹᱴᱤᱧ ᱜᱮ ᱯᱷᱨᱮᱠᱥᱚᱱ ᱠᱟᱱᱟ!',
+        localMetaphor: 'ᱦᱮᱲᱮᱢ ᱩᱞ ᱥᱚᱢᱟᱱ ᱛᱮ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ',
+        culturalKeywords: [{ term: 'ᱟᱫᱷᱟ (1/2)', meaning: 'ᱵᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ' }, { term: 'ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ (1/4)', meaning: 'ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ' }],
+        quiz: { question: 'ᱢᱤᱫᱴᱟᱝ ᱯᱤᱴᱷᱟᱹ ᱵᱟᱨ ᱦᱚᱲ ᱛᱮ ᱥᱚᱢᱟᱱ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ ᱢᱤᱫ ᱦᱚᱲ ᱛᱤᱱᱟᱹᱜ ᱮ ᱧᱟᱢᱟ?', options: ['ᱟᱫᱷᱟ (1/2)', 'ᱜᱚᱴᱟ (1)', 'ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ (1/4)'], correctIndex: 0, hint: 'ᱵᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ', successMsg: 'ᱟᱹᱰᱤ ᱪᱚᱨᱚᱠ! ᱥᱟᱹᱨᱤ ᱛᱮᱞᱟ! ⭐' }
+      },
+      khr: {
+        literal: 'बांट/अंग (Fraction): कोनो चीज़ के बराबर हिस्सा में बांटेक।',
+        phonetic: 'Bant/Ang: Kono cheez ke barabar hissa me bantek.',
+        pedagogyTitle: 'हाट के मीठा आम और संगी-साथी में बंटवारा! 🥭',
+        vernacularExplanation: 'बाजार से आवे वाला बड़का पाकल आम के दू गो भाई-बहिन में बराबर काट लेबा, त दोनों के आधा (1/2) हिस्सा मिलतो! चार गो संगी मिल के बांटबा, त चउथा हिस्सा (1/4) मिलतो! इहे बराबर बांटल के भिन्न कहल जाहो है!',
+        localMetaphor: 'मीठा आम के बराबर हिस्सा में बांट के खाइक',
+        culturalKeywords: [{ term: 'आधा (1/2)', meaning: 'दू हिस्सा में एक हिस्सा' }, { term: 'चौथाई (1/4)', meaning: 'चार हिस्सा में एक हिस्सा' }],
+        quiz: { question: 'एगो रोटी के दू बराबर भाग में बांटला पर एगो भाग की कहातो?', options: ['आधा (1/2)', 'पूरा (1)', 'चौथाई (1/4)'], correctIndex: 0, hint: 'दू गो में एगो हिस्सा', successMsg: 'शाबाश संगी! सही जवाब! ⭐' }
+      },
       en: {
         literal: 'What is a fraction?',
         phonetic: 'What is a fraction?',
@@ -530,6 +590,24 @@ export const PEDAGOGY_KNOWLEDGE_BASE = [
         localMetaphor: 'পাতেই গছৰ পাকঘৰ আৰু ৰ\'দেই চৌকা',
         culturalKeywords: [{ term: 'সালোকসংশ্লেষণ (Photosynthesis)', meaning: 'পোহৰৰ দ্বাৰা খাদ্য প্ৰস্তুত' }, { term: 'হৰিৎকণা (Chlorophyll)', meaning: 'পাতৰ সেউজীয়া ৰং' }],
         quiz: { question: 'গছৰ পাকঘৰ কাক কোৱা হয়?', options: ['সেউজীয়া পাতক', 'শিপাক', 'ফুলক'], correctIndex: 0, hint: 'গছৰ সেউজীয়া অংশ', successMsg: 'বৰ ধুনীয়া! শুদ্ধ উত্তৰ! ⭐' }
+      },
+      sat: {
+        literal: 'ᱫᱟᱨᱮ ᱱᱟᱹᱲᱤ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾',
+        phonetic: 'Dare nạṛi harag lạpạd sińgi beṛa taras larktia.',
+        pedagogyTitle: 'ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱨᱮᱱᱟᱜ ᱡᱟᱹᱫᱩ ᱨᱟᱪᱟ ᱨᱟᱸᱫᱷᱱᱟ! 🍃☀️',
+        vernacularExplanation: 'ᱡᱮᱞᱮᱠᱟ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱡᱩᱞ ᱠᱟᱛᱮ ᱡᱚᱢᱟᱜ ᱮ ᱛᱮᱭᱟᱨᱟ, ᱚᱱᱠᱟ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱫᱚ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱟᱨ ᱨᱮᱦᱮᱴ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩ ᱠᱟᱛᱮ ᱟᱠᱚᱣᱟᱜ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨᱟ! ᱱᱚᱣᱟ ᱜᱮ \'ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ\' (Photosynthesis) ᱵᱚᱱ ᱢᱮᱛᱟᱜᱼᱟ᱾',
+        localMetaphor: 'ᱥᱟᱠᱟᱢ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱪᱟ ᱨᱟᱸᱫᱷᱱᱟ ᱟᱨ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱜᱮ ᱪᱩᱞᱦᱟᱹ',
+        culturalKeywords: [{ term: 'ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ (Photosynthesis)', meaning: 'ᱥᱤᱸᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱵᱮᱱᱟᱣ' }, { term: 'ᱦᱟᱹᱨᱭᱟᱹᱲ ᱨᱚᱝ (Chlorophyll)', meaning: 'ᱥᱟᱠᱟᱢ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱭᱟᱹᱲ ᱨᱚᱝ' }],
+        quiz: { question: 'ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱸᱫᱷᱱᱟ ᱚᱲᱟᱜ ᱚᱠᱟ ᱠᱚ ᱢᱮᱛᱟᱜᱼᱟ?', options: ['ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ', 'ᱨᱮᱦᱮᱴ', 'ᱵᱟᱦᱟ'], correctIndex: 0, hint: 'ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱭᱟᱹᱲ ᱦᱟᱹᱴᱤᱧ', successMsg: 'ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ! ᱟᱢ ᱫᱚ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱮᱢ ᱵᱩᱡᱷᱟᱹᱣ ᱠᱮᱫᱟ! ⭐' }
+      },
+      khr: {
+        literal: 'गाछ-बिरिछ के बढ़ेक ले घाम के जरूरी होवो है।',
+        phonetic: 'Gaach-birich ke badhek le ghaam ke jaroori hovo hai.',
+        pedagogyTitle: 'हरियर पतई के जादुई भान्साघर! 🍃☀️',
+        vernacularExplanation: 'जैसे माय घरे चुल्हा जरा के रंधन करे है, वइसने गाछ के हरियर पतई सुरुज के घाम से आपन खाना पकावो है! जड़ से पानी आउर हवा से कार्बन डाईऑक्साइड लेके पतई आपन हरियर रंग से खाना बनाव हथ। एकरा \'प्रकाश-संश्लेषण\' (Photosynthesis) कहल जाहो है!',
+        localMetaphor: 'पतई ही गाछ के भान्साघर और घाम ही चुल्हा हके',
+        culturalKeywords: [{ term: 'प्रकाश-संश्लेषण (Photosynthesis)', meaning: 'घाम से खाना बनावेक' }, { term: 'हरियर रंग (Chlorophyll)', meaning: 'पतई के हरियर रंग' }],
+        quiz: { question: 'गाछ के भान्साघर (रसोई) केकरा कहल जाहो है?', options: ['हरियर पतई के', 'जड़ के', 'फूल के'], correctIndex: 0, hint: 'गाछ के हरियर भाग', successMsg: 'शानदार संगी! बिल्कुल सही जवाब! ⭐' }
       },
       en: {
         literal: 'Plants need sunlight to grow.',

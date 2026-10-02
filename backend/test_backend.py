@@ -18,13 +18,13 @@ def test_health_check():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
-    assert data["supported_languages_count"] == 12
+    assert data["supported_languages_count"] == 14
 
 def test_supported_languages():
     response = client.get("/api/languages")
     assert response.status_code == 200
     langs = response.json()
-    assert len(langs) == 12
+    assert len(langs) == 14
     codes = [l["code"] for l in langs]
     assert "ta" in codes  # Tamil
     assert "te" in codes  # Telugu
@@ -32,6 +32,8 @@ def test_supported_languages():
     assert "bn" in codes  # Bengali
     assert "kn" in codes  # Kannada
     assert "ml" in codes  # Malayalam
+    assert "sat" in codes  # Santhali (Ol Chiki)
+    assert "khr" in codes  # Khortha
 
 def test_multilingual_translation():
     payload = {
@@ -273,6 +275,75 @@ def test_speech_tts_audio_streaming():
     assert res.status_code == 200
     assert "audio/mpeg" in res.headers.get("content-type", "")
     assert len(res.content) > 500
+
+def test_santhali_features():
+    # 1. Translation into Ol Chiki script
+    res = client.post("/api/translate", json={
+        "text": "Plants need sunlight to grow.",
+        "source_lang": "en",
+        "target_lang": "sat",
+        "generate_explanation": True
+    })
+    assert res.status_code == 200
+    data = res.json()
+    assert "ᱫᱟᱨᱮ" in data["translated_text"] or "ᱥᱟᱠᱟᱢ" in data["child_explanation"]
+    assert data["target_lang"] == "sat"
+    assert data["speech_code"] == "sat-IN"
+
+    # 2. Pedagogy explain in Santhali
+    ped_res = client.post("/api/pedagogy/explain", json={
+        "concept_or_question": "Why does rain fall from the sky?",
+        "target_lang": "sat"
+    })
+    assert ped_res.status_code == 200
+    ped_data = ped_res.json()
+    assert "ᱪᱩᱞᱦᱟᱹ" in ped_data["pedagogy_title"] or "ᱨᱤᱢᱤᱞ" in ped_data["pedagogy_title"]
+    assert ped_data["target_lang"] == "sat"
+
+    # 3. Tutor chat understanding other language (English) and responding in Santhali
+    tutor_res = client.post("/api/tutor/chat", json={
+        "message": "Why does rain fall from the sky?",
+        "target_lang": "sat"
+    })
+    assert tutor_res.status_code == 200
+    tutor_data = tutor_res.json()
+    assert tutor_data["input_was_converted"] is True
+    assert tutor_data["reply_speech_code"] == "sat-IN"
+    assert "ᱫᱟᱜ" in tutor_data["reply_text"] or "ᱨᱤᱢᱤᱞ" in tutor_data["reply_text"]
+
+def test_khortha_features():
+    # 1. Translation into Khortha
+    res = client.post("/api/translate", json={
+        "text": "Why does rain fall from the sky?",
+        "source_lang": "en",
+        "target_lang": "khr",
+        "generate_explanation": True
+    })
+    assert res.status_code == 200
+    data = res.json()
+    assert "बरसे है" in data["translated_text"] or "बदरी" in data["child_explanation"]
+    assert data["target_lang"] == "khr"
+    assert data["speech_code"] == "khr-IN"
+
+    # 2. Pedagogy explain in Khortha
+    ped_res = client.post("/api/pedagogy/explain", json={
+        "concept_or_question": "Plants need sunlight to grow.",
+        "target_lang": "khr"
+    })
+    assert ped_res.status_code == 200
+    ped_data = ped_res.json()
+    assert "भान्साघर" in ped_data["pedagogy_title"] or "पतई" in ped_data["pedagogy_title"]
+
+    # 3. Tutor chat understanding English and replying in Khortha
+    tutor_res = client.post("/api/tutor/chat", json={
+        "message": "Why does rain fall from the sky?",
+        "target_lang": "khr"
+    })
+    assert tutor_res.status_code == 200
+    tutor_data = tutor_res.json()
+    assert tutor_data["input_was_converted"] is True
+    assert tutor_data["reply_speech_code"] == "khr-IN"
+    assert "बदरी" in tutor_data["reply_text"] or "बरसे" in tutor_data["reply_text"]
 
 if __name__ == "__main__":
     import pytest

@@ -196,6 +196,8 @@ export class TutorChat {
       pa: 'ਸਥਾਨਕ ਉਦਾਹਰਣ (Local Metaphor):',
       or: 'ସ୍ଥାନୀୟ ଉଦାହରଣ (Local Metaphor):',
       as: 'স্থানীয় উদাহৰণ (Local Metaphor):',
+      sat: 'ᱞᱚᱠᱟᱞ ᱩᱫᱟᱹᱦᱚᱨᱚᱱ (Local Metaphor):',
+      khr: 'स्थानीय उदाहरण (Local Metaphor):',
       en: 'Familiar Metaphor:'
     };
     const metaphorLabel = metaphorPrefixes[this.currentLanguage] || 'Cultural Metaphor:';
@@ -333,7 +335,8 @@ export class TutorChat {
       listenBtn.onclick = () => {
         listenBtn.classList.add('playing');
         speechEngine.playPopSound();
-        const speechCode = msg.speechCode || (this.currentLanguage === 'hi' ? 'hi-IN' : (this.currentLanguage === 'ta' ? 'ta-IN' : 'en-IN'));
+        const langMeta = SUPPORTED_LANGUAGES.find(l => l.code === this.currentLanguage);
+        const speechCode = msg.speechCode || (langMeta ? langMeta.speechCode : `${this.currentLanguage || 'ta'}-IN`);
         speechEngine.speak(msg.text, speechCode, () => {
           listenBtn.classList.remove('playing');
         });

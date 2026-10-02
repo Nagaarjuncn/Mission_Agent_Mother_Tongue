@@ -66,6 +66,16 @@ PRIMARY_KNOWLEDGE_TRANSLATIONS: Dict[str, Dict[str, Dict[str, str]]] = {
             "phonetic": "Udbhidar briddhir babe suryar pohoror proyojon.",
             "child_explanation": "গছ-গছনিয়ে সূৰ্যৰ পোহৰ ব্যৱহাৰ কৰি নিজৰ পাতত আহাৰ তৈয়াৰ কৰে!"
         },
+        "sat": {
+            "text": "ᱫᱟᱨᱮ ᱱᱟᱹᱲᱤ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾",
+            "phonetic": "Dare nạṛi harag lạpạd sińgi beṛa taras larktia.",
+            "child_explanation": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱟᱠᱚᱣᱟᱜ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨᱟ, ᱡᱮᱞᱮᱠᱟ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱫᱟᱠᱟ ᱩᱛᱩᱭᱟ! ᱱᱚᱣᱟ ᱜᱮ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱠᱟᱱᱟ᱾"
+        },
+        "khr": {
+            "text": "गाछ-बिरिछ के बढ़ेक ले घाम (सुरुज के अंजोर) के जरूरी होवो है।",
+            "phonetic": "Gaach-birich ke badhek le ghaam ke jaroori hovo hai.",
+            "child_explanation": "गाछ आपन हरियर पतई में सुरुज के घाम आउर पानि से खाना बनाव हथ, जेकरा प्रकाश-संश्लेषण कहल जाहो है!"
+        },
         "en": {
             "text": "Plants need sunlight to grow.",
             "phonetic": "Plants need sunlight to grow.",
@@ -102,6 +112,16 @@ PRIMARY_KNOWLEDGE_TRANSLATIONS: Dict[str, Dict[str, Dict[str, str]]] = {
             "text": "ಆಕಾಶದಿಂದ ಮಳೆ ಏಕೆ ಬೀಳುತ್ತದೆ?",
             "phonetic": "Aakashadinda male eke beeluttade?",
             "child_explanation": "ನದಿ-ಕೆರೆಗಳ ನೀರು ಬಿಸಿಲಿಗೆ ಆವಿಯಾಗಿ ಮೋಡವಾಗುತ್ತದೆ. ತಣ್ಣನೆಯ ಗಾಳಿ ತಾಗಿದಾಗ ಮಳೆಹನಿಯಾಗಿ ಕೆಳಗೆ ಬೀಳುತ್ತದೆ."
+        },
+        "sat": {
+            "text": "ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ?",
+            "phonetic": "Serma khon da' cedag jạṛig-a?",
+            "child_explanation": "ᱜᱟᱰᱟ ᱟᱨ ᱯᱩᱠᱷᱨᱤ ᱫᱟᱜ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱞᱚᱞᱚ ᱛᱮ ᱵᱷᱟᱯ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ, ᱟᱨ ᱨᱮᱭᱟᱲ ᱦᱚᱭ ᱛᱮ ᱫᱟᱜ ᱡᱟᱹᱲᱤ ᱦᱩᱭᱩᱜᱼᱟ!"
+        },
+        "khr": {
+            "text": "अकास से पानी काहे बरसे है?",
+            "phonetic": "Akaas se paani kaahe barse hai?",
+            "child_explanation": "नदी-पोखरा के पानी घाम से भाप बन के अकास में बदरी बनो है, आउर ठंडा हवा लगला पर झम-झम पानि बरसे है!"
         }
     }
 }
@@ -185,6 +205,7 @@ class TranslationService:
                             "hi": "Hindi", "ta": "Tamil", "te": "Telugu", "kn": "Kannada",
                             "ml": "Malayalam", "bn": "Bengali", "mr": "Marathi", "gu": "Gujarati",
                             "pa": "Punjabi", "or": "Odia", "as": "Assamese", "ur": "Urdu",
+                            "sat": "Santhali", "khr": "Khortha",
                             "zh": "Chinese", "ja": "Japanese", "ru": "Russian", "ar": "Arabic"
                         }
                         src_name = common_names.get(detected_src, detected_src.upper())
@@ -287,13 +308,22 @@ class TranslationService:
             "pa": ("ਇਹ ਪ੍ਰਾਇਮਰੀ ਸਕੂਲ ਦੇ ਬੱਚਿਆਂ ਲਈ ਜ਼ਰੂਰੀ ਸਬਕ ਹੈ: ", " ਸਰਲ ਵਿਆਖਿਆ: ਬੱਚੇ ਇਸਨੂੰ ਆਪਣੇ ਆਲੇ-ਦੁਆਲੇ ਵੇਖ ਸਕਦੇ ਹਨ।"),
             "or": ("ଏହା ପ୍ରାଥମିକ ବିଦ୍ୟାଳୟର ଏକ ମୁଖ୍ୟ ବିଷୟ: ", " ସରଳ ବୁଝାମଣା: ପିଲାମାନେ ଏହାକୁ ପରିବେଶରେ ଅନୁଭବ କରିପାରିବେ।"),
             "as": ("এইটো প্ৰাথমিক বিদ্যালয়ৰ ছাত্ৰ-ছাত্ৰীৰ বাবে এটা গুৰুত্বপূৰ্ণ ধাৰণা: ", " সৰল ব্যাখ্যা: শিশুসকলে নিজৰ পৰিৱেশত ইয়াক প্ৰত্যক্ষ কৰিব পাৰে।"),
+            "sat": ("ᱱᱚᱣᱟ ᱫᱚ ᱢᱤᱫ ᱢᱩᱬᱩᱛ ᱮᱛᱚᱦᱚᱵ ᱥᱮᱪᱮᱫ ᱠᱟᱛᱷᱟ ᱠᱟᱱᱟ: ", " ᱥᱟᱞᱟᱜ ᱵᱩᱡᱷᱟᱹᱣ: ᱜᱤᱫᱽᱨᱟᱹ ᱠᱚ ᱟᱠᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱟᱨ ᱥᱤᱨᱡᱚᱱ ᱨᱮ ᱱᱚᱣᱟ ᱠᱚ ᱧᱮᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾"),
+            "khr": ("ई एगो बहुत बेस आउर जरूरी प्राथमिक शिक्षा के बात हके: ", " सोझ व्याख्या: छौआ-पुता एकरा आपन घरे आउर आसपास के प्रकृति में देख सक हथ।"),
             "en": ("Key Elementary Educational Concept: ", " Simple Explanation: Children can easily observe this in their local environment.")
         }
 
         prefix, suffix = vernacular_prefixes.get(target_code, vernacular_prefixes["en"])
         
         # Generate friendly vernacular response
-        translated_text = f"{target_meta['nativeName']} மொழியாக்கம்: '{req.text}'" if target_code == "ta" else f"{target_meta['name']} Translation: '{req.text}'"
+        if target_code == "ta":
+            translated_text = f"{target_meta['nativeName']} மொழியாக்கம்: '{req.text}'"
+        elif target_code == "sat":
+            translated_text = f"{target_meta['nativeName']} ᱛᱚᱨᱡᱚᱢᱟ: '{req.text}'"
+        elif target_code == "khr":
+            translated_text = f"{target_meta['nativeName']} अनुवाद: '{req.text}'"
+        else:
+            translated_text = f"{target_meta['name']} Translation: '{req.text}'"
         child_explanation = f"{prefix} '{req.text}' {suffix}"
 
         return TranslationResponse(

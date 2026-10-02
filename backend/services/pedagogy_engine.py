@@ -231,6 +231,46 @@ PEDAGOGY_CONCEPTS_DB = [
                     "explanation": "ৰ’দৰ উত্তাপত পানী ভাপ হৈ ডাৱৰ সৃষ্টি কৰে!"
                 }
             },
+            "sat": {
+                "pedagogy_title": "ᱟᱭᱳᱣᱟᱜ ᱪᱩᱞᱦᱟᱹ ᱫᱟᱠᱟ ᱵᱷᱟᱯ ᱟᱨ ᱥᱮᱨᱢᱟ ᱨᱮᱱᱟᱜ ᱨᱤᱢᱤᱞ! 🍲☁️",
+                "vernacular_explanation": "ᱟᱵᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱡᱚᱠᱷᱚᱱ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱫᱟᱠᱟ ᱩᱛᱩᱭᱟ, ᱩᱱ ᱡᱚᱠᱷᱚᱱ ᱪᱮᱛᱟᱱ ᱛᱮ ᱥᱟᱥᱟᱝ ᱫᱷᱩᱸᱣᱟᱹ/ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ ᱧᱮᱞ ᱟᱠᱟᱫᱟᱢ? ᱛᱷᱟᱹᱨᱤ ᱛᱮ ᱯᱚᱴᱚᱢ ᱞᱮᱠᱷᱟᱱ ᱚᱱᱟ ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ-ᱴᱷᱤᱯᱤᱨ ᱡᱟᱹᱲᱤᱜᱼᱟ! ᱴᱷᱤᱠ ᱚᱱᱠᱟ ᱜᱮ, ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱜᱟᱰᱟ ᱟᱨ ᱯᱩᱠᱷᱨᱤ ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱛᱮ ᱨᱟᱠᱟᱵᱼᱟ ᱟᱨ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ᱾ ᱨᱤᱢᱤᱞ ᱦᱟᱢᱟᱞ ᱞᱮᱱᱠᱷᱟᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤ ᱦᱩᱭᱩᱜᱼᱟ!",
+                "local_metaphor": "ᱫᱟᱠᱟ ᱴᱩᱠᱩᱡ ᱪᱮᱛᱟᱱ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱡᱟᱣᱨᱟᱜ ᱠᱟᱱ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ᱾",
+                "context_hook": "ᱟᱹᱛᱩ ᱨᱮᱱᱟᱜ ᱡᱷᱟᱨᱱᱟ, ᱥᱟᱨᱡᱚᱢ ᱵᱤᱨ ᱟᱨ ᱪᱟᱥ ᱠᱷᱮᱛ",
+                "cultural_keywords": [
+                    {"term": "ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ", "meaning": "ᱞᱚᱞᱚ ᱛᱮ ᱫᱟᱜ ᱵᱷᱟᱯ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ (Evaporation)"},
+                    {"term": "ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ", "meaning": "ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ (Condensation)"},
+                    {"term": "ᱫᱟᱜ ᱡᱟᱹᱲᱤ", "meaning": "ᱨᱤᱢᱤᱞ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩᱨᱩᱜ (Precipitation)"}
+                ],
+                "familiar_objects": ["ᱫᱟᱠᱟ ᱴᱩᱠᱩᱡ", "ᱪᱩᱞᱦᱟᱹ ᱵᱷᱟᱯ", "ᱜᱟᱰᱟ ᱫᱟᱜ", "ᱦᱳᱲᱳ ᱠᱷᱮᱛ"],
+                "literal": "ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ?",
+                "phonetic": "Serma khon da' cedag jạṛig-a?",
+                "quiz": {
+                    "question": "ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱞᱚᱞᱚ ᱛᱮ ᱜᱟᱰᱟ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱪᱮᱫ ᱵᱮᱱᱟᱣᱜᱼᱟ?",
+                    "options": ["ᱨᱤᱢᱤᱞ (Clouds)", "ᱫᱷᱤᱨᱤ", "ᱥᱟᱦᱟᱱ"],
+                    "correct": "ᱨᱤᱢᱤᱞ (Clouds)",
+                    "explanation": "ᱫᱟᱜ ᱵᱷᱟᱯ ᱪᱮᱛᱟᱱ ᱨᱮ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ!"
+                }
+            },
+            "khr": {
+                "pedagogy_title": "माय के गरम चाय के डेगची और अकास के बदरी! 🍲☁️",
+                "vernacular_explanation": "जब घरे माय चाय या भात पकावो है, त डेगची से भाप ऊपर उड़ो है ना? ओकर ऊपर जब ढक्कन राख देबी, त भाप ठंडा होके पानी के नन्हा-नन्हा बूंद बन जाहो है! अइसने सुरुज भगवान नदी-पोखरा के पानी के गरमाय के भाप बना के अकास में उड़ावो हथ, जे ऊपर जाके बदरी बनो है। जब बदरी भारी होवो है, त झम-झम पानि बरसे है!",
+                "local_metaphor": "उबलता डेगची के भाप और ढक्कन पर जमल पानी के बूंद, ठीक जेसन अकास से बरसे वाला पानि।",
+                "context_hook": "दामोदर नदी, महुआ के गाछ और गांव के खपरैल घर",
+                "cultural_keywords": [
+                    {"term": "भाप बनल", "meaning": "घाम से पानी के भाप बन के उड़ेक (Evaporation)"},
+                    {"term": "बदरी बनल", "meaning": "भाप के ठंडा होके बदरी बनेक (Condensation)"},
+                    {"term": "पानि बरसेक", "meaning": "बदरी से पानि झम-झम गिरेक (Precipitation)"}
+                ],
+                "familiar_objects": ["डेगची के ढक्कन", "दामोदर नदी", "धान के खेत", "खपरैल छत"],
+                "literal": "अकास से पानी काहे बरसे है?",
+                "phonetic": "Akaas se paani kaahe barse hai?",
+                "quiz": {
+                    "question": "नदी-पोखरा के पानी घाम से भाप बन के अकास में की बनो है?",
+                    "options": ["बदरी (Badal)", "सुरुज", "तारा"],
+                    "correct": "बदरी (Badal)",
+                    "explanation": "पानी के भाप ऊपर जाके ठंडा होवो है आउर बदरी बनो है!"
+                }
+            },
             "en": {
                 "pedagogy_title": "Kitchen Kettle Steam and Floating Rain Clouds!",
                 "vernacular_explanation": "Have you seen steam rise when tea or soup boils in the kitchen? If you place a cool lid over it, the steam turns right back into tiny water droplets! The hot sun warms the river water into invisible vapor, which floats up, cools down into fluffy clouds, and falls down as refreshing rain!",
@@ -389,6 +429,26 @@ PEDAGOGY_CONCEPTS_DB = [
                 "literal": "গছ বাঢ়িবলৈ সূৰ্যৰ পোহৰ লাগে।",
                 "phonetic": "Gos barhiboloi soorjor pohor lage."
             },
+            "sat": {
+                "pedagogy_title": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱨᱮᱱᱟᱜ ᱡᱟᱹᱫᱩ ᱨᱟᱪᱟ ᱨᱟᱸᱫᱷᱱᱟ! 🍃☀️",
+                "vernacular_explanation": "ᱡᱮᱞᱮᱠᱟ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱡᱩᱞ ᱠᱟᱛᱮ ᱡᱚᱢᱟᱜ ᱮ ᱛᱮᱭᱟᱨᱟ, ᱚᱱᱠᱟ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱫᱚ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱟᱨ ᱨᱮᱦᱮᱴ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩ ᱠᱟᱛᱮ ᱟᱠᱚᱣᱟᱜ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨᱟ! ᱱᱚᱣᱟ ᱜᱮ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ (Photosynthesis) ᱵᱚᱱ ᱢᱮᱛᱟᱜᱼᱟ᱾",
+                "local_metaphor": "ᱥᱟᱠᱟᱢ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱪᱟ ᱨᱟᱸᱫᱷᱱᱟ ᱟᱨ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱜᱮ ᱪᱩᱞᱦᱟᱹ᱾",
+                "context_hook": "ᱵᱟᱦᱟ ᱵᱟᱜᱟᱱ ᱟᱨ ᱥᱟᱨᱡᱚᱢ ᱫᱟᱨᱮ",
+                "cultural_keywords": [{"term": "ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ", "meaning": "ᱥᱤᱸᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱵᱮᱱᱟᱣ"}],
+                "familiar_objects": ["ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ", "ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ", "ᱫᱟᱨᱮ ᱨᱮᱦᱮᱴ"],
+                "literal": "ᱫᱟᱨᱮ ᱱᱟᱹᱲᱤ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾",
+                "phonetic": "Dare nạṛi harag lạpạd sińgi beṛa taras larktia."
+            },
+            "khr": {
+                "pedagogy_title": "हरियर पतई के जादुई भान्साघर! 🍃☀️",
+                "vernacular_explanation": "जैसे माय घरे चुल्हा जरा के रंधन करे है, वइसने गाछ के हरियर पतई सुरुज के घाम से आपन खाना पकावो है! जड़ से पानी आउर हवा से कार्बन डाईऑक्साइड लेके पतई आपन हरियर रंग से खाना बनाव हथ। एकरा फोटोसिंथेसिस कहल जाहो है!",
+                "local_metaphor": "पतई ही गाछ के भान्साघर और घाम ही चुल्हा हके।",
+                "context_hook": "तुलसी के पौधा और महुआ के गाछ",
+                "cultural_keywords": [{"term": "प्रकाश-संश्लेषण", "meaning": "घाम से खाना बनावेक"}],
+                "familiar_objects": ["हरियर पतई", "सुरुज के घाम", "गाछ के जड़"],
+                "literal": "गाछ-बिरिछ के बढ़ेक ले घाम के जरूरी होवो है।",
+                "phonetic": "Gaach-birich ke badhek le ghaam ke jaroori hovo hai."
+            },
             "en": {
                 "pedagogy_title": "The Solar-Powered Green Kitchen!",
                 "vernacular_explanation": "Plants do not go to the market — they bake their own food right inside their leaves! Sunshine acts as the cooking heat, water is the broth, and the green pigment traps solar warmth to make sweet sugars.",
@@ -527,6 +587,26 @@ PEDAGOGY_CONCEPTS_DB = [
                 "familiar_objects": ["আম", "ৰুটি"],
                 "literal": "ভগ্নাংশ কি?",
                 "phonetic": "Bhognangxo ki?"
+            },
+            "sat": {
+                "pedagogy_title": "ᱥᱟᱨᱡᱚᱢ ᱫᱟᱨᱮ ᱩᱢᱩᱞ ᱨᱮ ᱩᱞ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ! 🥭",
+                "vernacular_explanation": "ᱢᱤᱫᱴᱟᱝ ᱢᱟᱨᱟᱝ ᱦᱮᱲᱮᱢ ᱩᱞ ᱵᱟᱨ ᱦᱚᱲ ᱛᱮ ᱥᱚᱢᱟᱱ ᱛᱮ ᱠᱮᱪᱟᱜ ᱠᱟᱛᱮ ᱡᱚᱢ ᱞᱮᱠᱷᱟᱱ, ᱢᱤᱫ ᱦᱚᱲ ᱫᱚ ᱟᱫᱷᱟ (1/2) ᱵᱟᱹᱨᱥᱤᱧ ᱧᱟᱢᱟ᱾ ᱯᱩᱱ ᱦᱚᱲ ᱛᱮ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ (1/4) ᱧᱟᱢᱚᱜᱼᱟ! ᱱᱚᱣᱟ ᱜᱮ ᱦᱟᱹᱴᱤᱧ (Fractions) ᱠᱟᱱᱟ!",
+                "local_metaphor": "ᱥᱚᱢᱟᱱ ᱛᱮ ᱡᱚᱢᱟᱜ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ᱾",
+                "context_hook": "ᱟᱹᱛᱩ ᱦᱟᱴ ᱟᱨ ᱦᱮᱲᱮᱢ ᱩᱞ",
+                "cultural_keywords": [{"term": "ᱟᱫᱷᱟ (1/2)", "meaning": "ᱵᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ"}, {"term": "ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ (1/4)", "meaning": "ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ"}],
+                "familiar_objects": ["ᱩᱞ", "ᱯᱤᱴᱷᱟᱹ"],
+                "literal": "ᱦᱟᱹᱴᱤᱧ (Fraction): ᱢᱤᱫᱴᱟᱝ ᱡᱤᱱᱤᱥ ᱥᱚᱢᱟᱱ ᱛᱮ ᱦᱟᱹᱴᱤᱧ᱾",
+                "phonetic": "Hạṭiń: Midṭang jinis soman te hạṭiń."
+            },
+            "khr": {
+                "pedagogy_title": "हाट के मीठा आम और संगी-साथी में बंटवारा! 🥭",
+                "vernacular_explanation": "बाजार से आवे वाला बड़का पाकल आम के दू गो भाई-बहिन में बराबर काट लेबा, त दोनों के आधा (1/2) हिस्सा मिलतो! चार गो संगी मिल के बांटबा, त चउथा हिस्सा (1/4) मिलतो! इहे बराबर बांटल के भिन्न कहल जाहो है!",
+                "local_metaphor": "मीठा आम के बराबर हिस्सा में बांट के खाइक।",
+                "context_hook": "गांव के साप्ताहिक हाट और ढुसका-पीठा",
+                "cultural_keywords": [{"term": "आधा (1/2)", "meaning": "दू हिस्सा में एक हिस्सा"}, {"term": "चौथाई (1/4)", "meaning": "चार हिस्सा में एक हिस्सा"}],
+                "familiar_objects": ["आम", "रोटी", "पीठा"],
+                "literal": "बांट/अंग (Fraction): कोनो चीज़ के बराबर हिस्सा में बांटेक।",
+                "phonetic": "Bant/Ang: Kono cheez ke barabar hissa me bantek."
             },
             "en": {
                 "pedagogy_title": "Sharing Warm Chapatis & Mango Slices!",

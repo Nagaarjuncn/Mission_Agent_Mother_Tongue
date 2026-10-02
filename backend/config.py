@@ -54,7 +54,7 @@ class Settings:
     def FRONTEND_DIR(self) -> str:
         return self._find_frontend_dir()
 
-    # 12 Supported Languages (11 Indian Mother Tongues + English)
+    # 14 Supported Languages (13 Indian Mother Tongues + English)
     SUPPORTED_LANGUAGES: List[Dict[str, Any]] = [
         {"code": "ta", "name": "Tamil", "nativeName": "தமிழ்", "flag": "🇮🇳", "speechCode": "ta-IN"},
         {"code": "te", "name": "Telugu", "nativeName": "తెలుగు", "flag": "🇮🇳", "speechCode": "te-IN"},
@@ -67,6 +67,8 @@ class Settings:
         {"code": "pa", "name": "Punjabi", "nativeName": "ਪੰਜਾਬੀ", "flag": "🇮🇳", "speechCode": "pa-IN"},
         {"code": "or", "name": "Odia", "nativeName": "ଓଡ଼ିଆ", "flag": "🇮🇳", "speechCode": "or-IN"},
         {"code": "as", "name": "Assamese", "nativeName": "অসমীয়া", "flag": "🇮🇳", "speechCode": "as-IN"},
+        {"code": "sat", "name": "Santhali", "nativeName": "ᱥᱟᱱᱛᱟᱲᱤ (Ol Chiki)", "flag": "🇮🇳", "speechCode": "sat-IN"},
+        {"code": "khr", "name": "Khortha", "nativeName": "खोरठा", "flag": "🇮🇳", "speechCode": "khr-IN"},
         {"code": "en", "name": "English", "nativeName": "English", "flag": "🌐", "speechCode": "en-US"}
     ]
 

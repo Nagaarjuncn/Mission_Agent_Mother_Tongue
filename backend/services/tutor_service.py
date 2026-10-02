@@ -26,6 +26,16 @@ ENCOURAGEMENT_BY_LANG = {
         "చాలా బాగుంది! మీరు సరిగ్గా ఆలోచిస్తున్నారు! 🌟",
         "శభాష్ చిట్టి మిత్రమా! చక్కగా సమాధానం ఇచ్చావు! 👏"
     ],
+    "sat": [
+        "ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ! ᱟᱢ ᱟᱹᱰᱤ ᱵᱮᱥ ᱮᱢ ᱩᱭᱦᱟᱹᱨᱮᱫᱼᱟ! 🌟",
+        "ᱥᱟᱵᱟᱥ ᱠᱟᱹᱴᱤᱡ ᱜᱟᱛᱮ! ᱱᱚᱝᱠᱟ ᱜᱮ ᱪᱮᱫᱚᱜ ᱢᱮ! 👏",
+        "ᱟᱹᱰᱤ ᱪᱚᱨᱚᱠ! ᱟᱢᱟᱜ ᱠᱩᱠᱞᱤ ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭᱟ! 🚀"
+    ],
+    "khr": [
+        "बहुत बढ़िया! तोहे एकदम सही सोच रहल ह! 🌟",
+        "शाबाश नन्हा संगी! अइसने मन लगाय के पढ़! 👏",
+        "लाजवाब! तोहर सवाल बहुत सुंदर लागल! 🚀"
+    ],
     "en": [
         "Superstar! You are thinking in the right direction! 🌟",
         "Wonderful curiosity! Let's discover this together! 👏"
@@ -35,19 +45,23 @@ ENCOURAGEMENT_BY_LANG = {
 # Misconception diagnosis rules for primary science & math
 MISCONCEPTION_RULES = [
     {
-        "trigger_words": ["சூரியன் இரவில் தூங்குகிறது", "sun sleeps at night", "சூரியன் மறைகிறது", "सूरज सोता है"],
+        "trigger_words": ["சூரியன் இரவில் தூங்குகிறது", "sun sleeps at night", "சூரியன் மறைகிறது", "सूरज सोता है", "ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱡᱟᱹᱯᱤᱫ", "सुरुज सुते"],
         "misconception": "Sun disappears or goes away to sleep",
         "ta_feedback": "சூரியன் எங்கும் தூங்கச் செல்லவில்லை! பூமி பந்து போல சுழல்வதால், ஒரு பக்கம் பகலாகவும் மறுபக்கம் இரவாகவும் மாறுகிறது. நீங்கள் ஒரு பந்தை சுழற்றிப் பார்த்திருக்கிறீர்களா?",
         "hi_feedback": "सूरज कहीं सोने नहीं जाता! हमारी पृथ्वी लट्टू की तरह घूमती है, जिससे एक तरफ दिन और दूसरी तरफ रात होती है।",
         "te_feedback": "సూర్యుడు ఎక్కడికీ నిద్రపోడు! భూమి బొంగరంలా తిరగడం వల్ల ఒకవైపు పగలు, మరోవైపు రాత్రి ఏర్పడుతుంది.",
+        "sat_feedback": "ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱫᱚ ᱚᱠᱟ ᱦᱚᱸ ᱡᱟᱹᱯᱤᱫ ᱵᱟᱭ ᱪᱟᱞᱟᱜᱼᱟ! ᱟᱵᱚᱣᱟᱜ ᱫᱷᱟᱹᱨᱛᱤ ᱜᱩᱸᱰᱩ ᱞᱮᱠᱟ ᱟᱹᱪᱩᱨᱚᱜ ᱠᱟᱱᱟ, ᱚᱱᱟᱛᱮ ᱢᱤᱫ ᱯᱟᱦᱴᱟ ᱫᱚ ᱢᱟᱦᱟᱸ ᱟᱨ ᱢᱤᱫ ᱯᱟᱦᱴᱟ ᱫᱚ ᱧᱤᱫᱟᱹ ᱦᱩᱭᱩᱜᱼᱟ᱾",
+        "khr_feedback": "सुरुज भगवान कतहुं सुते नय जा हथ! हमनी के धरती भौंरा नियर घूमो है, जेकरा से एका दने दिन आउर दोसरा दने रात होवो है।",
         "en_feedback": "The Sun does not go to sleep! The Earth spins like a top, creating day on one side and night on the other."
     },
     {
-        "trigger_words": ["மழை மேகங்களில் இருந்து கொட்டுகிறது", "clouds have water tanks", "தொட்டி", "बादल में टंकी"],
+        "trigger_words": ["மழை மேகங்களில் இருந்து கொட்டுகிறது", "clouds have water tanks", "தொட்டி", "बादल में टंकी", "ᱫᱟᱜ ᱴᱟᱝᱠᱤ", "पानी के टंकी"],
         "misconception": "Clouds are solid containers of water",
         "ta_feedback": "மேகங்கள் தண்ணீர் தொட்டி அல்ல! அவை பனித்துளிகள் போல காற்றில் மிதக்கும் குட்டி நீர்த்துளிகளின் கூட்டம். ஒன்று சேர்ந்ததும் கனமாகி மழையாக விழுகின்றன.",
         "hi_feedback": "बादल कोई पानी की टंकी नहीं हैं! वे तो हवा में तैरती नन्ही भाप की बूंदों का झुंड हैं, जो भारी होकर बरसते हैं।",
         "te_feedback": "మేఘాలు నీటి తొట్టెలు కావు! అవి గాలిలో తేలే చిన్న నీటి బిందువులు, చల్లబడినప్పుడు వర్షంగా కురుస్తాయి.",
+        "sat_feedback": "ᱨᱤᱢᱤᱞ ᱫᱚ ᱫᱟᱜ ᱴᱟᱝᱠᱤ ᱵᱟᱝ ᱠᱟᱱᱟ! ᱱᱚᱣᱟ ᱫᱚ ᱦᱚᱭ ᱨᱮ ᱟᱹᱛᱩᱜ ᱠᱟᱱ ᱠᱟᱹᱴᱤᱡ ᱠᱟᱹᱴᱤᱡ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱨᱮᱱᱟᱜ ᱜᱟᱫᱮᱞ ᱠᱟᱱᱟ, ᱡᱟᱦᱟᱸ ᱫᱚ ᱦᱟᱢᱟᱞ ᱞᱮᱱᱠᱷᱟᱱ ᱡᱟᱹᱲᱤᱜᱼᱟ᱾",
+        "khr_feedback": "बदरी कोनो पानी के टंकी नय हके! ई हवा में तैरते नन्हा भाप के बूंद के झुंड हके, जे भारी भेला पर पानी बरसे है।",
         "en_feedback": "Clouds are not water tanks! They are clusters of tiny floating water droplets that fall as rain when they become heavy."
     }
 ]
@@ -65,6 +79,8 @@ class TutorService:
         target_lang = (req.target_lang or "ta").lower().strip()
         is_tamil = target_lang == "ta"
         is_hindi = target_lang == "hi"
+        is_santhali = target_lang == "sat"
+        is_khortha = target_lang == "khr"
 
         # 1. Automatic Conversion of any-language input into child's selected mother tongue
         conv_info = translation_service.translate_any_to_mother_tongue(req.message, target_lang)
@@ -98,21 +114,63 @@ class TutorService:
         for rule in MISCONCEPTION_RULES:
             if any(w.lower() in user_msg for w in rule["trigger_words"]):
                 feedback = rule.get(f"{target_lang}_feedback") or rule.get("ta_feedback")
+                
+                if is_santhali:
+                    iq = "ᱱᱤᱛᱚᱜ ᱞᱟᱹᱭ ᱢᱮ, ᱫᱷᱟᱹᱨᱛᱤ ᱟᱹᱪᱩᱨ ᱞᱮᱱᱠᱷᱟᱱ ᱟᱢᱟᱜ ᱟᱹᱛᱩ ᱨᱮ ᱪᱮᱫ ᱦᱩᱭᱩᱜᱼᱟ?"
+                    ht = "ᱢᱤᱫᱴᱟᱝ ᱵᱚᱞ ᱪᱮᱛᱟᱱ ᱴᱚᱨᱪ ᱢᱟᱨᱥᱟᱞ ᱠᱟᱛᱮ ᱧᱮᱞ ᱢᱮ!"
+                    qr = ["ᱢᱟᱦᱟᱸ ᱟᱨ ᱧᱤᱫᱟᱹ ᱵᱚᱫᱚᱞᱚᱜᱼᱟ", "ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱟᱹᱪᱩᱨᱚᱜᱼᱟ"]
+                elif is_khortha:
+                    iq = "अब बतावा संगी, जब धरती घूमो है त तोहर गांव में की होवो है?"
+                    ht = "गेन्द पर टॉर्च बार के देखा!"
+                    qr = ["दिन आउर रात बनो है", "सुरुज घूमो है"]
+                elif is_tamil:
+                    iq = "இப்போது சொல்லுங்கள், பூமி சுழலும் போது உங்கள் ஊரில் என்ன நடக்கும்?"
+                    ht = "ஒரு பந்தின் மேல் டார்ச் அடித்துப் பாருங்கள்!"
+                    qr = ["பகல் மற்றும் இரவு மாறும்", "சூரியன் சுழல்கிறது", "மழை பெய்கிறது"]
+                else:
+                    iq = "अब बताइए, जब पृथ्वी घूमती है तो आपके शहर में क्या होता है?"
+                    ht = "गेंद पर टॉर्च जलाकर देखें!"
+                    qr = ["दिन और रात बनते हैं", "सूरज घूमता है"]
+
                 return make_response(
                     reply_text=feedback,
                     reply_speech_code=target_speech,
                     emotion="guiding",
-                    interactive_question="இப்போது சொல்லுங்கள், பூமி சுழலும் போது உங்கள் ஊரில் என்ன நடக்கும்?" if is_tamil else "अब बताइए, जब पृथ्वी घूमती है तो आपके शहर में क्या होता है?",
+                    interactive_question=iq,
                     hint_available=True,
-                    hint_text="ஒரு பந்தின் மேல் டார்ச் அடித்துப் பாருங்கள்!" if is_tamil else "गेंद पर टॉर्च जलाकर देखें!",
-                    suggested_quick_replies=["பகல் மற்றும் இரவு மாறும்", "சூரியன் சுழல்கிறது", "மழை பெய்கிறது"] if is_tamil else ["दिन और रात बनते हैं", "सूरज घूमता है"],
+                    hint_text=ht,
+                    suggested_quick_replies=qr,
                     stars_awarded=1,
                     detected_misconception=rule["misconception"]
                 )
 
         # 3. Topic-aware interactive dialogue (Water Cycle / Rain)
-        if any(w in user_msg for w in ["rain", "மழை", "நீர்", "வானம்", "water", "cloud", "बादल", "बारिश", "వర్షం", "మేఘ"]):
-            if is_tamil:
+        if any(w in user_msg for w in ["rain", "மழை", "நீர்", "வானம்", "water", "cloud", "बादल", "बारिश", "వర్షం", "మేఘ", "ᱫᱟᱜ", "ᱨᱤᱢᱤᱞ", "ᱥᱮᱨᱢᱟ", "पानी", "बदरी"]):
+            if is_santhali:
+                return make_response(
+                    reply_text=f"ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ ᱠᱩᱠᱞᱤ! 🌧️ ᱟᱢ ᱠᱩᱞᱤ ᱟᱠᱟᱫᱟ: '{displayed_question}'\n\nᱟᱵᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱫᱟᱠᱟ ᱩᱛᱩ ᱡᱚᱠᱷᱚᱱ ᱪᱮᱛᱟᱱ ᱛᱮ ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ ᱧᱮᱞ ᱟᱠᱟᱫᱟᱢ? ᱴᱷᱤᱠ ᱚᱱᱠᱟ ᱜᱮ ᱜᱟᱰᱟ ᱟᱨ ᱯᱩᱠᱷᱨᱤ ᱫᱟᱜ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵᱼᱟ ᱟᱨ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ᱾ ᱨᱤᱢᱤᱞ ᱦᱟᱢᱟᱞ ᱞᱮᱱᱠᱷᱟᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤ ᱦᱩᱭᱩᱜᱼᱟ!",
+                    reply_speech_code="sat-IN",
+                    phonetic_guide="Chulha daka bhap leka gada da' serma rimil benawg-a.",
+                    emotion="happy",
+                    interactive_question="ᱫᱟᱠᱟ ᱴᱩᱠᱩᱡ ᱪᱮᱛᱟᱱ ᱛᱷᱟᱹᱨᱤ ᱯᱚᱴᱚᱢ ᱞᱮᱠᱷᱟᱱ ᱚᱱᱟ ᱨᱮ ᱪᱮᱫ ᱡᱟᱣᱨᱟᱜᱼᱟ?",
+                    hint_available=True,
+                    hint_text="ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱨᱮᱱᱟᱜ ᱠᱟᱛᱷᱟ ᱩᱭᱦᱟᱹᱨ ᱢᱮ!",
+                    suggested_quick_replies=["ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ", "ᱥᱤᱸᱜᱤ ᱢᱟᱨᱥᱟᱞ", "ᱦᱚᱭ"],
+                    stars_awarded=2
+                )
+            elif is_khortha:
+                return make_response(
+                    reply_text=f"अरे वाह! बहुत सुंदर सवाल संगी! 🌧️ तोहर सवाल: '{displayed_question}'\n\nजब घरे माय भात या चाय पकावो हथ, त डेगची से भाप ऊपर उड़ो है ना? ओकर ऊपर जब ढक्कन राख देबी, त भाप ठंडा होके पानी के नन्हा-नन्हा बूंद बन जाहो है! अइसने नदी-पोखरा के पानी घाम से भाप बन के बदरी बनो है आउर झम-झम पानि बरसे है!",
+                    reply_speech_code="khr-IN",
+                    phonetic_guide="Degchi ke bhaap badri ban ke jham-jham barse hai.",
+                    emotion="happy",
+                    interactive_question="बतावा संगी, नदी के पानी भाप बन के अकास में की बनो है?",
+                    hint_available=True,
+                    hint_text="अकास में रुई नियर की तैरो है?",
+                    suggested_quick_replies=["बदरी (Badal)", "सुरुज", "तारा"],
+                    stars_awarded=2
+                )
+            elif is_tamil:
                 return make_response(
                     reply_text=f"அருமையான கேள்வி! 🌧️ நீங்கள் கேட்டது: '{displayed_question}'\n\nநம் வீட்டில் அம்மா இட்லி சமைக்கும் போது பானையில் இருந்து வெள்ளை ஆவி மேலே போவதைப் பார்த்திருக்கிறீர்களா? அதே போல, வெயிலில் ஆறு மற்றும் குளத்து நீர் ஆவியாகி மேலே பறந்து, குளிர்ந்த காற்றில் ஒன்றுசேர்ந்து மேகமாகிறது. மேகம் கனத்தவுடன் முத்து முத்தாக மழை பெய்கிறது!",
                     reply_speech_code="ta-IN",
@@ -138,8 +196,32 @@ class TutorService:
                 )
 
         # 4. Topic-aware interactive dialogue (Photosynthesis / Plants)
-        if any(w in user_msg for w in ["உணவு", "plant", "தாவரம்", "சூரிய", "धूप", "खाना", "पौधा", "మొక్క", "చెట్టు"]):
-            if is_tamil:
+        if any(w in user_msg for w in ["உணவு", "plant", "தாவரம்", "சூரிய", "धूप", "खाना", "पौधा", "మొక్క", "చెట్టు", "ᱡᱚᱢᱟᱜ", "ᱫᱟᱨᱮ", "ᱥᱟᱠᱟᱢ", "गाछ", "पतई"]):
+            if is_santhali:
+                return make_response(
+                    reply_text=f"ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ ᱠᱩᱠᱞᱤ! 🌿 ᱟᱢ ᱠᱩᱞᱤ ᱟᱠᱟᱫᱟ: '{displayed_question}'\n\nᱟᱵᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱨᱟᱪᱟ ᱨᱮᱱᱟᱜ ᱫᱟᱨᱮ ᱪᱮᱠᱟᱛᱮ ᱡᱚᱢᱟᱜ ᱮ ᱵᱮᱱᱟᱣᱟ? ᱨᱮᱦᱮᱴ ᱛᱮ ᱫᱟᱜ ᱧᱩ ᱠᱟᱛᱮ ᱟᱨ ᱥᱟᱠᱟᱢ ᱨᱮ ᱥᱤᱸᱜᱤ ᱛᱟᱨᱟᱥ ᱧᱟᱢ ᱠᱟᱛᱮ ᱡᱚᱢᱟᱜ ᱮ ᱛᱮᱭᱟᱨᱟ! ᱱᱚᱣᱟ ᱜᱮ 'ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ' (Photosynthesis) ᱵᱚᱱ ᱢᱮᱛᱟᱜᱼᱟ᱾",
+                    reply_speech_code="sat-IN",
+                    phonetic_guide="Dare sakam sińgi taras te jomag teyara.",
+                    emotion="happy",
+                    interactive_question="ᱫᱟᱨᱮ ᱡᱚᱢᱟᱜ ᱵᱮᱱᱟᱣ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱸᱜᱤ ᱛᱟᱨᱟᱥ ᱥᱟᱶᱛᱮ ᱟᱨ ᱪᱮᱫ ᱞᱟᱹᱠᱛᱤᱭᱟ?",
+                    hint_available=True,
+                    hint_text="ᱡᱟᱦᱟᱸ ᱫᱚ ᱟᱢ ᱫᱤᱱᱟᱹᱢ ᱦᱤᱞᱚᱜ ᱫᱟᱨᱮ ᱨᱮᱦᱮᱴ ᱨᱮᱢ ᱫᱩᱞᱟ!",
+                    suggested_quick_replies=["ᱫᱟᱜ (Water)", "ᱦᱚᱭ (Air)", "ᱵᱟᱱᱟᱨ ᱜᱮ!"],
+                    stars_awarded=2
+                )
+            elif is_khortha:
+                return make_response(
+                    reply_text=f"अरे वाह! बहुत सुंदर सवाल संगी! 🌿 तोहर सवाल: '{displayed_question}'\n\nजैसे तोहर माय घरे रंधन करे हथ, वइसने गाछ-बिरिछ सुरुज के घाम आउर पानि से आपन हरियर पतई में खाना बनाव हथ। एकरा 'प्रकाश-संश्लेषण' (Photosynthesis) कहल जाहो है!",
+                    reply_speech_code="khr-IN",
+                    phonetic_guide="Hariyar patai ghaam aur paani se khana banavo hai.",
+                    emotion="happy",
+                    interactive_question="बतावा संगी, घाम के अलावा गाछ के खाना पकावे ले की चाही?",
+                    hint_available=True,
+                    hint_text="जे तोहे रोज़ गाछ के जड़ में डालो ह!",
+                    suggested_quick_replies=["पानी (Water)", "हवा (Air)", "दोनों चाही!"],
+                    stars_awarded=2
+                )
+            elif is_tamil:
                 return make_response(
                     reply_text=f"அருமையான கேள்வி அருண்! 🌿 நீங்கள் கேட்டது: '{displayed_question}'\n\nநம் வீட்டு முற்றத்துத் துளசிச் செடி எப்படி உணவு செய்கிறது தெரியுமா? வேர்கள் வழியே நீரை உறிஞ்சி, இலைகளில் சூரிய ஒளியைப் பாய்ச்சி சமைக்கிறது! இதை 'ஒளிச்சேர்க்கை' (Photosynthesis) என்போம்.",
                     reply_speech_code="ta-IN",
@@ -243,6 +325,20 @@ class TutorService:
                 "hint": "আইতাই কোৱা সাধুকথা মনত পেলোৱা।",
                 "replies": ["হয়, দেখিছো!", "মোক বুজাই দিয়া", "এটা সাধু কোৱা!"]
             },
+            "sat": {
+                "text": f"ᱡᱚᱦᱟᱨ! ᱢᱤᱛᱨᱟ ᱱᱚᱰᱮ ᱢᱮᱱᱟᱹᱧᱟ! ᱟᱢᱟᱜ ᱠᱩᱠᱞᱤ '{displayed_question}' ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭᱟ᱾ ᱫᱮᱞᱟ ᱟᱵᱚᱣᱟᱜ ᱟᱭᱳ ᱟᱲᱟᱝ ᱥᱟᱱᱛᱟᱲᱤ ᱛᱮ ᱱᱚᱣᱟ ᱵᱚᱱ ᱪᱮᱫᱚᱜᱼᱟ!",
+                "speech": "sat-IN",
+                "question": "ᱱᱚᱣᱟ ᱵᱟᱵᱚᱛ ᱟᱢ ᱚᱲᱟᱜ ᱨᱮ ᱥᱮ ᱟᱹᱛᱩ ᱨᱮ ᱧᱮᱞ ᱟᱠᱟᱫᱟᱢ?",
+                "hint": "ᱟᱢ ᱜᱚᱲᱚᱢ ᱦᱟᱲᱟᱢ ᱥᱮ ᱜᱚᱲᱚᱢ ᱵᱩᱰᱷᱤ ᱞᱟᱹᱭ ᱟᱠᱟᱫ ᱠᱟᱹᱦᱱᱤ ᱩᱭᱦᱟᱹᱨ ᱢᱮ᱾",
+                "replies": ["ᱦᱮᱸ, ᱧᱮᱞ ᱟᱠᱟᱫᱟᱹᱧ!", "ᱤᱧ ᱵᱩᱡᱷᱟᱹᱣ ᱟᱹᱧ ᱢᱮ", "ᱢᱤᱫᱴᱟᱝ ᱠᱟᱹᱦᱱᱤ ᱞᱟᱹᱭ ᱢᱮ!"]
+            },
+            "khr": {
+                "text": f"गोड़ लागो ही! संगी मित्रा हियां हाजिर है! तोहर सवाल '{displayed_question}' बहुत सुंदर हके। आवा आपन मातृभाषा खोरठा में एकरा सोझ से सीखब!",
+                "speech": "khr-IN",
+                "question": "की तोहे आपन घरे या आसपास अइसन देखले ह?",
+                "hint": "आजी-दादी के कहल कहानी याद करा।",
+                "replies": ["हँ देखले हियै!", "हमरा समझावा", "एगो कहनी सुनावा!"]
+            },
             "en": {
                 "text": f"Hello little friend! Mitra is here! Your question '{displayed_question}' is wonderful. Let us discover the answer together!",
                 "speech": "en-US",
@@ -270,19 +366,60 @@ class TutorService:
         so children never get stuck or discouraged.
         """
         is_tamil = req.target_lang.lower() == "ta"
+        is_santhali = req.target_lang.lower() == "sat"
+        is_khortha = req.target_lang.lower() == "khr"
 
         if req.hint_level == 1:
-            hint_text = "யோசித்துப் பாருங்கள்: உங்கள் வீட்டில் அம்மா தினமும் சமைக்கும் போது என்ன நடக்கும்?" if is_tamil else "सोचिए: जब मम्मी घर में खाना बनाती हैं तो क्या होता है?"
-            clue = "வீட்டு சமையலறை" if is_tamil else "रसोईघर"
-            encouragement = "உங்களால் முடியும்! ஒரு சிறு முயற்சி செய்து பாருங்கள்! 🌟" if is_tamil else "आप कर सकते हैं! एक बार कोशिश कीजिए! 🌟"
+            if is_santhali:
+                hint_text = "ᱩᱭᱦᱟᱹᱨ ᱢᱮ: ᱟᱢᱟᱜ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱫᱤᱱᱟᱹᱢ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱫᱟᱠᱟ ᱩᱛᱩ ᱡᱚᱠᱷᱚᱱ ᱪᱮᱫ ᱦᱩᱭᱩᱜᱼᱟ?"
+                clue = "ᱚᱲᱟᱜ ᱪᱩᱞᱦᱟᱹ"
+                encouragement = "ᱟᱢ ᱫᱟᱲᱮᱭᱟᱜᱼᱟᱢ! ᱢᱤᱫ ᱫᱷᱟᱣ ᱪᱮᱥᱴᱟᱭ ᱢᱮ! 🌟"
+            elif is_khortha:
+                hint_text = "सोचा: जब घरे माय रंधन करे हथ त की होवो है?"
+                clue = "घरे के भान्साघर"
+                encouragement = "तोहे कर सक ह! एक बेर कोशिश करा! 🌟"
+            elif is_tamil:
+                hint_text = "யோசித்துப் பாருங்கள்: உங்கள் வீட்டில் அம்மா தினமும் சமைக்கும் போது என்ன நடக்கும்?"
+                clue = "வீட்டு சமையலறை"
+                encouragement = "உங்களால் முடியும்! ஒரு சிறு முயற்சி செய்து பாருங்கள்! 🌟"
+            else:
+                hint_text = "सोचिए: जब मम्मी घर में खाना बनाती हैं तो क्या होता है?"
+                clue = "रसोईघर"
+                encouragement = "आप कर सकते हैं! एक बार कोशिश कीजिए! 🌟"
         elif req.hint_level == 2:
-            hint_text = "இட்லிப் பானைத் தட்டின் கீழ் பனித்துளிகள் போல நீர் சேர்வதை கவனித்திருக்கிறீர்களா? அது நீராவியால் நடக்கிறது!" if is_tamil else "पतीले के ढक्कन पर भाप की बूंदों को याद कीजिए, यह भाप के ठंडे होने से होता है!"
-            clue = "நீராவி குளிர்வடைதல் (Condensation)" if is_tamil else "भाप का संघनन (Condensation)"
-            encouragement = "மிக நெருங்கி வந்துவிட்டீர்கள்! சபாஷ்! 🚀" if is_tamil else "बहुत करीब हैं आप! शाबाश! 🚀"
+            if is_santhali:
+                hint_text = "ᱫᱟᱠᱟ ᱴᱩᱠᱩᱡ ᱪᱮᱛᱟᱱ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱡᱟᱣᱨᱟᱜ ᱧᱮᱞ ᱟᱠᱟᱫᱟᱢ? ᱚᱱᱟ ᱫᱚ ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱦᱩᱭᱩᱜᱼᱟ!"
+                clue = "ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ (Condensation)"
+                encouragement = "ᱟᱹᱰᱤ ᱥᱩᱨ ᱮᱢ ᱥᱮᱴᱮᱨ ᱮᱱᱟ! ᱥᱟᱵᱟᱥ! 🚀"
+            elif is_khortha:
+                hint_text = "डेगची के ढक्कन पर भाप के बूंद के याद करा, ई भाप के ठंडा भेला से होवो है!"
+                clue = "भाप के ठंडा होवेक (Condensation)"
+                encouragement = "बहुत नजदीक पहुँच गेल ह! शाबाश! 🚀"
+            elif is_tamil:
+                hint_text = "இட்லிப் பானைத் தட்டின் கீழ் பனித்துளிகள் போல நீர் சேர்வதை கவனித்திருக்கிறீர்களா? அது நீராவியால் நடக்கிறது!"
+                clue = "நீராவி குளிர்வடைதல் (Condensation)"
+                encouragement = "மிக நெருங்கி வந்துவிட்டீர்கள்! சபாஷ்! 🚀"
+            else:
+                hint_text = "पतीले के ढक्कन पर भाप की बूंदों को याद कीजिए, यह भाप के ठंडे होने से होता है!"
+                clue = "भाप का संघनन (Condensation)"
+                encouragement = "बहुत करीब हैं आप! शाबाश! 🚀"
         else:
-            hint_text = "சரியான விடை இதோ: சூரிய வெப்பத்தால் நீர் மேலே சென்று, குளிர்ந்து மழையாக மாறுகிறது!" if is_tamil else "सही उत्तर: सूरज की गर्मी से पानी भाप बनकर ऊपर जाता है और ठंडा होकर बारिश बनता है!"
-            clue = "மழை சுழற்சி (Water Cycle)" if is_tamil else "जल चक्र (Water Cycle)"
-            encouragement = "அற்புதம்! இப்போது இந்தக் கருத்தை உங்கள் சொந்த வார்த்தைகளில் சொல்லிப் பாருங்கள்! 👏" if is_tamil else "शानदार! अब इसे अपने शब्दों में बोलकर देखिए! 👏"
+            if is_santhali:
+                hint_text = "ᱥᱟᱹᱨᱤ ᱛᱮᱞᱟ ᱫᱚ ᱱᱚᱣᱟ ᱠᱟᱱᱟ: ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱞᱚᱞᱚ ᱛᱮ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵᱼᱟ ᱟᱨ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱫᱟᱜ ᱡᱟᱹᱲᱤ ᱦᱩᱭᱩᱜᱼᱟ!"
+                clue = "ᱫᱟᱜ ᱪᱚᱠᱨᱚ (Water Cycle)"
+                encouragement = "ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ! ᱱᱤᱛᱚᱜ ᱱᱚᱣᱟ ᱠᱟᱛᱷᱟ ᱟᱢᱟᱜ ᱟᱲᱟᱝ ᱛᱮ ᱨᱚᱲ ᱢᱮ! 👏"
+            elif is_khortha:
+                hint_text = "सही उत्तर: सुरुज के घाम से पानी भाप बन के ऊपर जाहो है आउर ठंडा होके पानि बरसे है!"
+                clue = "जल चक्र (Water Cycle)"
+                encouragement = "शानदार! अब एकरा आपन बोली में बोल के देखा! 👏"
+            elif is_tamil:
+                hint_text = "சரியான விடை இதோ: சூரிய வெப்பத்தால் நீர் மேலே சென்று, குளிர்ந்து மழையாக மாறுகிறது!"
+                clue = "மழை சுழற்சி (Water Cycle)"
+                encouragement = "அற்புதம்! இப்போது இந்தக் கருத்தை உங்கள் சொந்த வார்த்தைகளில் சொல்லிப் பாருங்கள்! 👏"
+            else:
+                hint_text = "सही उत्तर: सूरज की गर्मी से पानी भाप बनकर ऊपर जाता है और ठंडा होकर बारिश बनता है!"
+                clue = "जल चक्र (Water Cycle)"
+                encouragement = "शानदार! अब इसे अपने शब्दों में बोलकर देखिए! 👏"
 
         return TutorHintResponse(
             hint_level=req.hint_level,

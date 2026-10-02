@@ -110,6 +110,8 @@ export class SpeechEngine {
       pa: 'Punjabi (ਪੰਜਾਬੀ)',
       or: 'Odia (ଓଡ଼ିଆ)',
       as: 'Assamese (অসমীয়া)',
+      sat: 'Santhali (ᱥᱟᱱᱛᱟᱲᱤ)',
+      khr: 'Khortha (खोरठा)',
       en: 'English'
     };
     return map[(shortLang || 'ta').toLowerCase()] || (shortLang || '').toUpperCase();
@@ -299,7 +301,7 @@ export class SpeechEngine {
     const gttsLangMap = {
       ta: 'ta', hi: 'hi', te: 'te', kn: 'kn', ml: 'ml', bn: 'bn',
       mr: 'mr', gu: 'gu', pa: 'pa', ur: 'ur', en: 'en',
-      or: 'hi', as: 'bn'
+      or: 'hi', as: 'bn', sat: 'hi', khr: 'hi'
     };
     const ttsLang = gttsLangMap[shortLang] || shortLang;
 
@@ -497,6 +499,8 @@ export class SpeechEngine {
       { code: 'pa', patterns: ['punjabi', 'ਪੰਜਾਬੀ', 'ਸਤਿ ਸ੍ਰੀ ਅਕਾਲ', 'sat sri akaal'] },
       { code: 'or', patterns: ['odia', 'oriya', 'ଓଡ଼ିଆ', 'ନମସ୍କାର'] },
       { code: 'as', patterns: ['assamese', 'অসমীয়া', 'নমস্কাৰ'] },
+      { code: 'sat', patterns: ['santhali', 'santali', 'ol chiki', 'olchiki', 'ᱥᱟᱱᱛᱟᱲᱤ', 'ᱡᱚᱦᱟᱨ', 'johar', 'ᱫᱟᱜ', 'ᱥᱮᱨᱢᱟ', 'ᱟᱭᱳᱣᱟᱜ'] },
+      { code: 'khr', patterns: ['khortha', 'khotta', 'खोरठा', 'हमनी', 'तोहनी', 'गोड़ लागो', 'काहे', 'बरसे', 'हमार', 'संगी'] },
       { code: 'ur', patterns: ['urdu', 'اردو', 'السلام عليكم', 'adab'] },
       { code: 'es', patterns: ['spanish', 'español', 'espanol', 'hola'] },
       { code: 'fr', patterns: ['french', 'français', 'francais', 'bonjour'] },
@@ -526,6 +530,7 @@ export class SpeechEngine {
       gu: (trimmed.match(/[\u0A80-\u0AFF]/g) || []).length, // Gujarati
       pa: (trimmed.match(/[\u0A00-\u0A7F]/g) || []).length, // Gurmukhi (Punjabi)
       or: (trimmed.match(/[\u0B00-\u0B7F]/g) || []).length, // Odia
+      sat: (trimmed.match(/[\u1C50-\u1C7F]/g) || []).length, // Ol Chiki (Santhali)
       ar: (trimmed.match(/[\u0600-\u06FF]/g) || []).length, // Arabic / Urdu
       ja: (trimmed.match(/[\u3040-\u30FF]/g) || []).length, // Japanese Hiragana/Katakana
       zh: (trimmed.match(/[\u4E00-\u9FFF]/g) || []).length, // Chinese Hanzi
@@ -552,6 +557,7 @@ export class SpeechEngine {
         gu: 'Gujarati Native Script',
         pa: 'Gurmukhi Native Script',
         or: 'Odia Native Script',
+        sat: 'Ol Chiki Native Script (ᱥᱟᱱᱛᱟᱲᱤ)',
         ar: 'Arabic / Urdu Script',
         ja: 'Japanese Kana/Kanji',
         zh: 'Chinese Hanzi Script',
@@ -601,6 +607,14 @@ export class SpeechEngine {
       detectedCode = 'pa';
       confidence = 0.96;
       scriptDetail = 'Punjabi (Romanized)';
+    } else if (/\b(johar|santhali|santali|ol chiki|olchiki|dare|serma|ayowag|sarjom)\b/i.test(lower)) {
+      detectedCode = 'sat';
+      confidence = 0.97;
+      scriptDetail = 'Santhali (Romanized / Ol Chiki Phonetics)';
+    } else if (/\b(khortha|khotta|hamni|tohni|gor lago|badri|kahe|bhansa|chhua)\b/i.test(lower)) {
+      detectedCode = 'khr';
+      confidence = 0.97;
+      scriptDetail = 'Khortha (Romanized)';
     } else if (/\b(hola|buenos|dias|como|estas|gracias|amigo|lengua|madre|espanol)\b/i.test(lower)) {
       detectedCode = 'es';
       confidence = 0.96;
@@ -674,6 +688,16 @@ export class SpeechEngine {
         code: 'as', name: 'Assamese', nativeName: 'অসমীয়া', flag: '🇮🇳', speechCode: 'as-IN',
         welcomeGreeting: 'নমস্কাৰ! আপোনাৰ মাতৃভাষা অসমীয়া নিৰ্বাচিত হৈছে। মোক যিকোনো প্ৰশ্ন সোধক!',
         sampleQuestion: 'আকাশৰ পৰা বৰষুণ কিয় পৰে?'
+      },
+      sat: { 
+        code: 'sat', name: 'Santhali', nativeName: 'ᱥᱟᱱᱛᱟᱲᱤ (Ol Chiki)', flag: '🇮🇳', speechCode: 'sat-IN',
+        welcomeGreeting: 'ᱡᱚᱦᱟᱨ! ᱟᱢᱟᱜ ᱟᱭᱳ ᱟᱲᱟᱝ ᱥᱟᱱᱛᱟᱲᱤ ᱵᱟᱪᱷᱟᱣ ᱮᱱᱟ᱾ ᱤᱧ ᱡᱟᱦᱟᱸᱱᱟᱜ ᱠᱩᱠᱞᱤ ᱠᱩᱞᱤᱭᱤᱧ ᱢᱮ!',
+        sampleQuestion: 'ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ?'
+      },
+      khr: { 
+        code: 'khr', name: 'Khortha', nativeName: 'खोरठा', flag: '🇮🇳', speechCode: 'khr-IN',
+        welcomeGreeting: 'गोड़ लागो! तोहर मातृभाषा खोरठा चुन लेल गेल है। हमरा से कोनो सवाल पूछा!',
+        sampleQuestion: 'अकास से पानी काहे बरसे है?'
       },
       es: { 
         code: 'es', name: 'Spanish', nativeName: 'Español', flag: '🇪🇸', speechCode: 'es-ES',

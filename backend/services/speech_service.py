@@ -115,6 +115,24 @@ REGIONAL_VOICE_PROFILES = {
         "preferred_voices": ["Google অসমীয়া", "as-IN-Standard-A"],
         "lang_code": "as-IN"
     },
+    "sat": {
+        "gender": "female",
+        "voice_persona": "child_friendly_lady_voice",
+        "pitch": 1.22,
+        "rate": 0.86,
+        "voice_name": "Santhali India Female (Mother/Teacher Voice)",
+        "preferred_voices": ["Google Santhali", "sat-IN-Standard-A", "Google हिन्दी", "Google বাংলা"],
+        "lang_code": "sat-IN"
+    },
+    "khr": {
+        "gender": "female",
+        "voice_persona": "child_friendly_lady_voice",
+        "pitch": 1.25,
+        "rate": 0.88,
+        "voice_name": "Khortha India Female (Mother/Teacher Voice)",
+        "preferred_voices": ["Microsoft Swara", "Google हिन्दी", "hi-IN-Standard-A"],
+        "lang_code": "khr-IN"
+    },
     "en": {
         "gender": "female",
         "voice_persona": "child_friendly_lady_voice",
@@ -188,6 +206,10 @@ class SpeechService:
             feedback = "உங்கள் உச்சரிப்பு மிகத் தெளிவாகவும் அழகாகவும் இருக்கிறது! 🌟"
         elif expected_lang == "hi":
             feedback = "आपका उच्चारण बहुत ही सुंदर और स्पष्ट है! 🌟"
+        elif expected_lang == "sat":
+            feedback = "ᱟᱢᱟᱜ ᱨᱚᱲ ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ ᱟᱨ ᱥᱟᱯᱷᱟ ᱜᱮᱭᱟ! 🌟"
+        elif expected_lang == "khr":
+            feedback = "तोहर उच्चारण बहुत बेस आउर साफ है! 🌟"
         else:
             feedback = "Wonderful and clear pronunciation! Keep shining! 🌟"
 
@@ -232,6 +254,8 @@ class SpeechService:
             "pa": ["punjabi", "ਪੰਜਾਬੀ", "ਮਾਤ੍ਰੀਭਾਸ਼ਾ"],
             "or": ["odia", "oriya", "ଓଡ଼ିଆ"],
             "as": ["assamese", "অসমীয়া"],
+            "sat": ["santhali", "santali", "ol chiki", "olchiki", "ᱥᱟᱱᱛᱟᱲᱤ", "ᱡᱚᱦᱟᱨ", "johar", "ᱫᱟᱜ", "ᱥᱮᱨᱢᱟ"],
+            "khr": ["khortha", "khotta", "खोरठा", "हमनी", "तोहनी", "गोड़ लागो", "काहे", "बरसे"],
             "en": ["english", "inglish", "angrezi"]
         }
 
@@ -260,6 +284,7 @@ class SpeechService:
             "gu": sum(1 for c in text if '\u0A80' <= c <= '\u0AFF'),
             "pa": sum(1 for c in text if '\u0A00' <= c <= '\u0A7F'),
             "or": sum(1 for c in text if '\u0B00' <= c <= '\u0B7F'),
+            "sat": sum(1 for c in text if '\u1C50' <= c <= '\u1C7F'),
         }
 
         top_script_lang = max(script_scores, key=script_scores.get)
@@ -298,6 +323,12 @@ class SpeechService:
             elif any(w in lower for w in ["sat sri akaal", "ki haal", "changa", "paani"]):
                 lang_code = "pa"
                 confidence = 0.95
+            elif any(w in lower for w in ["johar", "santhali", "santali", "ol chiki", "olchiki", "dare", "serma", "ayowag", "sarjom"]):
+                lang_code = "sat"
+                confidence = 0.97
+            elif any(w in lower for w in ["khortha", "khotta", "hamni", "tohni", "gor lago", "badri", "kahe", "bhansa", "chhua"]):
+                lang_code = "khr"
+                confidence = 0.97
             elif any(w in lower for w in ["hola", "buenos", "dias", "amigo", "espanol", "gracias"]):
                 lang_code = "en"  # Map to English with note
                 confidence = 0.90
@@ -353,6 +384,8 @@ class SpeechService:
             "ur": "ur",
             "or": "hi",  # Odia script phonetics align with Hindi/Devanagari TTS
             "as": "bn",  # Assamese script phonetics align with Bengali TTS
+            "sat": "hi",  # Santhali phonetics align with regional Indic TTS fallback
+            "khr": "hi",  # Khortha aligns with Hindi/Devanagari TTS
             "es": "es",
             "fr": "fr",
             "de": "de",
