@@ -271,6 +271,46 @@ PEDAGOGY_CONCEPTS_DB = [
                     "explanation": "पानी के भाप ऊपर जाके ठंडा होवो है आउर बदरी बनो है!"
                 }
             },
+            "hoc": {
+                "pedagogy_title": "ᱫᱟᱠᱟ ᱪᱩᱞᱦᱟᱹ ᱵᱷᱟᱯ ᱟᱨ ᱥᱤᱨᱢᱟ ᱨᱮᱱᱟᱜ ᱨᱤᱢᱤᱞ! 🍲☁️",
+                "vernacular_explanation": "ᱟᱵᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱢᱟᱱᱰᱤ ᱡᱚᱠᱷᱚᱱ ᱪᱮᱛᱟᱱ ᱛᱮ ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ ᱧᱮᱞ ᱟᱠᱟᱫᱟᱢ? ᱛᱷᱟᱹᱨᱤ ᱛᱮ ᱯᱚᱴᱚᱢ ᱞᱮᱠᱷᱟᱱ ᱚᱱᱟ ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ-ᱴᱷᱤᱯᱤᱨ ᱜᱟᱢᱟᱜᱼᱟ!\n\nᱥᱤᱝᱵᱚᱸᱜᱟ ᱦᱚᱸ ᱜᱟᱰᱟ ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱵᱷᱟᱯ ᱵᱮᱱᱟᱣᱟ, ᱚᱱᱟ ᱥᱤᱨᱢᱟ ᱨᱮ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ᱾ ᱨᱤᱢᱤᱞ ᱦᱟᱢᱟᱞ ᱞᱮᱱᱠᱷᱟᱱ ᱫᱟᱜ ᱜᱟᱢᱟᱜᱼᱟ!",
+                "local_metaphor": "ᱪᱩᱞᱦᱟᱹ ᱢᱟᱱᱰᱤ ᱴᱩᱠᱩᱡ ᱪᱮᱛᱟᱱ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱡᱟᱣᱨᱟᱜ ᱠᱟᱱ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱜᱟᱢᱟᱜᱼᱟ᱾",
+                "context_hook": "ᱠᱚᱞᱦᱟᱱ ᱜᱟᱰᱟ ᱟᱨ ᱦᱮᱸᱫᱮ ᱨᱤᱢᱤᱞ ᱫᱟᱜ ᱜᱟᱢᱟ",
+                "cultural_keywords": [
+                    {"term": "ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ (Evaporation)", "meaning": "ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ"},
+                    {"term": "ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ (Condensation)", "meaning": "ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ"},
+                    {"term": "ᱫᱟᱜ ᱜᱟᱢᱟ (Precipitation)", "meaning": "ᱨᱤᱢᱤᱞ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩᱨᱩᱜ"}
+                ],
+                "familiar_objects": ["ᱪᱩᱞᱦᱟᱹ ᱛᱷᱟᱹᱨᱤ", "ᱜᱟᱰᱟ ᱫᱟᱜ", "ᱦᱳᱲᱳ ᱠᱷᱮᱛ"],
+                "literal": "ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱜᱟᱢᱟᱜᱼᱟ?",
+                "phonetic": "Sirma khon da' cedag gamag-a?",
+                "quiz": {
+                    "question": "ᱥᱤᱝᱵᱚᱸᱜᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱜᱟᱰᱟ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱪᱮᱫ ᱵᱮᱱᱟᱣᱜᱼᱟ?",
+                    "options": ["ᱨᱤᱢᱤᱞ (Clouds)", "ᱫᱷᱤᱨᱤ", "ᱥᱟᱦᱟᱱ"],
+                    "correct": "ᱨᱤᱢᱤᱞ (Clouds)",
+                    "explanation": "ᱵᱷᱟᱯ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ ᱟᱨ ᱫᱟᱜ ᱜᱟᱢᱟᱜᱼᱟ!"
+                }
+            },
+            "mun": {
+                "pedagogy_title": "ᱪᱩᱞᱦᱟᱹ ᱫᱟᱠᱟ ᱵᱷᱟᱯ ᱟᱨ ᱥᱤᱨᱢᱟ ᱨᱮᱱᱟᱜ ᱨᱤᱢᱤᱞ! 🍲☁️",
+                "vernacular_explanation": "ᱟᱵᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱫᱟᱠᱟ ᱡᱚᱠᱷᱚᱱ ᱪᱮᱛᱟᱱ ᱛᱮ ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ ᱧᱮᱞ ᱟᱠᱟᱫᱟᱢ? ᱛᱷᱟᱹᱨᱤ ᱛᱮ ᱯᱚᱴᱚᱢ ᱞᱮᱠᱷᱟᱱ ᱚᱱᱟ ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱡᱟᱹᱲᱤᱜᱼᱟ!\n\nᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱜᱟᱰᱟ ᱫᱟᱜ ᱵᱷᱟᱯ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ, ᱟᱨ ᱚᱱᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ!",
+                "local_metaphor": "ᱪᱩᱞᱦᱟᱹ ᱫᱟᱠᱟ ᱴᱩᱠᱩᱡ ᱪᱮᱛᱟᱱ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱡᱟᱣᱨᱟᱜ ᱠᱟᱱ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ᱾",
+                "context_hook": "ᱠᱷᱩᱸᱴᱤ ᱟᱨ ᱨᱟᱺᱪᱤ ᱜᱟᱰᱟ ᱫᱟᱜ ᱡᱟᱹᱲᱤ",
+                "cultural_keywords": [
+                    {"term": "ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ (Evaporation)", "meaning": "ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ"},
+                    {"term": "ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ (Condensation)", "meaning": "ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ"},
+                    {"term": "ᱫᱟᱜ ᱡᱟᱹᱲᱤ (Precipitation)", "meaning": "ᱨᱤᱢᱤᱞ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩᱨᱩᱜ"}
+                ],
+                "familiar_objects": ["ᱪᱩᱞᱦᱟᱹ ᱛᱷᱟᱹᱨᱤ", "ᱜᱟᱰᱟ ᱫᱟᱜ", "ᱵᱟᱹᱫᱽ ᱠᱷᱮᱛ"],
+                "literal": "ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ?",
+                "phonetic": "Sirma khon da' cedag jạṛig-a?",
+                "quiz": {
+                    "question": "ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱜᱟᱰᱟ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱪᱮᱫ ᱵᱮᱱᱟᱣᱜᱼᱟ?",
+                    "options": ["ᱨᱤᱢᱤᱞ (Clouds)", "ᱫᱷᱤᱨᱤ", "ᱥᱟᱦᱟᱱ"],
+                    "correct": "ᱨᱤᱢᱤᱞ (Clouds)",
+                    "explanation": "ᱵᱷᱟᱯ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ ᱟᱨ ᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ!"
+                }
+            },
             "en": {
                 "pedagogy_title": "Kitchen Kettle Steam and Floating Rain Clouds!",
                 "vernacular_explanation": "Have you seen steam rise when tea or soup boils in the kitchen? If you place a cool lid over it, the steam turns right back into tiny water droplets! The hot sun warms the river water into invisible vapor, which floats up, cools down into fluffy clouds, and falls down as refreshing rain!",
@@ -461,6 +501,38 @@ PEDAGOGY_CONCEPTS_DB = [
                     "explanation": "हरियर पतई सुरुज के घाम से गाछ ले खाना पकावो है!"
                 }
             },
+            "hoc": {
+                "pedagogy_title": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱨᱮᱱᱟᱜ ᱢᱟᱱᱰᱤ ᱨᱟᱪᱟ! 🍃☀️",
+                "vernacular_explanation": "ᱡᱮᱞᱮᱠᱟ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱡᱩᱞ ᱠᱟᱛᱮ ᱡᱚᱢᱟᱜ ᱮ ᱛᱮᱭᱟᱨᱟ, ᱚᱱᱠᱟ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱫᱚ ᱥᱤᱝᱵᱚᱸᱜᱟ ᱛᱟᱨᱟᱥ ᱟᱨ ᱨᱮᱦᱮᱴ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩ ᱠᱟᱛᱮ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨᱟ! ᱱᱚᱣᱟ ᱜᱮ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱵᱚᱱ ᱢᱮᱛᱟᱜᱼᱟ᱾",
+                "local_metaphor": "ᱥᱟᱠᱟᱢ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱢᱟᱱᱰᱤ ᱨᱟᱪᱟ ᱟᱨ ᱥᱤᱝᱵᱚᱸᱜᱟ ᱛᱟᱨᱟᱥ ᱜᱮ ᱪᱩᱞᱦᱟᱹ᱾",
+                "context_hook": "ᱠᱚᱞᱦᱟᱱ ᱵᱤᱨ ᱫᱟᱨᱮ ᱟᱨ ᱥᱟᱨᱡᱚᱢ ᱥᱟᱠᱟᱢ",
+                "cultural_keywords": [{"term": "ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ", "meaning": "ᱥᱤᱝᱵᱚᱸᱜᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱵᱮᱱᱟᱣ"}],
+                "familiar_objects": ["ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ", "ᱥᱤᱝᱵᱚᱸᱜᱟ ᱛᱟᱨᱟᱥ", "ᱫᱟᱨᱮ ᱨᱮᱦᱮᱴ"],
+                "literal": "ᱫᱟᱨᱮ ᱱᱟᱹᱲᱤ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱝᱵᱚᱸᱜᱟ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾",
+                "phonetic": "Dare nạṛi harag lạpạd Singbonga taras larktia.",
+                "quiz": {
+                    "question": "ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱢᱟᱱᱰᱤ ᱨᱟᱪᱟ (ᱡᱚᱢᱟᱜ ᱛᱮᱭᱟᱨ ᱦᱟᱹᱴᱤᱧ) ᱚᱠᱟ ᱠᱚ ᱢᱮᱛᱟᱜᱼᱟ?",
+                    "options": ["ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ", "ᱫᱟᱨᱮ ᱨᱮᱦᱮᱴ", "ᱫᱟᱨᱮ ᱪᱷᱟᱞ"],
+                    "correct": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ",
+                    "explanation": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱜᱮ ᱥᱤᱝᱵᱚᱸᱜᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱮ ᱵᱮᱱᱟᱣᱟ!"
+                }
+            },
+            "mun": {
+                "pedagogy_title": "ᱥᱟᱨᱡᱚᱢ ᱥᱟᱠᱟᱢ ᱟᱨ ᱦᱟᱹᱨᱭᱟᱹᱲ ᱨᱟᱸᱫᱷᱱᱟ ᱚᱲᱟᱜ! 🍃☀️",
+                "vernacular_explanation": "ᱡᱮᱞᱮᱠᱟ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱡᱩᱞ ᱠᱟᱛᱮ ᱡᱚᱢᱟᱜ ᱮ ᱛᱮᱭᱟᱨᱟ, ᱚᱱᱠᱟ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱫᱚ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱟᱨ ᱨᱮᱦᱮᱴ ᱫᱟᱜ ᱛᱮ ᱟᱠᱚᱣᱟᱜ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨᱟ! ᱱᱚᱣᱟ ᱜᱮ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱵᱚᱱ ᱢᱮᱛᱟᱜᱼᱟ᱾",
+                "local_metaphor": "ᱥᱟᱠᱟᱢ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱸᱫᱷᱱᱟ ᱚᱲᱟᱜ ᱟᱨ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱜᱮ ᱪᱩᱞᱦᱟᱹ᱾",
+                "context_hook": "ᱥᱟᱨᱡᱚᱢ ᱫᱟᱨᱮ ᱟᱨ ᱵᱤᱨ ᱵᱟᱜᱟᱱ",
+                "cultural_keywords": [{"term": "ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ", "meaning": "ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱵᱮᱱᱟᱣ"}],
+                "familiar_objects": ["ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ", "ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ", "ᱫᱟᱨᱮ ᱨᱮᱦᱮᱴ"],
+                "literal": "ᱫᱟᱨᱮ ᱱᱟᱹᱲᱤ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾",
+                "phonetic": "Dare nạṛi harag lạpạd Singi taras larktia.",
+                "quiz": {
+                    "question": "ᱫᱟᱨᱮ ᱞᱟᱹᱜᱤᱫ ᱡᱚᱢᱟᱜ ᱚᱠᱟ ᱦᱟᱹᱴᱤᱧ ᱮ ᱛᱮᱭᱟᱨᱟ?",
+                    "options": ["ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ", "ᱫᱟᱨᱮ ᱨᱮᱦᱮᱴ", "ᱫᱟᱨᱮ ᱪᱷᱟᱞ"],
+                    "correct": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ",
+                    "explanation": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱜᱮ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱮ ᱵᱮᱱᱟᱣᱟ!"
+                }
+            },
             "en": {
                 "pedagogy_title": "The Solar-Powered Green Kitchen!",
                 "vernacular_explanation": "Plants do not go to the market — they bake their own food right inside their leaves! Sunshine acts as the cooking heat, water is the broth, and the green pigment traps solar warmth to make sweet sugars.",
@@ -630,6 +702,38 @@ PEDAGOGY_CONCEPTS_DB = [
                     "options": ["1/2 (आधा)", "1/4 (चौथाई)", "पूरा आम"],
                     "correct": "1/2 (आधा)",
                     "explanation": "बराबर दू हिस्सा में बांटल पर हर एक के आधा (1/2) मिलो है!"
+                }
+            },
+            "hoc": {
+                "pedagogy_title": "ᱦᱟᱴ ᱨᱮ ᱦᱮᱲᱮᱢ ᱩᱞ ᱡᱩᱲᱤ ᱛᱮ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ! 🥭",
+                "vernacular_explanation": "ᱢᱤᱫᱴᱟᱝ ᱢᱟᱨᱟᱝ ᱦᱮᱲᱮᱢ ᱩᱞ ᱵᱟᱨ ᱦᱚᱲ ᱡᱩᱲᱤ ᱛᱮ ᱥᱚᱢᱟᱱ ᱠᱮᱪᱟᱜ ᱠᱟᱛᱮ ᱡᱚᱢ ᱞᱮᱠᱷᱟᱱ, ᱢᱤᱫ ᱦᱚᱲ ᱫᱚ ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ (1/2) ᱧᱟᱢᱟ᱾ ᱯᱩᱱ ᱦᱚᱲ ᱛᱮ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ (1/4) ᱧᱟᱢᱚᱜᱼᱟ! ᱱᱚᱣᱟ ᱜᱮ ᱦᱟᱹᱴᱤᱧ (Fractions) ᱠᱟᱱᱟ!",
+                "local_metaphor": "ᱥᱚᱢᱟᱱ ᱛᱮ ᱡᱚᱢᱟᱜ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ᱾",
+                "context_hook": "ᱦᱟᱴ ᱟᱨ ᱡᱩᱲᱤ ᱥᱟᱶ ᱦᱮᱲᱮᱢ ᱩᱞ ᱡᱚᱢ",
+                "cultural_keywords": [{"term": "ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ (1/2)", "meaning": "ᱵᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ"}, {"term": "ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ (1/4)", "meaning": "ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ"}],
+                "familiar_objects": ["ᱩᱞ", "ᱨᱩᱴᱤ", "ᱯᱤᱴᱷᱟᱹ"],
+                "literal": "ᱦᱟᱹᱴᱤᱧ (Fraction): ᱢᱤᱫᱴᱟᱝ ᱡᱤᱱᱤᱥ ᱥᱚᱢᱟᱱ ᱛᱮ ᱦᱟᱹᱴᱤᱧ᱾",
+                "phonetic": "Hạṭiń: Midṭang jinis soman te hạṭiń.",
+                "quiz": {
+                    "question": "ᱢᱤᱫᱴᱟᱝ ᱩᱞ ᱵᱟᱨ ᱦᱚᱲ ᱛᱮ ᱥᱚᱢᱟᱱ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ ᱛᱤᱱᱟᱹᱜ ᱧᱟᱢᱚᱜᱼᱟ?",
+                    "options": ["1/2 (ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ)", "1/4 (ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ)", "ᱯᱩᱨᱟᱹ ᱩᱞ"],
+                    "correct": "1/2 (ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ)",
+                    "explanation": "ᱢᱤᱫᱴᱟᱝ ᱡᱤᱱᱤᱥ ᱵᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ 1/2 (ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ) ᱦᱩᱭᱩᱜᱼᱟ!"
+                }
+            },
+            "mun": {
+                "pedagogy_title": "ᱥᱟᱨᱡᱚᱢ ᱩᱢᱩᱞ ᱨᱮ ᱩᱞ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ! 🥭",
+                "vernacular_explanation": "ᱢᱤᱫᱴᱟᱝ ᱢᱟᱨᱟᱝ ᱦᱮᱲᱮᱢ ᱩᱞ ᱵᱟᱨ ᱦᱚᱲ ᱛᱮ ᱥᱚᱢᱟᱱ ᱠᱮᱪᱟᱜ ᱠᱟᱛᱮ ᱡᱚᱢ ᱞᱮᱠᱷᱟᱱ, ᱢᱤᱫ ᱦᱚᱲ ᱫᱚ ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ (1/2) ᱧᱟᱢᱟ᱾ ᱯᱩᱱ ᱦᱚᱲ ᱛᱮ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ (1/4) ᱧᱟᱢᱚᱜᱼᱟ! ᱱᱚᱣᱟ ᱜᱮ ᱦᱟᱹᱴᱤᱧ (Fractions) ᱠᱟᱱᱟ!",
+                "local_metaphor": "ᱥᱚᱢᱟᱱ ᱛᱮ ᱡᱚᱢᱟᱜ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ᱾",
+                "context_hook": "ᱟᱹᱛᱩ ᱦᱟᱴ ᱟᱨ ᱦᱮᱲᱮᱢ ᱩᱞ",
+                "cultural_keywords": [{"term": "ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ (1/2)", "meaning": "ᱵᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ"}, {"term": "ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ (1/4)", "meaning": "ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ"}],
+                "familiar_objects": ["ᱩᱞ", "ᱯᱤᱴᱷᱟᱹ"],
+                "literal": "ᱦᱟᱹᱴᱤᱧ (Fraction): ᱢᱤᱫᱴᱟᱝ ᱡᱤᱱᱤᱥ ᱥᱚᱢᱟᱱ ᱛᱮ ᱦᱟᱹᱴᱤᱧ᱾",
+                "phonetic": "Hạṭiń: Midṭang jinis soman te hạṭiń.",
+                "quiz": {
+                    "question": "ᱢᱤᱫᱴᱟᱝ ᱩᱞ ᱵᱟᱨ ᱦᱚᱲ ᱛᱮ ᱥᱚᱢᱟᱱ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ ᱛᱤᱱᱟᱹᱜ ᱧᱟᱢᱚᱜᱼᱟ?",
+                    "options": ["1/2 (ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ)", "1/4 (ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ)", "ᱯᱩᱨᱟᱹ ᱩᱞ"],
+                    "correct": "1/2 (ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ)",
+                    "explanation": "ᱢᱤᱫᱴᱟᱝ ᱡᱤᱱᱤᱥ ᱵᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ 1/2 (ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ) ᱦᱩᱭᱩᱜᱼᱟ!"
                 }
             },
             "en": {

@@ -111,6 +111,8 @@ export class SpeechEngine {
       or: 'Odia (ଓଡ଼ିଆ)',
       as: 'Assamese (অসমীয়া)',
       sat: 'Santhali (ᱥᱟᱱᱛᱟᱲᱤ)',
+      hoc: 'Ho (ᱦᱳ / हो)',
+      mun: 'Mundari (ᱢᱩᱱᱰᱟᱨᱤ)',
       khr: 'Khortha (खोरठा)',
       en: 'English'
     };
@@ -301,7 +303,7 @@ export class SpeechEngine {
     const gttsLangMap = {
       ta: 'ta', hi: 'hi', te: 'te', kn: 'kn', ml: 'ml', bn: 'bn',
       mr: 'mr', gu: 'gu', pa: 'pa', ur: 'ur', en: 'en',
-      or: 'hi', as: 'bn', sat: 'hi', khr: 'hi'
+      or: 'hi', as: 'bn', sat: 'hi', hoc: 'hi', mun: 'hi', khr: 'hi'
     };
     const ttsLang = gttsLangMap[shortLang] || shortLang;
 
@@ -321,7 +323,7 @@ export class SpeechEngine {
 
     let speechText = cleanText;
     let synthLang = fullLang;
-    if (shortLang === 'sat' || /[\u1C50-\u1C7F]/.test(cleanText)) {
+    if (shortLang === 'sat' || shortLang === 'hoc' || shortLang === 'mun' || /[\u1C50-\u1C7F]/.test(cleanText)) {
       speechText = cleanText.split('').map(c => OL_CHIKI_PHONETIC[c] !== undefined ? OL_CHIKI_PHONETIC[c] : c).join('');
       synthLang = 'hi-IN';
     } else if (shortLang === 'khr') {
@@ -523,6 +525,8 @@ export class SpeechEngine {
       { code: 'or', patterns: ['odia', 'oriya', 'ଓଡ଼ିଆ', 'ନମସ୍କାର'] },
       { code: 'as', patterns: ['assamese', 'অসমীয়া', 'নমস্কাৰ'] },
       { code: 'sat', patterns: ['santhali', 'santali', 'ol chiki', 'olchiki', 'ᱥᱟᱱᱛᱟᱲᱤ', 'ᱡᱚᱦᱟᱨ', 'johar', 'ᱫᱟᱜ', 'ᱥᱮᱨᱢᱟ', 'ᱟᱭᱳᱣᱟᱜ'] },
+      { code: 'hoc', patterns: ['ho language', 'ho bhasha', 'ho adang', 'ᱦᱳ', 'warang chiti', '𑢹𑣉𑣉', 'ᱡᱩᱲᱤ', 'ᱜᱟᱢᱟ'] },
+      { code: 'mun', patterns: ['mundari', 'munda', 'mundari bhasha', 'ᱢᱩᱱᱰᱟᱨᱤ', 'मुंडारी', 'mundari bani', 'ᱡᱚᱲᱟ'] },
       { code: 'khr', patterns: ['khortha', 'khotta', 'खोरठा', 'हमनी', 'तोहनी', 'गोड़ लागो', 'काहे', 'बरसे', 'हमार', 'संगी'] },
       { code: 'ur', patterns: ['urdu', 'اردو', 'السلام عليكم', 'adab'] },
       { code: 'es', patterns: ['spanish', 'español', 'espanol', 'hola'] },
@@ -716,6 +720,16 @@ export class SpeechEngine {
         code: 'sat', name: 'Santhali', nativeName: 'ᱥᱟᱱᱛᱟᱲᱤ (Ol Chiki)', flag: '🇮🇳', speechCode: 'sat-IN',
         welcomeGreeting: 'ᱡᱚᱦᱟᱨ! ᱟᱢᱟᱜ ᱟᱭᱳ ᱟᱲᱟᱝ ᱥᱟᱱᱛᱟᱲᱤ ᱵᱟᱪᱷᱟᱣ ᱮᱱᱟ᱾ ᱤᱧ ᱡᱟᱦᱟᱸᱱᱟᱜ ᱠᱩᱠᱞᱤ ᱠᱩᱞᱤᱭᱤᱧ ᱢᱮ!',
         sampleQuestion: 'ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ?'
+      },
+      hoc: { 
+        code: 'hoc', name: 'Ho', nativeName: 'ᱦᱳ (Ho)', flag: '🇮🇳', speechCode: 'hoc-IN',
+        welcomeGreeting: 'ᱡᱚᱦᱟᱨ ᱡᱩᱲᱤ! ᱟᱢᱟᱜ ᱟᱭᱳ ᱟᱲᱟᱝ ᱦᱳ ᱵᱟᱪᱷᱟᱣ ᱮᱱᱟ᱾ ᱤᱧ ᱡᱟᱦᱟᱸᱱᱟᱜ ᱠᱩᱠᱞᱤ ᱠᱩᱞᱤᱭᱤᱧ ᱢᱮ!',
+        sampleQuestion: 'ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱜᱟᱢᱟᱜᱼᱟ?'
+      },
+      mun: { 
+        code: 'mun', name: 'Mundari', nativeName: 'ᱢᱩᱱᱰᱟᱨᱤ (Mundari)', flag: '🇮🇳', speechCode: 'mun-IN',
+        welcomeGreeting: 'ᱡᱚᱦᱟᱨ ᱜᱟᱛᱮ! ᱟᱢᱟᱜ ᱟᱭᱳ ᱡᱟᱜᱟᱨ ᱢᱩᱱᱰᱟᱨᱤ ᱵᱟᱪᱷᱟᱣ ᱮᱱᱟ᱾ ᱤᱧ ᱡᱟᱦᱟᱸᱱᱟᱜ ᱠᱩᱠᱞᱤ ᱠᱩᱞᱤᱭᱤᱧ ᱢᱮ!',
+        sampleQuestion: 'ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ?'
       },
       khr: { 
         code: 'khr', name: 'Khortha', nativeName: 'खोरठा', flag: '🇮🇳', speechCode: 'khr-IN',

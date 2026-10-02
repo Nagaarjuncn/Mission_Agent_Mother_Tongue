@@ -18,13 +18,13 @@ def test_health_check():
     assert response.status_code == 200
     data = response.json()
     assert data["status"] == "healthy"
-    assert data["supported_languages_count"] == 14
+    assert data["supported_languages_count"] == 16
 
 def test_supported_languages():
     response = client.get("/api/languages")
     assert response.status_code == 200
     langs = response.json()
-    assert len(langs) == 14
+    assert len(langs) == 16
     codes = [l["code"] for l in langs]
     assert "ta" in codes  # Tamil
     assert "te" in codes  # Telugu
@@ -33,6 +33,8 @@ def test_supported_languages():
     assert "kn" in codes  # Kannada
     assert "ml" in codes  # Malayalam
     assert "sat" in codes  # Santhali (Ol Chiki)
+    assert "hoc" in codes  # Ho
+    assert "mun" in codes  # Mundari
     assert "khr" in codes  # Khortha
 
 def test_multilingual_translation():
@@ -358,6 +360,92 @@ def test_khortha_features():
 
     # 4. Khortha audible TTS audio synthesis returns real audio bytes (> 3000 bytes)
     tts_res = client.get("/api/speech/tts?text=अकास से पानी काहे बरसे है&lang=khr")
+    assert tts_res.status_code == 200
+    assert len(tts_res.content) > 3000
+    assert tts_res.headers["content-type"] == "audio/mpeg"
+
+def test_ho_features():
+    # 1. Translation into Ho
+    res = client.post("/api/translate", json={
+        "text": "Plants need sunlight to grow.",
+        "source_lang": "en",
+        "target_lang": "hoc",
+        "generate_explanation": True
+    })
+    assert res.status_code == 200
+    data = res.json()
+    assert "ᱫᱟᱨᱮ" in data["translated_text"] or "ᱥᱟᱠᱟᱢ" in data["child_explanation"]
+    assert data["target_lang"] == "hoc"
+    assert data["speech_code"] == "hoc-IN"
+
+    # 2. Pedagogy explain in Ho
+    ped_res = client.post("/api/pedagogy/explain", json={
+        "concept_or_question": "Why does rain fall from the sky?",
+        "target_lang": "hoc"
+    })
+    assert ped_res.status_code == 200
+    ped_data = ped_res.json()
+    assert "ᱪᱩᱞᱦᱟᱹ" in ped_data["pedagogy_title"] or "ᱨᱤᱢᱤᱞ" in ped_data["pedagogy_title"] or "ᱜᱟᱢᱟ" in ped_data["pedagogy_title"]
+    assert ped_data["target_lang"] == "hoc"
+    assert "quick_quiz" in ped_data
+    assert "question" in ped_data["quick_quiz"]
+
+    # 3. Tutor chat understanding other language (English) and responding in Ho
+    tutor_res = client.post("/api/tutor/chat", json={
+        "message": "Why does rain fall from the sky?",
+        "target_lang": "hoc"
+    })
+    assert tutor_res.status_code == 200
+    tutor_data = tutor_res.json()
+    assert tutor_data["input_was_converted"] is True
+    assert tutor_data["reply_speech_code"] == "hoc-IN"
+    assert "ᱫᱟᱜ" in tutor_data["reply_text"] or "ᱨᱤᱢᱤᱞ" in tutor_data["reply_text"] or "ᱜᱟᱢᱟ" in tutor_data["reply_text"]
+
+    # 4. Ho audible TTS audio synthesis returns real audio bytes (> 3000 bytes)
+    tts_res = client.get("/api/speech/tts?text=ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱜᱟᱢᱟ&lang=hoc")
+    assert tts_res.status_code == 200
+    assert len(tts_res.content) > 3000
+    assert tts_res.headers["content-type"] == "audio/mpeg"
+
+def test_mundari_features():
+    # 1. Translation into Mundari
+    res = client.post("/api/translate", json={
+        "text": "Plants need sunlight to grow.",
+        "source_lang": "en",
+        "target_lang": "mun",
+        "generate_explanation": True
+    })
+    assert res.status_code == 200
+    data = res.json()
+    assert "ᱫᱟᱨᱮ" in data["translated_text"] or "ᱥᱟᱠᱟᱢ" in data["child_explanation"]
+    assert data["target_lang"] == "mun"
+    assert data["speech_code"] == "mun-IN"
+
+    # 2. Pedagogy explain in Mundari
+    ped_res = client.post("/api/pedagogy/explain", json={
+        "concept_or_question": "Why does rain fall from the sky?",
+        "target_lang": "mun"
+    })
+    assert ped_res.status_code == 200
+    ped_data = ped_res.json()
+    assert "ᱴᱩᱠᱩᱡ" in ped_data["pedagogy_title"] or "ᱨᱤᱢᱤᱞ" in ped_data["pedagogy_title"]
+    assert ped_data["target_lang"] == "mun"
+    assert "quick_quiz" in ped_data
+    assert "question" in ped_data["quick_quiz"]
+
+    # 3. Tutor chat understanding English and replying in Mundari
+    tutor_res = client.post("/api/tutor/chat", json={
+        "message": "Why does rain fall from the sky?",
+        "target_lang": "mun"
+    })
+    assert tutor_res.status_code == 200
+    tutor_data = tutor_res.json()
+    assert tutor_data["input_was_converted"] is True
+    assert tutor_data["reply_speech_code"] == "mun-IN"
+    assert "ᱫᱟᱜ" in tutor_data["reply_text"] or "ᱨᱤᱢᱤᱞ" in tutor_data["reply_text"] or "ᱡᱟᱹᱲᱤ" in tutor_data["reply_text"]
+
+    # 4. Mundari audible TTS audio synthesis returns real audio bytes (> 3000 bytes)
+    tts_res = client.get("/api/speech/tts?text=ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤ&lang=mun")
     assert tts_res.status_code == 200
     assert len(tts_res.content) > 3000
     assert tts_res.headers["content-type"] == "audio/mpeg"

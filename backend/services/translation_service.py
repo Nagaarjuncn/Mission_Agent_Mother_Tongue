@@ -71,6 +71,16 @@ PRIMARY_KNOWLEDGE_TRANSLATIONS: Dict[str, Dict[str, Dict[str, str]]] = {
             "phonetic": "Dare nạṛi harag lạpạd sińgi beṛa taras larktia.",
             "child_explanation": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱟᱠᱚᱣᱟᱜ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨᱟ, ᱡᱮᱞᱮᱠᱟ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱫᱟᱠᱟ ᱩᱛᱩᱭᱟ! ᱱᱚᱣᱟ ᱜᱮ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱠᱟᱱᱟ᱾"
         },
+        "hoc": {
+            "text": "ᱫᱟᱨᱮ ᱠᱚ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾",
+            "phonetic": "Dare ko harag lagid Singbonga taras larktia.",
+            "child_explanation": "ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱟᱠᱚᱣᱟᱜ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨᱟ, ᱡᱮᱞᱮᱠᱟ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱢᱟᱺᱰᱤ ᱩᱛᱩᱭᱟ! ᱱᱚᱣᱟ ᱜᱮ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱠᱟᱱᱟ᱾"
+        },
+        "mun": {
+            "text": "ᱫᱟᱨᱮ ᱠᱚ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤ ᱛᱟᱱᱟ᱾",
+            "phonetic": "Dare ko harag lagid Singi taras lakti tana.",
+            "child_explanation": "ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱟᱠᱚᱣᱟᱜ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨ ᱛᱟᱱᱟ, ᱡᱮᱞᱮᱠᱟ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱢᱟᱺᱰᱤ ᱛᱤᱠᱤᱭᱟ! ᱱᱮᱱᱟ ᱜᱮ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱛᱟᱱᱟ᱾"
+        },
         "khr": {
             "text": "गाछ-बिरिछ के बढ़ेक ले घाम (सुरुज के अंजोर) के जरूरी होवो है।",
             "phonetic": "Gaach-birich ke badhek le ghaam ke jaroori hovo hai.",
@@ -122,6 +132,16 @@ PRIMARY_KNOWLEDGE_TRANSLATIONS: Dict[str, Dict[str, Dict[str, str]]] = {
             "text": "अकास से पानी काहे बरसे है?",
             "phonetic": "Akaas se paani kaahe barse hai?",
             "child_explanation": "नदी-पोखरा के पानी घाम से भाप बन के अकास में बदरी बनो है, आउर ठंडा हवा लगला पर झम-झम पानि बरसे है!"
+        },
+        "hoc": {
+            "text": "ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱜᱟᱢᱟᱜᱼᱟ?",
+            "phonetic": "Sirma khon da' cedag gamag-a?",
+            "child_explanation": "ᱜᱟᱰᱟ ᱫᱟᱜ ᱥᱤᱝᱵᱚᱸᱜᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ, ᱟᱨ ᱨᱮᱭᱟᱲ ᱦᱚᱭ ᱛᱮ ᱫᱟᱜ ᱜᱟᱢᱟᱜᱼᱟ!"
+        },
+        "mun": {
+            "text": "ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ?",
+            "phonetic": "Sirma khon da' cedag jạṛig-a?",
+            "child_explanation": "ᱜᱟᱰᱟ ᱫᱟᱜ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱵᱷᱟᱯ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ, ᱟᱨ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ!"
         }
     }
 }
@@ -310,6 +330,8 @@ class TranslationService:
             "as": ("এইটো প্ৰাথমিক বিদ্যালয়ৰ ছাত্ৰ-ছাত্ৰীৰ বাবে এটা গুৰুত্বপূৰ্ণ ধাৰণা: ", " সৰল ব্যাখ্যা: শিশুসকলে নিজৰ পৰিৱেশত ইয়াক প্ৰত্যক্ষ কৰিব পাৰে।"),
             "sat": ("ᱱᱚᱣᱟ ᱫᱚ ᱢᱤᱫ ᱢᱩᱬᱩᱛ ᱮᱛᱚᱦᱚᱵ ᱥᱮᱪᱮᱫ ᱠᱟᱛᱷᱟ ᱠᱟᱱᱟ: ", " ᱥᱟᱞᱟᱜ ᱵᱩᱡᱷᱟᱹᱣ: ᱜᱤᱫᱽᱨᱟᱹ ᱠᱚ ᱟᱠᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱟᱨ ᱥᱤᱨᱡᱚᱱ ᱨᱮ ᱱᱚᱣᱟ ᱠᱚ ᱧᱮᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾"),
             "khr": ("ई एगो बहुत बेस आउर जरूरी प्राथमिक शिक्षा के बात हके: ", " सोझ व्याख्या: छौआ-पुता एकरा आपन घरे आउर आसपास के प्रकृति में देख सक हथ।"),
+            "hoc": ("ᱱᱚᱣᱟ ᱫᱚ ᱢᱤᱫ ᱢᱩᱬᱩᱛ ᱮᱛᱚᱦᱚᱵ ᱥᱮᱪᱮᱫ ᱠᱟᱛᱷᱟ ᱠᱟᱱᱟ: ", " ᱥᱟᱞᱟᱜ ᱵᱩᱡᱷᱟᱹᱣ: ᱜᱤᱫᱽᱨᱟᱹ ᱠᱚ ᱟᱠᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱟᱨ ᱥᱤᱨᱡᱚᱱ ᱨᱮ ᱱᱚᱣᱟ ᱠᱚ ᱧᱮᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾"),
+            "mun": ("ᱱᱚᱣᱟ ᱫᱚ ᱢᱤᱫ ᱢᱩᱬᱩᱛ ᱮᱛᱚᱦᱚᱵ ᱥᱮᱪᱮᱫ ᱠᱟᱛᱷᱟ ᱠᱟᱱᱟ: ", " ᱥᱟᱞᱟᱜ ᱵᱩᱡᱷᱟᱹᱣ: ᱜᱤᱫᱽᱨᱟᱹ ᱠᱚ ᱟᱠᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱟᱨ ᱥᱤᱨᱡᱚᱱ ᱨᱮ ᱱᱚᱣᱟ ᱠᱚ ᱧᱮᱞ ᱫᱟᱲᱮᱭᱟᱜᱼᱟ᱾"),
             "en": ("Key Elementary Educational Concept: ", " Simple Explanation: Children can easily observe this in their local environment.")
         }
 
@@ -318,7 +340,7 @@ class TranslationService:
         # Generate friendly vernacular response
         if target_code == "ta":
             translated_text = f"{target_meta['nativeName']} மொழியாக்கம்: '{req.text}'"
-        elif target_code == "sat":
+        elif target_code in ["sat", "hoc", "mun"]:
             translated_text = f"{target_meta['nativeName']} ᱛᱚᱨᱡᱚᱢᱟ: '{req.text}'"
         elif target_code == "khr":
             translated_text = f"{target_meta['nativeName']} अनुवाद: '{req.text}'"

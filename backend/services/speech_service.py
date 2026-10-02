@@ -133,6 +133,24 @@ REGIONAL_VOICE_PROFILES = {
         "preferred_voices": ["Microsoft Swara", "Google हिन्दी", "hi-IN-Standard-A"],
         "lang_code": "khr-IN"
     },
+    "hoc": {
+        "gender": "female",
+        "voice_persona": "child_friendly_lady_voice",
+        "pitch": 1.22,
+        "rate": 0.86,
+        "voice_name": "Ho India Female (Mother/Teacher Voice)",
+        "preferred_voices": ["Google Ho", "hoc-IN-Standard-A", "Microsoft Swara", "Google हिन्दी", "Google ଓଡ଼ିଆ"],
+        "lang_code": "hoc-IN"
+    },
+    "mun": {
+        "gender": "female",
+        "voice_persona": "child_friendly_lady_voice",
+        "pitch": 1.22,
+        "rate": 0.86,
+        "voice_name": "Mundari India Female (Mother/Teacher Voice)",
+        "preferred_voices": ["Google Mundari", "mun-IN-Standard-A", "Microsoft Swara", "Google हिन्दी", "Google বাংলা"],
+        "lang_code": "mun-IN"
+    },
     "en": {
         "gender": "female",
         "voice_persona": "child_friendly_lady_voice",
@@ -196,7 +214,6 @@ class SpeechService:
         """
         Processes voice input from the student, evaluates pronunciation, and provides feedback.
         """
-        # If text is provided directly or extracted
         transcript = req.text_transcript or "வானத்திலிருந்து மழை ஏன் பெய்கிறது?"
         expected_lang = req.expected_lang.lower()
 
@@ -208,6 +225,10 @@ class SpeechService:
             feedback = "आपका उच्चारण बहुत ही सुंदर और स्पष्ट है! 🌟"
         elif expected_lang == "sat":
             feedback = "ᱟᱢᱟᱜ ᱨᱚᱲ ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ ᱟᱨ ᱥᱟᱯᱷᱟ ᱜᱮᱭᱟ! 🌟"
+        elif expected_lang == "hoc":
+            feedback = "ᱟᱢᱟᱜ ᱦᱳ ᱨᱚᱲ ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ ᱟᱨ ᱥᱟᱯᱷᱟ ᱜᱮᱭᱟ! 🌟"
+        elif expected_lang == "mun":
+            feedback = "ᱟᱢᱟᱜ ᱢᱩᱱᱰᱟᱨᱤ ᱨᱚᱲ ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ ᱟᱨ ᱥᱟᱯᱷᱟ ᱜᱮᱭᱟ! 🌟"
         elif expected_lang == "khr":
             feedback = "तोहर उच्चारण बहुत बेस आउर साफ है! 🌟"
         else:
@@ -224,7 +245,7 @@ class SpeechService:
     def detect_language(self, req: LanguageDetectRequest) -> LanguageDetectResponse:
         """
         Automatically identifies the speaker's language based on script analysis,
-        phonetic patterns, and vocabulary for 11 Indian mother tongues and English.
+        phonetic patterns, and vocabulary for all supported Indian mother tongues and English.
         """
         text = req.text.strip()
         if not text:
@@ -252,16 +273,48 @@ class SpeechService:
             "mr": ["marathi", "मराठी", "मातृभाषा मराठी"],
             "gu": ["gujarati", "ગુજરાતી", "માતૃભાષા ગુજરાતી"],
             "pa": ["punjabi", "ਪੰਜਾਬੀ", "ਮਾਤ੍ਰੀਭਾਸ਼ਾ"],
-            "or": ["odia", "oriya", "ଓଡ଼ିଆ"],
+            "or": ["odia", "oriya", "ଓଡ଼ᱤଆ"],
             "as": ["assamese", "অসমীয়া"],
-            "sat": ["santhali", "santali", "ol chiki", "olchiki", "ᱥᱟᱱᱛᱟᱲᱤ", "ᱡᱚᱦᱟᱨ", "johar", "ᱫᱟᱜ", "ᱥᱮᱨᱢᱟ"],
-            "khr": ["khortha", "khotta", "खोरठा", "हमनी", "तोहनी", "गोड़ लागो", "काहे", "बरसे"],
+            "sat": ["santhali", "santali", "ol chiki", "olchiki", "ᱥᱟᱱᱛᱟᱲᱤ", "ᱡᱚᱦᱟᱨ", "johar"],
+            "khr": ["khortha", "khotta", "खोरठा", "हमनी", "तोहनी", "गोड़ लागो"],
+            "hoc": ["ho language", "ho bhasha", "ho adang", "ᱦᱳ", "ho kaji", "warang chiti", "𑢹𑣉𑣉", "ᱡᱩᱲᱤ", "ᱜᱟᱢᱟ"],
+            "mun": ["mundari", "munda", "mundari bhasha", "ᱢᱩᱱᱰᱟᱨᱤ", "मुंडारी", "mundari bani", "jora", "ᱡᱚᱲᱟ"],
             "en": ["english", "inglish", "angrezi"]
         }
 
+        import re
+        # Check explicit code or exact names first
+        if lower in ["ho", "hoc"]:
+            meta = next((l for l in settings.SUPPORTED_LANGUAGES if l["code"] == "hoc"), settings.SUPPORTED_LANGUAGES[-1])
+            return LanguageDetectResponse(
+                detected_lang="hoc",
+                language_name=meta["name"],
+                native_name=meta["nativeName"],
+                flag=meta["flag"],
+                confidence=0.99,
+                speech_code=meta["speechCode"],
+                detected_script="Ho Explicit / Spoken Name"
+            )
+        if lower in ["mun", "mundari"]:
+            meta = next((l for l in settings.SUPPORTED_LANGUAGES if l["code"] == "mun"), settings.SUPPORTED_LANGUAGES[-1])
+            return LanguageDetectResponse(
+                detected_lang="mun",
+                language_name=meta["name"],
+                native_name=meta["nativeName"],
+                flag=meta["flag"],
+                confidence=0.99,
+                speech_code=meta["speechCode"],
+                detected_script="Mundari Explicit / Spoken Name"
+            )
+
         for code, keywords in language_name_map.items():
             for kw in keywords:
-                if kw in lower or kw in text:
+                matched = False
+                if len(kw) <= 3:
+                    matched = bool(re.search(r'(?:\b|^|\s)' + re.escape(kw) + r'(?:\b|$|\s)', lower if kw.isascii() else text))
+                else:
+                    matched = (kw in lower or kw in text)
+                if matched:
                     meta = next((l for l in settings.SUPPORTED_LANGUAGES if l["code"] == code), settings.SUPPORTED_LANGUAGES[-1])
                     return LanguageDetectResponse(
                         detected_lang=code,
@@ -386,6 +439,8 @@ class SpeechService:
             "as": "bn",  # Assamese script phonetics align with Bengali TTS
             "sat": "hi",  # Santhali phonetics align with regional Indic TTS fallback
             "khr": "hi",  # Khortha aligns with Hindi/Devanagari TTS
+            "hoc": "hi",  # Ho phonetics align with regional Indic TTS fallback
+            "mun": "hi",  # Mundari phonetics align with regional Indic TTS fallback
             "es": "es",
             "fr": "fr",
             "de": "de",
@@ -408,7 +463,7 @@ class SpeechService:
         }
 
         # Transliterate Ol Chiki script for Indic TTS voice synthesis
-        if short_lang == "sat" or any('\u1C50' <= ch <= '\u1C7F' for ch in clean_text):
+        if short_lang in ["sat", "hoc", "mun"] or any('\u1C50' <= ch <= '\u1C7F' for ch in clean_text):
             speech_text = ''.join(OL_CHIKI_PHONETIC.get(ch, ch) for ch in clean_text)
             target_gtts_lang = "hi"
         else:

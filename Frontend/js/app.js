@@ -719,6 +719,16 @@ class VernacApp {
         { title: 'Water Cycle ⇄ जल चक्र', desc: 'डेगची के भाप और अकास के बदरी से पानि बरसेक' },
         { title: 'Fractions ⇄ आधा-चौथाई (1/2, 1/4)', desc: 'मीठा पाकल आम के संगी में बराबर बांटेक' }
       ],
+      hoc: [
+        { title: 'Sunlight ⇄ ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ', desc: 'ᱥᱮᱛᱟᱜ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱟᱨ ᱡᱩᱲᱤ ᱠᱚᱣᱟᱜ ᱵᱟᱜᱟᱱ ᱫᱟᱨᱮ' },
+        { title: 'Water Cycle ⇄ ᱫᱟᱜ ᱪᱚᱠᱨᱚ', desc: 'ᱛᱩᱯᱩ ᱪᱟᱴᱤ ᱵᱷᱟᱯ ᱟᱨ ᱠᱚᱞᱦᱟᱱ ᱜᱟᱰᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤ' },
+        { title: 'Fractions ⇄ ᱦᱟᱹᱴᱤᱧ (1/2, 1/4)', desc: 'ᱦᱮᱲᱮᱢ ᱩᱞ ᱡᱩᱲᱤ ᱠᱚ ᱥᱟᱶ ᱥᱚᱢᱟᱱ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ' }
+      ],
+      mun: [
+        { title: 'Sunlight ⇄ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ', desc: 'ᱥᱮᱛᱟᱜ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱟᱨ ᱥᱟᱨᱡᱚᱢ ᱥᱟᱠᱟᱢ ᱦᱟᱹᱨᱭᱟᱹᱲ' },
+        { title: 'Water Cycle ⇄ ᱫᱟᱜ ᱪᱚᱠᱨᱚ', desc: 'ᱪᱟᱴᱩ ᱫᱟᱜ ᱵᱷᱟᱯ ᱟᱨ ᱠᱷᱩᱸᱴᱤ-ᱨᱟᱺᱪᱤ ᱫᱟᱜ ᱡᱟᱹᱲᱤ' },
+        { title: 'Fractions ⇄ ᱦᱟᱹᱴᱤᱧ (1/2, 1/4)', desc: 'ᱩᱞ ᱜᱟᱛᱮ ᱠᱚ ᱥᱟᱞᱟᱜ ᱛᱟᱞᱟ-ᱛᱟᱞᱟ ᱥᱚᱢᱟᱱ ᱦᱟᱹᱴᱤᱧ' }
+      ],
       ta: [
         { title: 'Sunlight ⇄ சூரிய ஒளி', desc: 'காலை கோலமும் பாட்டி வீட்டு பால்கனி செடிகளும்' },
         { title: 'Water Cycle ⇄ நீர் சுழற்சி', desc: 'அம்மா வைக்கும் சுடச்சுட ரசத்தின் ஆவியும் நீர் துளிகளும்' },
@@ -1648,6 +1658,18 @@ class VernacApp {
         { name: 'पर्यावरण (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'घरेलू जड़ी-बूटी: तुलसी और नीम के पतई', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
         { name: 'मातृभाषा खोरठा (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'खोरठा लोकगीत, कहावत और नया सबद', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
       ],
+      hoc: [
+        { name: 'ᱥᱟᱬᱮᱥ (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'ᱥᱮᱨᱢᱟ ᱨᱤᱢᱤᱞ ᱫᱟᱜ (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
+        { name: 'ᱞᱮᱠᱷᱟ (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'ᱦᱟᱹᱴᱤᱧ: ᱩᱞ ᱦᱟᱹᱴᱤᱧ (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
+        { name: 'ᱯᱚᱨᱤᱵᱮᱥ (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'ᱟᱵᱚᱣᱟᱜ ᱵᱤᱨ-ᱵᱩᱨᱩ ᱟᱨ ᱥᱟᱨᱡᱚᱢ ᱫᱟᱨᱮ', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
+        { name: 'ᱡᱟᱱᱟᱢ ᱟᱲᱟᱝ ᱦᱳ (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'ᱦᱳ ᱞᱟᱠᱪᱟᱨ ᱟᱨ ᱚᱞ ᱪᱤᱠᱤ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
+      ],
+      mun: [
+        { name: 'ᱥᱟᱬᱮᱥ (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'ᱨᱤᱢᱤᱞ ᱫᱟᱜ ᱡᱟᱹᱲᱤ (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
+        { name: 'ᱞᱮᱠᱷᱟ (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'ᱦᱟᱹᱴᱤᱧ: ᱥᱚᱢᱟᱱ ᱩᱞ ᱦᱟᱹᱴᱤᱧ (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
+        { name: 'ᱯᱚᱨᱤᱵᱮᱥ (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'ᱦᱟᱛᱩ ᱨᱮᱱᱟᱜ ᱥᱟᱨᱡᱚᱢ ᱟᱨ ᱢᱟᱛᱠᱚᱢ ᱫᱟᱨᱮ', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
+        { name: 'ᱢᱟᱛᱨᱤᱵᱷᱟᱥᱟ ᱢᱩᱱᱰᱟᱨᱤ (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'ᱢᱩᱱᱰᱟᱨᱤ ᱥᱮᱨᱮᱧ ᱟᱨ ᱠᱟᱛᱷᱟ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
+      ],
       en: [
         { name: 'Science', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'Secret of Rain Clouds (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
         { name: 'Mathematics', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'Fractions: Sharing Sweet Mangoes (1/2, 1/4)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
@@ -1704,6 +1726,22 @@ class VernacApp {
         { id: 'b4', name: '५-दिन के लपट 🔥', desc: 'खोरठा में लगातार ५ दिन के पढ़ाई', icon: '🔥' },
         { id: 'b5', name: 'खोरठा विद्वान 📜', desc: '२५ गो नवा विज्ञान सबद सीखल', icon: '📖' },
         { id: 'b6', name: 'आवाज सितारा 🎙️', desc: 'खोरठा में १० गो सवाल पूछल', icon: '⭐' }
+      ],
+      hoc: [
+        { id: 'b1', name: 'ᱫᱟᱜ ᱪᱚᱠᱨᱚ ᱵᱤᱜᱽᱭᱟᱱᱤ 💧', desc: 'ᱦᱳ ᱛᱮ ᱫᱟᱜ ᱪᱚᱠᱨᱚ ᱥᱟᱬᱮᱥ ᱪᱮᱫ', icon: '🌊' },
+        { id: 'b2', name: 'ᱦᱟᱹᱴᱤᱧ ᱡᱩᱲᱤ 🥭', desc: 'ᱩᱞ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱞᱮᱠᱷᱟ ᱥᱚᱞᱦᱮ', icon: '🥭' },
+        { id: 'b3', name: 'ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ 🍃', desc: 'ᱥᱟᱠᱟᱢ ᱨᱟᱸᱫᱷᱱᱟ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱵᱟᱰᱟᱭ', icon: '🌱' },
+        { id: 'b4', name: '᱕-ᱢᱟᱦᱟᱸ ᱡᱩᱞᱩᱜ 🔥', desc: 'ᱦᱳ ᱛᱮ ᱕ ᱢᱟᱦᱟᱸ ᱞᱮᱛᱟᱲ ᱪᱮᱫᱚᱜ', icon: '🔥' },
+        { id: 'b5', name: 'ᱦᱳ ᱯᱚᱸᱰᱤᱛ 📜', desc: '᱒᱕ ᱜᱚᱴᱟᱝ ᱥᱟᱬᱮᱥ ᱟᱹᱲᱟᱹ ᱪᱮᱫ', icon: '📖' },
+        { id: 'b6', name: 'ᱨᱚᱲ ᱤᱯᱤᱞ 🎙️', desc: 'ᱦᱳ ᱛᱮ ᱑᱐ ᱜᱚᱴᱟᱝ ᱠᱩᱠᱞᱤ ᱠᱩᱞᱤ', icon: '⭐' }
+      ],
+      mun: [
+        { id: 'b1', name: 'ᱫᱟᱜ ᱡᱟᱹᱲᱤ ᱜᱟᱛᱮ 💧', desc: 'ᱢᱩᱱᱰᱟᱨᱤ ᱛᱮ ᱫᱟᱜ ᱪᱚᱠᱨᱚ ᱥᱟᱬᱮᱥ ᱪᱮᱫ', icon: '🌊' },
+        { id: 'b2', name: 'ᱦᱟᱹᱴᱤᱧ ᱵᱤᱜᱽᱭᱟᱱᱤ 🥭', desc: 'ᱩᱞ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱞᱮᱠᱷᱟ ᱥᱚᱞᱦᱮ', icon: '🥭' },
+        { id: 'b3', name: 'ᱥᱟᱨᱡᱚᱢ ᱨᱩᱠᱷᱤᱭᱟᱹ 🍃', desc: 'ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱥᱟᱠᱟᱢ ᱡᱚᱢᱟ ᱵᱮᱱᱟᱣ', icon: '🌱' },
+        { id: 'b4', name: '᱕-ᱢᱟᱦᱟᱸ ᱡᱩᱞᱩᱜ 🔥', desc: 'ᱢᱩᱱᱰᱟᱨᱤ ᱛᱮ ᱕ ᱢᱟᱦᱟᱸ ᱞᱮᱛᱟᱲ ᱪᱮᱫᱚᱜ', icon: '🔥' },
+        { id: 'b5', name: 'ᱢᱩᱱᱰᱟᱨᱤ ᱯᱚᱸᱰᱤᱛ 📜', desc: '᱒᱕ ᱜᱚᱴᱟᱝ ᱥᱟᱬᱮᱥ ᱟᱹᱲᱟᱹ ᱪᱮᱫ', icon: '📖' },
+        { id: 'b6', name: 'ᱨᱚᱲ ᱤᱯᱤᱞ 🎙️', desc: 'ᱢᱩᱱᱰᱟᱨᱤ ᱛᱮ ᱑᱐ ᱜᱚᱴᱟᱝ ᱠᱩᱠᱞᱤ ᱠᱩᱞᱤ', icon: '⭐' }
       ]
     };
     const badgesToRender = localizedBadges[lang] || profile.badges.map(b => ({
@@ -2536,6 +2574,8 @@ ${l.homework}
       as: 'নমস্কাৰ অভিভাৱকসকল! (Welcome Parents)',
       sat: 'ᱡᱚᱦᱟᱨ ᱟᱭᱳ / ᱵᱟᱵᱟ! (Welcome Parents)',
       khr: 'गोड़ लागो माय-बाप! (Welcome Parents)',
+      hoc: 'ᱡᱚᱦᱟᱨ ᱮᱸᱜᱟ / ᱟᱯᱟ! (Welcome Parents)',
+      mun: 'ᱡᱚᱦᱟᱨ ᱟᱭᱳ / ᱵᱟᱵᱟ! (Welcome Parents)',
       en: 'Welcome Parents & Families!'
     };
     const prompts = {
@@ -2552,6 +2592,8 @@ ${l.homework}
       as: 'আজি ৰাতি সোধক: "গৰম চাহৰ ধোঁৱা ওপৰলৈ গৈ কি হয়?"',
       sat: 'ᱛᱮᱦᱮᱧ ᱧᱤᱫᱟᱹ ᱫᱟᱠᱟ ᱩᱛᱩ ᱡᱚᱠᱷᱚᱱ: "ᱪᱩᱞᱦᱟᱹ ᱠᱷᱚᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱱ ᱵᱷᱟᱯ ᱥᱮᱨᱢᱟ ᱨᱮ ᱚᱠᱟ ᱥᱮᱫ ᱪᱟᱞᱟᱜᱼᱟ?" ᱢᱮᱱᱛᱮ ᱜᱤᱫᱽᱨᱟᱹ ᱠᱩᱞᱤᱭᱮᱢ!',
       khr: 'आज रात रंधन करे बेरा पूछा: "डेगची के भाप ऊपर जाके की बनो है?"',
+      hoc: 'ᱛᱮᱦᱮᱧ ᱧᱤᱫᱟᱹ ᱫᱟᱠᱟ ᱡᱚᱠᱷᱚᱱ: "ᱪᱟᱴᱤ ᱠᱷᱚᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱱ ᱵᱷᱟᱯ ᱪᱮᱛᱟᱱ ᱨᱮ ᱪᱮᱫ ᱦᱩᱭᱩᱜᱼᱟ?" ᱢᱮᱱᱛᱮ ᱜᱤᱫᱽᱨᱟᱹ ᱠᱩᱞᱤᱭᱮᱢ!',
+      mun: 'ᱛᱮᱦᱮᱧ ᱧᱤᱫᱟᱹ ᱢᱟᱱᱰᱤ ᱡᱚᱠᱷᱚᱱ: "ᱪᱟᱴᱩ ᱠᱷᱚᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱱ ᱵᱷᱟᱯ ᱪᱮᱛᱟᱱ ᱨᱮ ᱫᱟᱜ ᱪᱮᱠᱟᱛᱮ ᱦᱩᱭᱩᱜᱼᱟ?" ᱢᱮᱱᱛᱮ ᱠᱩᱞᱤᱭᱮᱢ!',
       en: 'Tonight at dinner, ask: "Where does the steam from the hot soup pot go in the sky?"'
     };
     const voiceSnippets = {
@@ -2568,6 +2610,8 @@ ${l.homework}
       as: { text: "মা, গৰম চাহৰ ধোঁৱা ওপৰলৈ গৈ ঠাণ্ডা ঢাকনিত লাগি বৰষুণৰ টোপাল হয়!", code: "as-IN" },
       sat: { text: "ᱟᱭᱳ, ᱪᱩᱞᱦᱟᱹ ᱫᱟᱠᱟ ᱵᱷᱟᱯ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ!", code: "sat-IN" },
       khr: { text: "माय, डेगची के भाप ऊपर जाके ठंडी ढक्कन से टकराके पानी के बूंद बन जाहो है!", code: "khr-IN" },
+      hoc: { text: "ᱮᱸᱜᱟ, ᱪᱟᱴᱤ ᱫᱟᱠᱟ ᱵᱷᱟᱯ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱧᱩᱨᱩᱜᱼᱟ!", code: "hoc-IN" },
+      mun: { text: "ᱟᱭᱳ, ᱪᱟᱴᱩ ᱢᱟᱱᱰᱤ ᱵᱷᱟᱯ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱴᱷᱤᱯᱤᱨ-ᱴᱷᱤᱯᱤᱨ ᱫᱟᱜ ᱦᱩᱭᱩᱜᱼᱟ!", code: "mun-IN" },
       en: { text: "Mom, the steam rising from the soup pot hits the cool lid and turns into rain droplets!", code: "en-IN" }
     };
     const currentVoiceSnippet = voiceSnippets[lang] || voiceSnippets['ta'];
@@ -2719,6 +2763,18 @@ ${l.homework}
         { id: 'p3', eng: 'Green Leaf', vern: 'हरियर पतई', icon: '🍃' },
         { id: 'p4', eng: 'Half (1/2)', vern: 'आधा हिस्सा (1/2)', icon: '🥭' }
       ],
+      hoc: [
+        { id: 'p1', eng: 'Sunlight', vern: 'ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ (1/2)', icon: '🥭' }
+      ],
+      mun: [
+        { id: 'p1', eng: 'Sunlight', vern: 'ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'ᱥᱟᱨᱡᱚᱢ ᱥᱟᱠᱟᱢ', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'ᱛᱟᱞᱟ ᱦᱟᱹᱴᱤᱧ (1/2)', icon: '🥭' }
+      ],
       en: [
         { id: 'p1', eng: 'Sunlight', vern: 'Sunshine Energy', icon: '☀️' },
         { id: 'p2', eng: 'Raindrops', vern: 'Water Droplets', icon: '🌧️' },
@@ -2789,6 +2845,8 @@ ${l.homework}
             const celebrationTexts = {
               sat: 'ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ! ᱡᱚᱛᱚ ᱡᱤᱱᱤᱥ ᱥᱟᱹᱨᱤ ᱢᱤᱞᱟᱹᱣ ᱮᱱᱟ! ᱟᱢ ᱫᱚ ᱪᱟᱢᱯᱤᱭᱟᱱ ᱠᱟᱱᱟᱢ!',
               khr: 'शाबाश संगी! सब जोड़ा बिल्कुल सही मिलल! तोहें चैंपियन बन गेला!',
+              hoc: 'ᱟᱹᱰᱤ ᱵᱮᱥ ᱡᱩᱲᱤ! ᱡᱚᱛᱚ ᱡᱚᱲᱟ ᱴᱷᱤᱠ ᱜᱮ ᱢᱮᱥᱟ ᱮᱱᱟ! ᱟᱢ ᱫᱚ ᱪᱟᱢᱯᱤᱭᱟᱱ ᱠᱟᱱᱟᱢ!',
+              mun: 'ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ ᱜᱟᱛᱮ! ᱡᱚᱛᱚ ᱡᱚᱲᱟ ᱥᱟᱹᱨᱤ ᱢᱤᱞᱟᱹᱣ ᱮᱱᱟ! ᱟᱢ ᱫᱚ ᱪᱟᱢᱯᱤᱭᱟᱱ!',
               ta: 'அற்புதம்! அனைத்து இணைகளும் சரியாக பொருந்திவிட்டன!',
               hi: 'शाबाश! सभी जोड़े बिल्कुल सही मिल गए! आप चैंपियन हैं!'
             };
@@ -3165,13 +3223,17 @@ ${l.homework}
         hi: 'स्थानीय उदाहरण (Local Metaphor)',
         te: 'స్థానిక ఉదాహరణ (Local Metaphor)',
         kn: 'ಸ್ಥಳೀಯ ಉದಾಹರಣೆ (Local Metaphor)',
-        ml: 'പ്രാദേശിക ഉദാഹരണം (Local Metaphor)',
+        ml: 'പ്രാദേശിക ഉദാಹരണം (Local Metaphor)',
         bn: 'স্থানীয় উদাহরণ (Local Metaphor)',
         mr: 'स्थानिक उदाहरण (Local Metaphor)',
         gu: 'સ્થાનિક ઉદાહરણ (Local Metaphor)',
         pa: 'ਸਥਾਨਕ ਉਦਾਹਰਣ (Local Metaphor)',
-        or: 'ସ୍ଥାନୀୟ ଉଦାହରଣ (Local Metaphor)',
+        or: 'ସ୍ଥାନୀୟ ଉଦାᱦରଣ (Local Metaphor)',
         as: 'স্থানীয় উদাহৰণ (Local Metaphor)',
+        sat: 'ᱴᱷᱟᱹᱣᱠᱟᱹ ᱩᱫᱟᱹᱦᱚᱨᱚᱱ (Local Metaphor)',
+        khr: 'स्थानीय उदाहरण (Local Metaphor)',
+        hoc: 'ᱫᱤᱥᱩᱢ ᱩᱫᱟᱹᱦᱚᱨᱚᱱ (Local Metaphor)',
+        mun: 'ᱦᱟᱛᱩ ᱩᱫᱟᱹᱦᱚᱨᱚᱱ (Local Metaphor)',
         en: 'Familiar Household Metaphor'
       };
       const metaLabel = metaphorLabels[this.currentLang] || 'Cultural Metaphor';

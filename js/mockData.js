@@ -12,6 +12,8 @@ export const SUPPORTED_LANGUAGES = [
   { code: 'or', name: 'Odia', nativeName: 'ଓଡ଼ିଆ', speechCode: 'or-IN', flag: '🇮🇳' },
   { code: 'as', name: 'Assamese', nativeName: 'অসমীয়া', speechCode: 'as-IN', flag: '🇮🇳' },
   { code: 'sat', name: 'Santhali', nativeName: 'ᱥᱟᱱᱛᱟᱲᱤ (Ol Chiki)', speechCode: 'sat-IN', flag: '🇮🇳' },
+  { code: 'hoc', name: 'Ho', nativeName: 'ᱦᱳ (Ho)', speechCode: 'hoc-IN', flag: '🇮🇳' },
+  { code: 'mun', name: 'Mundari', nativeName: 'ᱢᱩᱱᱰᱟᱨᱤ (Mundari)', speechCode: 'mun-IN', flag: '🇮🇳' },
   { code: 'khr', name: 'Khortha', nativeName: 'खोरठा', speechCode: 'khr-IN', flag: '🇮🇳' },
   { code: 'en', name: 'English', nativeName: 'English', speechCode: 'en-IN', flag: '🌐' }
 ];
@@ -29,6 +31,8 @@ export const TUTOR_PROFILES = {
   or: { name: 'ମିତ୍ର (Mitra)', greeting: 'ନମସ୍କାର ସାଙ୍ଗ! ଆଜି ଆମେ କେଉଁ ନୂଆ କଥା ଶିଖିବା?' },
   as: { name: 'মিত্ৰ (Mitra)', greeting: 'নমস্কাৰ মৰমৰ বন্ধু! আজি আমি কি নতুন কথা শিকিম?' },
   sat: { name: 'ᱜᱟᱛᱮ ᱢᱤᱛᱨᱟ (Gate Mitra)', greeting: 'ᱡᱚᱦᱟᱨ ᱠᱟᱹᱴᱤᱡ ᱜᱟᱛᱮ! ᱛᱮᱦᱮᱧ ᱫᱚ ᱪᱮᱫ ᱱᱟᱣᱟ ᱠᱟᱛᱷᱟ ᱵᱚᱱ ᱪᱮᱫᱚᱜᱼᱟ?' },
+  hoc: { name: 'ᱡᱩᱲᱤ ᱢᱤᱛᱨᱟ (Juri Mitra)', greeting: 'ᱡᱚᱦᱟᱨ ᱡᱩᱲᱤ! ᱛᱤᱥᱤᱝ ᱫᱚ ᱪᱮᱱᱟᱜ ᱱᱟᱣᱟ ᱠᱟᱛᱷᱟ ᱵᱚ ᱪᱮᱫᱚᱜᱼᱟ?' },
+  mun: { name: 'ᱜᱟᱛᱮ ᱢᱤᱛᱨᱟ (Gate Mitra)', greeting: 'ᱡᱚᱦᱟᱨ ᱜᱟᱛᱮ! ᱛᱤᱥᱤᱝ ᱫᱚ ᱪᱮᱱᱟᱜ ᱱᱟᱣᱟ ᱠᱟᱛᱷᱟ ᱵᱚᱱ ᱪᱮᱫᱚᱜᱼᱟ?' },
   khr: { name: 'संगी मित्रा (Sangi Mitra)', greeting: 'गोड़ लागो ही बाबू! आज हमनी की नया और मज़ागर चीज़ सीखब?' },
   en: { name: 'Mitra (AI Buddy)', greeting: 'Hello little friend! What exciting thing would you like to explore today?' }
 };
@@ -255,6 +259,44 @@ export const PEDAGOGY_KNOWLEDGE_BASE = [
           correctIndex: 0,
           hint: 'ᱩᱭᱦᱟᱹᱨ ᱢᱮ: ᱞᱚᱞᱚ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱮ ᱪᱮᱫ ᱵᱮᱱᱟᱣᱜᱼᱟ?',
           successMsg: 'ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ! ᱥᱟᱹᱨᱤ ᱛᱮᱞᱟ! ⭐ ᱟᱢ ᱫᱚ ᱢᱤᱫ ᱠᱟᱹᱴᱤᱡ ᱵᱤᱜᱽᱭᱟᱱᱤ ᱠᱟᱱᱟᱢ!'
+        }
+      },
+      hoc: {
+        literal: 'ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱜᱟᱢᱟᱜᱼᱟ?',
+        phonetic: 'Sirma khon da\' cedag gamag-a?',
+        pedagogyTitle: 'ᱟᱭᱳᱣᱟᱜ ᱪᱩᱞᱦᱟᱹ ᱢᱟᱺᱰᱤ ᱵᱷᱟᱯ ᱟᱨ ᱠᱚᱞᱦᱟᱱ ᱨᱮᱱᱟᱜ ᱨᱤᱢᱤᱞ! 🍲☁️',
+        vernacularExplanation: 'ᱟᱵᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱢᱟᱺᱰᱤ ᱩᱛᱩ ᱡᱚᱠᱷᱚᱱ ᱪᱮᱛᱟᱱ ᱛᱮ ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ ᱧᱮᱞ ᱟᱠᱟᱫᱟᱢ? ᱛᱷᱟᱹᱨᱤ ᱛᱮ ᱯᱚᱴᱚᱢ ᱞᱮᱠᱷᱟᱱ ᱚᱱᱟ ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ-ᱴᱷᱤᱯᱤᱨ ᱜᱟᱢᱟᱭᱟ!\n\nᱥᱤᱝᱵᱚᱝᱜᱟ ᱦᱚᱸ ᱜᱟᱰᱟ ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱵᱷᱟᱯ ᱵᱮᱱᱟᱣᱟ, ᱚᱱᱟ ᱪᱮᱛᱟᱱ ᱨᱮ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜᱼᱟ᱾ ᱨᱤᱢᱤᱞ ᱦᱟᱢᱟᱞ ᱞᱮᱱᱠᱷᱟᱱ ᱡᱟᱹᱲᱤ ᱫᱟᱜ ᱜᱟᱢᱟ ᱦᱩᱭᱩᱜᱼᱟ!',
+        localMetaphor: 'ᱪᱩᱞᱦᱟᱹ ᱴᱩᱠᱩᱡ ᱪᱮᱛᱟᱱ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱡᱟᱣᱨᱟᱜ ᱠᱟᱱ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱜᱟᱢᱟᱜᱼᱟ᱾',
+        culturalKeywords: [
+          { term: 'ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ (Evaporation)', meaning: 'ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ' },
+          { term: 'ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ (Condensation)', meaning: 'ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ' },
+          { term: 'ᱫᱟᱜ ᱜᱟᱢᱟ (Precipitation)', meaning: 'ᱨᱤᱢᱤᱞ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩᱨᱩᱜ' }
+        ],
+        quiz: {
+          question: 'ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱜᱟᱰᱟ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱪᱮᱫ ᱵᱮᱱᱟᱣᱜᱼᱟ?',
+          options: ['ᱨᱤᱢᱤᱞ (Clouds)', 'ᱫᱷᱤᱨᱤ', 'ᱥᱟᱦᱟᱱ'],
+          correctIndex: 0,
+          hint: 'ᱩᱭᱦᱟᱹᱨ ᱢᱮ: ᱞᱚᱞᱚ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱮ ᱪᱮᱫ ᱵᱮᱱᱟᱣᱜᱼᱟ?',
+          successMsg: 'ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ ᱡᱩᱲᱤ! ᱥᱟᱹᱨᱤ ᱛᱮᱞᱟ! ⭐'
+        }
+      },
+      mun: {
+        literal: 'ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ ᱪᱮᱫᱟᱜ ᱡᱟᱹᱲᱤᱜᱼᱟ?',
+        phonetic: 'Sirma khon da\' cedag jạṛig-a?',
+        pedagogyTitle: 'ᱟᱭᱳᱣᱟᱜ ᱪᱩᱞᱦᱟᱹ ᱢᱟᱺᱰᱤ ᱵᱷᱟᱯ ᱟᱨ ᱥᱤᱨᱢᱟ ᱨᱮᱱᱟᱜ ᱨᱤᱢᱤᱞ! 🍲☁️',
+        vernacularExplanation: 'ᱟᱵᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱨᱮ ᱢᱟᱺᱰᱤ ᱛᱤᱠᱤ ᱡᱚᱠᱷᱚᱱ ᱪᱮᱛᱟᱱ ᱛᱮ ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ ᱧᱮᱞ ᱟᱠᱟᱫᱟᱢ? ᱛᱷᱟᱹᱨᱤ ᱛᱮ ᱯᱚᱴᱚᱢ ᱞᱮᱠᱷᱟᱱ ᱚᱱᱟ ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ-ᱴᱷᱤᱯᱤᱨ ᱡᱟᱹᱲᱤᱜ ᱛᱟᱱᱟ!\n\nᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱜᱟᱰᱟ ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱵᱷᱟᱯ ᱵᱮᱱᱟᱣᱜ ᱛᱟᱱᱟ, ᱮᱱᱟ ᱪᱮᱛᱟᱱ ᱨᱮ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣᱜ ᱛᱟᱱᱟ᱾ ᱨᱤᱢᱤᱞ ᱦᱟᱢᱟᱞ ᱞᱮᱱᱨᱮ ᱡᱟᱹᱲᱤ ᱫᱟᱜ ᱦᱩᱭᱩᱜ ᱛᱟᱱᱟ!',
+        localMetaphor: 'ᱪᱩᱞᱦᱟᱹ ᱴᱩᱠᱩᱡ ᱪᱮᱛᱟᱱ ᱛᱷᱟᱹᱨᱤ ᱨᱮ ᱡᱟᱣᱨᱟᱜ ᱠᱟᱱ ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ ᱞᱮᱠᱟ ᱥᱤᱨᱢᱟ ᱠᱷᱚᱱ ᱡᱟᱹᱲᱤ ᱫᱟᱜ ᱦᱩᱭᱩᱜ ᱛᱟᱱᱟ᱾',
+        culturalKeywords: [
+          { term: 'ᱵᱷᱟᱯ ᱨᱟᱠᱟᱵ (Evaporation)', meaning: 'ᱫᱟᱜ ᱞᱚᱞᱚ ᱠᱟᱛᱮ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ' },
+          { term: 'ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ (Condensation)', meaning: 'ᱵᱷᱟᱯ ᱨᱮᱭᱟᱲ ᱠᱟᱛᱮ ᱨᱤᱢᱤᱞ ᱵᱮᱱᱟᱣ' },
+          { term: 'ᱡᱟᱹᱲᱤ ᱫᱟᱜ (Precipitation)', meaning: 'ᱨᱤᱢᱤᱞ ᱠᱷᱚᱱ ᱫᱟᱜ ᱡᱟᱹᱲᱤᱜ' }
+        ],
+        quiz: {
+          question: 'ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱜᱟᱰᱟ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱟᱠᱟᱵ ᱠᱟᱛᱮ ᱪᱮᱱᱟᱜ ᱵᱮᱱᱟᱣᱜ ᱛᱟᱱᱟ?',
+          options: ['ᱨᱤᱢᱤᱞ (Clouds)', 'ᱫᱷᱤᱨᱤ', 'ᱥᱟᱦᱟᱱ'],
+          correctIndex: 0,
+          hint: 'ᱩᱭᱦᱟᱹᱨ ᱢᱮ: ᱞᱚᱞᱚ ᱫᱟᱜ ᱪᱮᱛᱟᱱ ᱨᱮ ᱪᱮᱱᱟᱜ ᱵᱮᱱᱟᱣᱜ ᱛᱟᱱᱟ?',
+          successMsg: 'ᱟᱹᱰᱤ ᱵᱮᱥ ᱜᱟᱛᱮ! ᱥᱟᱹᱨᱤ ᱛᱮᱞᱟ! ⭐'
         }
       },
       khr: {
@@ -599,6 +641,24 @@ export const PEDAGOGY_KNOWLEDGE_BASE = [
         localMetaphor: 'ᱥᱟᱠᱟᱢ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱪᱟ ᱨᱟᱸᱫᱷᱱᱟ ᱟᱨ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱜᱮ ᱪᱩᱞᱦᱟᱹ',
         culturalKeywords: [{ term: 'ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ (Photosynthesis)', meaning: 'ᱥᱤᱸᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱵᱮᱱᱟᱣ' }, { term: 'ᱦᱟᱹᱨᱭᱟᱹᱲ ᱨᱚᱝ (Chlorophyll)', meaning: 'ᱥᱟᱠᱟᱢ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱭᱟᱹᱲ ᱨᱚᱝ' }],
         quiz: { question: 'ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱸᱫᱷᱱᱟ ᱚᱲᱟᱜ ᱚᱠᱟ ᱠᱚ ᱢᱮᱛᱟᱜᱼᱟ?', options: ['ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ', 'ᱨᱮᱦᱮᱴ', 'ᱵᱟᱦᱟ'], correctIndex: 0, hint: 'ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱭᱟᱹᱲ ᱦᱟᱹᱴᱤᱧ', successMsg: 'ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ! ᱟᱢ ᱫᱚ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱮᱢ ᱵᱩᱡᱷᱟᱹᱣ ᱠᱮᱫᱟ! ⭐' }
+      },
+      hoc: {
+        literal: 'ᱫᱟᱨᱮ ᱠᱚ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾',
+        phonetic: 'Dare ko harag lagid Singbonga taras larktia.',
+        pedagogyTitle: 'ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱨᱮᱱᱟᱜ ᱡᱟᱹᱫᱩ ᱨᱟᱪᱟ ᱨᱟᱸᱫᱷᱱᱟ! 🍃☀️',
+        vernacularExplanation: 'ᱡᱮᱞᱮᱠᱟ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱡᱩᱞ ᱠᱟᱛᱮ ᱢᱟᱺᱰᱤ ᱩᱛᱩ ᱛᱮᱭᱟᱨᱟ, ᱚᱱᱠᱟ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱫᱚ ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ ᱟᱨ ᱨᱮᱦᱮᱴ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩ ᱠᱟᱛᱮ ᱟᱠᱚᱣᱟᱜ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨᱟ! ᱱᱚᱣᱟ ᱜᱮ \'ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ\' (Photosynthesis) ᱵᱚᱱ ᱢᱮᱛᱟᱜᱼᱟ᱾',
+        localMetaphor: 'ᱥᱟᱠᱟᱢ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱪᱟ ᱨᱟᱸᱫᱷᱱᱟ ᱟᱨ ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ ᱜᱮ ᱪᱩᱞᱦᱟᱹ',
+        culturalKeywords: [{ term: 'ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ (Photosynthesis)', meaning: 'ᱥᱤᱝᱵᱚᱝᱜᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱵᱮᱱᱟᱣ' }, { term: 'ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱨᱚᱝ (Chlorophyll)', meaning: 'ᱥᱟᱠᱟᱢ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱨᱚᱝ' }],
+        quiz: { question: 'ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱸᱫᱷᱱᱟ ᱚᱲᱟᱜ ᱚᱠᱟ ᱠᱚ ᱢᱮᱛᱟᱜᱼᱟ?', options: ['ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ', 'ᱨᱮᱦᱮᱴ', 'ᱵᱟᱦᱟ'], correctIndex: 0, hint: 'ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱦᱟᱹᱴᱤᱧ', successMsg: 'ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ ᱡᱩᱲᱤ! ᱟᱢ ᱫᱚ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱮᱢ ᱵᱩᱡᱷᱟᱹᱣ ᱠᱮᱫᱟ! ⭐' }
+      },
+      mun: {
+        literal: 'ᱫᱟᱨᱮ ᱠᱚ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤ ᱛᱟᱱᱟ᱾',
+        phonetic: 'Dare ko harag lagid Singi taras lakti tana.',
+        pedagogyTitle: 'ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱨᱮᱱᱟᱜ ᱡᱟᱹᱫᱩ ᱨᱟᱪᱟ ᱨᱟᱸᱫᱷᱱᱟ! 🍃☀️',
+        vernacularExplanation: 'ᱡᱮᱞᱮᱠᱟ ᱚᱲᱟᱜ ᱨᱮ ᱟᱭᱳ ᱪᱩᱞᱦᱟᱹ ᱡᱩᱞ ᱠᱟᱛᱮ ᱢᱟᱺᱰᱤ ᱛᱤᱠᱤᱭᱟ, ᱚᱱᱠᱟ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱫᱚ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱟᱨ ᱨᱮᱦᱮᱴ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩ ᱠᱟᱛᱮ ᱟᱠᱚᱣᱟᱜ ᱡᱚᱢᱟᱜ ᱠᱚ ᱛᱮᱭᱟᱨ ᱛᱟᱱᱟ! ᱱᱮᱱᱟ ᱜᱮ \'ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ\' (Photosynthesis) ᱵᱚᱱ ᱠᱟᱡᱤᱭᱟᱜ ᱛᱟᱱᱟ᱾',
+        localMetaphor: 'ᱥᱟᱠᱟᱢ ᱜᱮ ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱸᱫᱷᱱᱟ ᱟᱨ ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱜᱮ ᱪᱩᱞᱦᱟᱹ',
+        culturalKeywords: [{ term: 'ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ (Photosynthesis)', meaning: 'ᱥᱤᱝᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱵᱮᱱᱟᱣ' }, { term: 'ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱨᱚᱝ (Chlorophyll)', meaning: 'ᱥᱟᱠᱟᱢ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱨᱚᱝ' }],
+        quiz: { question: 'ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱸᱫᱷᱱᱟ ᱚᱲᱟᱜ ᱚᱠᱟ ᱠᱚ ᱢᱮᱛᱟᱜ ᱛᱟᱱᱟ?', options: ['ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ', 'ᱨᱮᱦᱮᱴ', 'ᱵᱟᱦᱟ'], correctIndex: 0, hint: 'ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱦᱟᱹᱨᱤᱭᱟᱹᱲ ᱦᱟᱹᱴᱤᱧ', successMsg: 'ᱟᱹᱰᱤ ᱵᱮᱥ ᱜᱟᱛᱮ! ᱟᱢ ᱫᱚ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱮᱢ ᱵᱩᱡᱷᱟᱹᱣ ᱠᱮᱫᱟ! ⭐' }
       },
       khr: {
         literal: 'गाछ-बिरिछ के बढ़ेक ले घाम के जरूरी होवो है।',

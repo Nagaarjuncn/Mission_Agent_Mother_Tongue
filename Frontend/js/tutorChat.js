@@ -71,6 +71,10 @@ export class TutorChat {
         .replace('ਪਿਆਰੇ ਦੋਸਤ', this.studentName)
         .replace('ସାଙ୍ଗ', this.studentName)
         .replace('মৰমৰ বন্ধু', this.studentName)
+        .replace('ᱠᱟᱹᱴᱤᱡ ᱜᱟᱛᱮ', this.studentName)
+        .replace('ᱡᱩᱲᱤ', this.studentName)
+        .replace('ᱜᱟᱛᱮ', this.studentName)
+        .replace('बाबू', this.studentName)
         .replace('little friend', this.studentName);
     }
 
