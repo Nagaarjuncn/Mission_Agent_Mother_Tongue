@@ -311,6 +311,16 @@ def test_santhali_features():
     assert tutor_data["reply_speech_code"] == "sat-IN"
     assert "ᱫᱟᱜ" in tutor_data["reply_text"] or "ᱨᱤᱢᱤᱞ" in tutor_data["reply_text"]
 
+    # 4. Santhali quiz is available in pedagogy explain
+    assert "question" in ped_data["quick_quiz"]
+    assert "ᱨᱤᱢᱤᱞ" in str(ped_data["quick_quiz"]) or "ᱫᱟᱜ" in str(ped_data["quick_quiz"])
+
+    # 5. Santhali audible TTS audio synthesis returns real audio bytes (> 3000 bytes)
+    tts_res = client.get("/api/speech/tts?text=ᱥᱮᱨᱢᱟ ᱠᱷᱚᱱ ᱫᱟᱜ&lang=sat")
+    assert tts_res.status_code == 200
+    assert len(tts_res.content) > 3000
+    assert tts_res.headers["content-type"] == "audio/mpeg"
+
 def test_khortha_features():
     # 1. Translation into Khortha
     res = client.post("/api/translate", json={
@@ -333,6 +343,7 @@ def test_khortha_features():
     assert ped_res.status_code == 200
     ped_data = ped_res.json()
     assert "भान्साघर" in ped_data["pedagogy_title"] or "पतई" in ped_data["pedagogy_title"]
+    assert "question" in ped_data["quick_quiz"]
 
     # 3. Tutor chat understanding English and replying in Khortha
     tutor_res = client.post("/api/tutor/chat", json={
@@ -344,6 +355,12 @@ def test_khortha_features():
     assert tutor_data["input_was_converted"] is True
     assert tutor_data["reply_speech_code"] == "khr-IN"
     assert "बदरी" in tutor_data["reply_text"] or "बरसे" in tutor_data["reply_text"]
+
+    # 4. Khortha audible TTS audio synthesis returns real audio bytes (> 3000 bytes)
+    tts_res = client.get("/api/speech/tts?text=अकास से पानी काहे बरसे है&lang=khr")
+    assert tts_res.status_code == 200
+    assert len(tts_res.content) > 3000
+    assert tts_res.headers["content-type"] == "audio/mpeg"
 
 if __name__ == "__main__":
     import pytest

@@ -393,8 +393,29 @@ class SpeechService:
             "zh": "zh-CN",
             "ar": "ar"
         }
-        target_gtts_lang = gtts_lang_map.get(short_lang, "en")
-        text_hash = hashlib.md5(f"{target_gtts_lang}:{clean_text}".encode("utf-8")).hexdigest()
+        # Ol Chiki phonetic transliteration dictionary for TTS engines
+        OL_CHIKI_PHONETIC = {
+            '\u1C50': '0', '\u1C51': '1', '\u1C52': '2', '\u1C53': '3', '\u1C54': '4',
+            '\u1C55': '5', '\u1C56': '6', '\u1C57': '7', '\u1C58': '8', '\u1C59': '9',
+            '\u1C5A': 'o', '\u1C5B': 't', '\u1C5C': 'g', '\u1C5D': 'ng', '\u1C5E': 'l',
+            '\u1C5F': 'a', '\u1C60': 'k', '\u1C61': 'j', '\u1C62': 'm', '\u1C63': 'w',
+            '\u1C64': 'i', '\u1C65': 's', '\u1C66': 'h', '\u1C67': 'ny', '\u1C68': 'r',
+            '\u1C69': 'u', '\u1C6A': 'ch', '\u1C6B': 'd', '\u1C6C': 'n', '\u1C6D': 'y',
+            '\u1C6E': 'e', '\u1C6F': 'p', '\u1C70': 'd', '\u1C71': 'n', '\u1C72': 'r',
+            '\u1C73': 'o', '\u1C74': 't', '\u1C75': 'b', '\u1C76': 'n', '\u1C77': 'h',
+            '\u1C78': 'n', '\u1C79': '', '\u1C7A': '', '\u1C7B': '', '\u1C7C': '',
+            '\u1C7D': '', '\u1C7E': '.', '\u1C7F': '.'
+        }
+
+        # Transliterate Ol Chiki script for Indic TTS voice synthesis
+        if short_lang == "sat" or any('\u1C50' <= ch <= '\u1C7F' for ch in clean_text):
+            speech_text = ''.join(OL_CHIKI_PHONETIC.get(ch, ch) for ch in clean_text)
+            target_gtts_lang = "hi"
+        else:
+            speech_text = clean_text
+            target_gtts_lang = gtts_lang_map.get(short_lang, "en")
+
+        text_hash = hashlib.md5(f"{target_gtts_lang}:{speech_text}".encode("utf-8")).hexdigest()
         cache_key = f"{target_gtts_lang}:{text_hash}"
 
         if cache_key in self._audio_cache:
@@ -403,11 +424,11 @@ class SpeechService:
         # 1. Primary: gTTS synthesis
         try:
             from gtts import gTTS
-            tts = gTTS(text=clean_text[:600], lang=target_gtts_lang, slow=False)
+            tts = gTTS(text=speech_text[:600], lang=target_gtts_lang, slow=False)
             fp = io.BytesIO()
             tts.write_to_fp(fp)
             data = fp.getvalue()
-            if data and len(data) > 200:
+            if data and len(data) > 2500:
                 self._audio_cache[cache_key] = data
                 return data
         except Exception as e:
@@ -417,12 +438,12 @@ class SpeechService:
         try:
             import urllib.request
             import urllib.parse
-            q = urllib.parse.quote(clean_text[:250])
+            q = urllib.parse.quote(speech_text[:250])
             url = f"https://translate.google.com/translate_tts?ie=UTF-8&tl={target_gtts_lang}&client=tw-ob&q={q}"
             req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"})
             with urllib.request.urlopen(req, timeout=6) as resp:
                 data = resp.read()
-                if data and len(data) > 200:
+                if data and len(data) > 2500:
                     self._audio_cache[cache_key] = data
                     return data
         except Exception as e2:

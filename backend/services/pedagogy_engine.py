@@ -437,7 +437,13 @@ PEDAGOGY_CONCEPTS_DB = [
                 "cultural_keywords": [{"term": "ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ", "meaning": "ᱥᱤᱸᱜᱤ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱵᱮᱱᱟᱣ"}],
                 "familiar_objects": ["ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ", "ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ", "ᱫᱟᱨᱮ ᱨᱮᱦᱮᱴ"],
                 "literal": "ᱫᱟᱨᱮ ᱱᱟᱹᱲᱤ ᱦᱟᱨᱟᱜ ᱞᱟᱹᱜᱤᱫ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱞᱟᱹᱠᱛᱤᱭᱟ᱾",
-                "phonetic": "Dare nạṛi harag lạpạd sińgi beṛa taras larktia."
+                "phonetic": "Dare nạṛi harag lạpạd sińgi beṛa taras larktia.",
+                "quiz": {
+                    "question": "ᱫᱟᱨᱮ ᱨᱮᱱᱟᱜ ᱨᱟᱸᱫᱷᱱᱟ ᱚᱲᱟᱜ ᱚᱠᱟ ᱠᱚ ᱢᱮᱛᱟᱜᱼᱟ?",
+                    "options": ["ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ", "ᱫᱟᱨᱮ ᱨᱮᱦᱮᱴ", "ᱫᱟᱨᱮ ᱪᱷᱟᱞ"],
+                    "correct": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ",
+                    "explanation": "ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ ᱜᱮ ᱥᱤᱸᱜᱤ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱛᱮ ᱡᱚᱢᱟᱜ ᱮ ᱵᱮᱱᱟᱣᱟ!"
+                }
             },
             "khr": {
                 "pedagogy_title": "हरियर पतई के जादुई भान्साघर! 🍃☀️",
@@ -447,7 +453,13 @@ PEDAGOGY_CONCEPTS_DB = [
                 "cultural_keywords": [{"term": "प्रकाश-संश्लेषण", "meaning": "घाम से खाना बनावेक"}],
                 "familiar_objects": ["हरियर पतई", "सुरुज के घाम", "गाछ के जड़"],
                 "literal": "गाछ-बिरिछ के बढ़ेक ले घाम के जरूरी होवो है।",
-                "phonetic": "Gaach-birich ke badhek le ghaam ke jaroori hovo hai."
+                "phonetic": "Gaach-birich ke badhek le ghaam ke jaroori hovo hai.",
+                "quiz": {
+                    "question": "गाछ-बिरिछ के भान्साघर (रसोई) केकरा कहल जाहो है?",
+                    "options": ["हरियर पतई के", "गाछ के जड़ के", "गाछ के छाल के"],
+                    "correct": "हरियर पतई के",
+                    "explanation": "हरियर पतई सुरुज के घाम से गाछ ले खाना पकावो है!"
+                }
             },
             "en": {
                 "pedagogy_title": "The Solar-Powered Green Kitchen!",
@@ -596,7 +608,13 @@ PEDAGOGY_CONCEPTS_DB = [
                 "cultural_keywords": [{"term": "ᱟᱫᱷᱟ (1/2)", "meaning": "ᱵᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ"}, {"term": "ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ (1/4)", "meaning": "ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ ᱨᱮᱱᱟᱜ ᱢᱤᱫ ᱦᱟᱹᱴᱤᱧ"}],
                 "familiar_objects": ["ᱩᱞ", "ᱯᱤᱴᱷᱟᱹ"],
                 "literal": "ᱦᱟᱹᱴᱤᱧ (Fraction): ᱢᱤᱫᱴᱟᱝ ᱡᱤᱱᱤᱥ ᱥᱚᱢᱟᱱ ᱛᱮ ᱦᱟᱹᱴᱤᱧ᱾",
-                "phonetic": "Hạṭiń: Midṭang jinis soman te hạṭiń."
+                "phonetic": "Hạṭiń: Midṭang jinis soman te hạṭiń.",
+                "quiz": {
+                    "question": "ᱢᱤᱫᱴᱟᱝ ᱩᱞ ᱵᱟᱨ ᱦᱚᱲ ᱛᱮ ᱥᱚᱢᱟᱱ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ ᱛᱤᱱᱟᱹᱜ ᱧᱟᱢᱚᱜᱼᱟ?",
+                    "options": ["1/2 (ᱟᱫᱷᱟ)", "1/4 (ᱯᱩᱱ ᱦᱟᱹᱴᱤᱧ)", "ᱯᱩᱨᱟᱹ ᱩᱞ"],
+                    "correct": "1/2 (ᱟᱫᱷᱟ)",
+                    "explanation": "ᱢᱤᱫᱴᱟᱝ ᱡᱤᱱᱤᱥ ᱵᱟᱨ ᱦᱟᱹᱴᱤᱧ ᱞᱮᱠᱷᱟᱱ 1/2 (ᱟᱫᱷᱟ) ᱦᱩᱭᱩᱜᱼᱟ!"
+                }
             },
             "khr": {
                 "pedagogy_title": "हाट के मीठा आम और संगी-साथी में बंटवारा! 🥭",
@@ -606,7 +624,13 @@ PEDAGOGY_CONCEPTS_DB = [
                 "cultural_keywords": [{"term": "आधा (1/2)", "meaning": "दू हिस्सा में एक हिस्सा"}, {"term": "चौथाई (1/4)", "meaning": "चार हिस्सा में एक हिस्सा"}],
                 "familiar_objects": ["आम", "रोटी", "पीठा"],
                 "literal": "बांट/अंग (Fraction): कोनो चीज़ के बराबर हिस्सा में बांटेक।",
-                "phonetic": "Bant/Ang: Kono cheez ke barabar hissa me bantek."
+                "phonetic": "Bant/Ang: Kono cheez ke barabar hissa me bantek.",
+                "quiz": {
+                    "question": "एक गो आम के दू भाई-बहिन में बराबर बांटे पर कितना मिलतो?",
+                    "options": ["1/2 (आधा)", "1/4 (चौथाई)", "पूरा आम"],
+                    "correct": "1/2 (आधा)",
+                    "explanation": "बराबर दू हिस्सा में बांटल पर हर एक के आधा (1/2) मिलो है!"
+                }
             },
             "en": {
                 "pedagogy_title": "Sharing Warm Chapatis & Mango Slices!",

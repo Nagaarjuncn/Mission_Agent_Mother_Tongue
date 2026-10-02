@@ -650,6 +650,7 @@ class VernacApp {
     // Re-render Dashboards with subjects in chosen mother tongue
     this.renderStudentDashboard();
     this.renderParentDashboard();
+    this.setupMinigame();
     this.updateStudentNameInAllViews();
   }
 
@@ -693,35 +694,6 @@ class VernacApp {
         { title: 'Water Cycle ⇄ જળચક્ર', desc: 'રસોડામાં ઊકળતી ચાની વરાળ અને ઢાંકણ પરનાં ટીપાં' },
         { title: 'Fractions ⇄ અપૂર્ણાંક', desc: 'મીઠી કેરીની ચીરીઓની સરખી વહેંચણી' }
       ],
-      ta: [
-        { name: 'அறிவியல் (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'மழை மேகங்களின் ரகசியம் (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
-        { name: 'கணிதம் (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'பின்னங்கள்: மாம்பழப் பகிர்வு (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
-        { name: 'சூழ்நிலையியல் (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'நமது வீட்டு மூலிகைகள்: துளசி, வேம்பு', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
-        { name: 'தாய்மொழித் தமிழ் (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'பாரதியார் கவிதைகளும் புதிய சொற்களும்', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
-      ],
-      pa: [
-        { name: 'ਵਿਗਿਆਨ (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'ਮੀਂਹ ਦੇ ਬੱਦਲਾਂ ਦਾ ਭੇਤ (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
-        { name: 'ਗਣਿਤ (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'ਭਿੰਨਾਂ: ਰੋਟੀ ਦੀ ਵੰਡ (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
-        { name: 'ਵਾਤਾਵਰਣ ਸਿੱਖਿਆ (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'ਸਾਡੇ ਘਰ ਦੇ ਔਸ਼ਧੀ ਪੌਦੇ: ਤੁਲਸੀ ਤੇ ਨਿੰਮ', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
-        { name: 'ਮਾਤ-ਭਾਸ਼ਾ ਪੰਜਾਬੀ (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'ਕਹਾਣੀਆਂ ਅਤੇ ਨਵੀਂ ਸ਼ਬਦਾਵਲੀ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
-      ],
-      or: [
-        { name: 'ବିଜ୍ଞାନ (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'ବର୍ଷା ବାଦଲର ରହସ୍ୟ (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
-        { name: 'ଗଣିତ (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'ଭଗ୍ନାଂଶ: ଆମ୍ବ ବଣ୍ଟନ (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
-        { name: 'ପରିବେଶ ବିଜ୍ଞାନ (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'ଆମ ବାଡ଼ିର ଔଷଧୀୟ ଗଛ: ତୁଳସୀ ଓ ନିମ୍ବ', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
-        { name: 'ମାତୃଭାଷା ଓଡ଼ିଆ (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'ଉତ୍କଳମଣିଙ୍କ କବିତା ଓ ନୂଆ ଶବ୍ଦ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
-      ],
-      as: [
-        { name: 'বিজ্ঞান (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'বৰষুণৰ ডাৱৰৰ ৰহস্য (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
-        { name: 'গণিত (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'ভগ্নাংশ: আম ভগাই খোৱা (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
-        { name: 'পৰিৱেশ অধ্যয়ন (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'আমাৰ বাৰীৰ ঔষধি গছ: তুলসী আৰু নিম', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
-        { name: 'মাতৃভাষা অসমীয়া (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'সাধুকথা আৰু নতুন শব্দ সম্ভাৰ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
-      ],
-      en: [
-        { title: 'Sunlight ⇄ Solar Energy', desc: 'Explained with morning warmth & grandma balcony plants' },
-        { title: 'Water Cycle ⇄ Evaporation & Rain', desc: 'Explained with boiling tea steam & cooling lid droplets' },
-        { title: 'Fractions ⇄ Halves & Quarters', desc: 'Explained with sharing sweet summer mango slices' }
-      ],
       pa: [
         { title: 'Sunlight ⇄ ਸੂਰਜ ਦੀ ਰੌਸ਼ਨੀ', desc: 'ਸਵੇਰ ਦੀ ਧੁੱਪ ਅਤੇ ਬਾਲਕੋਨੀ ਵਿੱਚ ਦਾਦੀ ਦੇ ਬੂਟੇ' },
         { title: 'Water Cycle ⇄ ਜਲ ਚੱਕਰ', desc: 'ਰਸੋਈ ਵਿੱਚ ਚਾਹ ਦੀ ਭਾਫ਼ ਅਤੇ ਢੱਕਣ \'ਤੇ ਪਾਣੀ ਦੀਆਂ ਬੂੰਦਾਂ' },
@@ -737,10 +709,25 @@ class VernacApp {
         { title: 'Water Cycle ⇄ জল চক্ৰ', desc: 'চাহৰ ঢাকনিৰ পানী টোপাল আৰু বৰষুণৰ ডাৱৰ' },
         { title: 'Fractions ⇄ ভগ্নাংশ (1/2, 1/4)', desc: 'মিঠা আমৰ টুকুৰা সমভাগ কৰি খোৱা' }
       ],
+      sat: [
+        { title: 'Sunlight ⇄ ᱥᱤᱛᱩᱝ ᱢᱟᱨᱥᱟᱞ', desc: 'ᱥᱮᱛᱟᱜ ᱵᱮᱲᱟ ᱛᱟᱨᱟᱥ ᱟᱨ ᱟᱭᱳᱣᱟᱜ ᱵᱟᱦᱟ ᱫᱟᱨᱮ' },
+        { title: 'Water Cycle ⇄ ᱫᱟᱜ ᱡᱟᱹᱲᱤ ᱪᱚᱠᱨᱚ', desc: 'ᱪᱩᱞᱦᱟᱹ ᱫᱟᱠᱟ ᱵᱷᱟᱯ ᱟᱨ ᱥᱮᱨᱢᱟ ᱨᱤᱢᱤᱞ ᱠᱷᱚᱱ ᱫᱟᱜ ᱧᱩᱨᱩᱜ' },
+        { title: 'Fractions ⇄ ᱦᱟᱹᱴᱤᱧ (1/2, 1/4)', desc: 'ᱦᱟᱴ ᱨᱮ ᱦᱮᱲᱮᱢ ᱩᱞ ᱥᱚᱢᱟᱱ ᱛᱮ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱡᱚᱢ' }
+      ],
+      khr: [
+        { title: 'Sunlight ⇄ सुरुज के घाम', desc: 'बिहान के घाम और तुलसी-महुआ के गाछ' },
+        { title: 'Water Cycle ⇄ जल चक्र', desc: 'डेगची के भाप और अकास के बदरी से पानि बरसेक' },
+        { title: 'Fractions ⇄ आधा-चौथाई (1/2, 1/4)', desc: 'मीठा पाकल आम के संगी में बराबर बांटेक' }
+      ],
       ta: [
         { title: 'Sunlight ⇄ சூரிய ஒளி', desc: 'காலை கோலமும் பாட்டி வீட்டு பால்கனி செடிகளும்' },
         { title: 'Water Cycle ⇄ நீர் சுழற்சி', desc: 'அம்மா வைக்கும் சுடச்சுட ரசத்தின் ஆவியும் நீர் துளிகளும்' },
         { title: 'Fractions ⇄ பின்னங்கள் (1/2, 1/4)', desc: 'இனிப்பான மாம்பழத் துண்டுகளைப் பகிர்ந்தளித்தல்' }
+      ],
+      en: [
+        { title: 'Sunlight ⇄ Solar Energy', desc: 'Explained with morning warmth & grandma balcony plants' },
+        { title: 'Water Cycle ⇄ Evaporation & Rain', desc: 'Explained with boiling tea steam & cooling lid droplets' },
+        { title: 'Fractions ⇄ Halves & Quarters', desc: 'Explained with sharing sweet summer mango slices' }
       ]
     };
 
@@ -1649,6 +1636,18 @@ class VernacApp {
         { name: 'পৰিৱেশ অধ্যয়ন (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'আমাৰ ঘৰুৱা বনৌষধি: তুলসী আৰু নিম', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
         { name: 'মাতৃভাষা অসমীয়া (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'জ্যোতি সংগীত আৰু নতুন শব্দকোষ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
       ],
+      sat: [
+        { name: 'ᱥᱟᱬᱮᱥ (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'ᱥᱮᱨᱢᱟ ᱨᱤᱢᱤᱞ ᱨᱮᱱᱟᱜ ᱩᱠᱩ ᱠᱟᱛᱷᱟ (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
+        { name: 'ᱞᱮᱠᱷᱟ (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'ᱦᱟᱹᱴᱤᱧ: ᱦᱮᱲᱮᱢ ᱩᱞ ᱦᱟᱹᱴᱤᱧ (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
+        { name: 'ᱯᱚᱨᱤᱵᱮᱥ ᱥᱟᱬᱮᱥ (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'ᱟᱵᱚᱣᱟᱜ ᱚᱲᱟᱜ ᱨᱟᱱ ᱫᱟᱨᱮ: ᱛᱩᱞᱥᱤ ᱟᱨ ᱱᱤᱢ', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
+        { name: 'ᱡᱟᱱᱟᱢ ᱟᱲᱟᱝ ᱥᱟᱱᱛᱟᱲᱤ (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'ᱯᱚᱸᱰᱤᱛ ᱨᱟᱹᱜᱷᱩᱱᱟᱛᱷ ᱢᱩᱨᱢᱩ ᱟᱨ ᱚᱞ ᱪᱤᱠᱤ', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
+      ],
+      khr: [
+        { name: 'विज्ञान (Science)', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'अकास के बदरी के भेद (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
+        { name: 'गणित (Mathematics)', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'बांट-अंग: मीठा आम के बंटवारा (Fractions 1/2)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
+        { name: 'पर्यावरण (EVS)', icon: '🌍', color: '#F59E0B', progress: 85, currentLesson: 'घरेलू जड़ी-बूटी: तुलसी और नीम के पतई', completedLessons: 7, totalLessons: 8, recentScore: '100%' },
+        { name: 'मातृभाषा खोरठा (Mother Tongue)', icon: '🗣️', color: '#EC4899', progress: 90, currentLesson: 'खोरठा लोकगीत, कहावत और नया सबद', completedLessons: 9, totalLessons: 10, recentScore: '92%' }
+      ],
       en: [
         { name: 'Science', icon: '🔬', color: '#3B82F6', progress: 75, currentLesson: 'Secret of Rain Clouds (Water Cycle)', completedLessons: 6, totalLessons: 8, recentScore: '95%' },
         { name: 'Mathematics', icon: '📐', color: '#10B981', progress: 60, currentLesson: 'Fractions: Sharing Sweet Mangoes (1/2, 1/4)', completedLessons: 4, totalLessons: 7, recentScore: '88%' },
@@ -1688,11 +1687,35 @@ class VernacApp {
       `).join('');
     }
 
-    // Badges Grid
+    // Localized Badges Grid with Click-to-Speak in Mother Tongue
+    const localizedBadges = {
+      sat: [
+        { id: 'b1', name: 'ᱫᱟᱜ ᱡᱟᱹᱲᱤ ᱵᱤᱜᱽᱭᱟᱱᱤ 💧', desc: 'ᱥᱟᱱᱛᱟᱲᱤ ᱛᱮ ᱫᱟᱜ ᱡᱟᱹᱲᱤ ᱥᱟᱬᱮᱥ ᱪᱮᱫ', icon: '🌊' },
+        { id: 'b2', name: 'ᱦᱟᱹᱴᱤᱧ ᱜᱟᱛᱮ 🥭', desc: 'ᱩᱞ ᱦᱟᱹᱴᱤᱧ ᱠᱟᱛᱮ ᱞᱮᱠᱷᱟ ᱥᱚᱞᱦᱮ', icon: '🥭' },
+        { id: 'b3', name: 'ᱫᱟᱨᱮ ᱨᱩᱠᱷᱤᱭᱟᱹ 🍃', desc: 'ᱥᱟᱠᱟᱢ ᱨᱟᱸᱫᱷᱱᱟ ᱯᱷᱳᱴᱳᱥᱤᱱᱛᱷᱮᱥᱤᱥ ᱵᱟᱰᱟᱭ', icon: '🌱' },
+        { id: 'b4', name: '᱕-ᱢᱟᱦᱟᱸ ᱡᱩᱞᱩᱜ 🔥', desc: 'ᱥᱟᱱᱛᱟᱲᱤ ᱛᱮ ᱕ ᱢᱟᱦᱟᱸ ᱞᱮᱛᱟᱲ ᱪᱮᱫᱚᱜ', icon: '🔥' },
+        { id: 'b5', name: 'ᱥᱟᱱᱛᱟᱲᱤ ᱯᱚᱸᱰᱤᱛ 📜', desc: '᱒᱕ ᱜᱚᱴᱟᱝ ᱥᱟᱬᱮᱥ ᱟᱹᱲᱟᱹ ᱪᱮᱫ', icon: '📖' },
+        { id: 'b6', name: 'ᱨᱚᱲ ᱤᱯᱤᱞ 🎙️', desc: 'ᱥᱟᱱᱛᱟᱲᱤ ᱛᱮ ᱑᱐ ᱜᱚᱴᱟᱝ ᱠᱩᱠᱞᱤ ᱠᱩᱞᱤ', icon: '⭐' }
+      ],
+      khr: [
+        { id: 'b1', name: 'जल चक्र जादूगर 💧', desc: 'खोरठा में जल चक्र के पूरा समझ', icon: '🌊' },
+        { id: 'b2', name: 'बांट-अंग संगी 🥭', desc: 'मीठा आम के बंटवारा से गणित सीखल', icon: '🥭' },
+        { id: 'b3', name: 'गाछ रखवार 🍃', desc: 'हरियर पतई के प्रकाश संश्लेषण समझल', icon: '🌱' },
+        { id: 'b4', name: '५-दिन के लपट 🔥', desc: 'खोरठा में लगातार ५ दिन के पढ़ाई', icon: '🔥' },
+        { id: 'b5', name: 'खोरठा विद्वान 📜', desc: '२५ गो नवा विज्ञान सबद सीखल', icon: '📖' },
+        { id: 'b6', name: 'आवाज सितारा 🎙️', desc: 'खोरठा में १० गो सवाल पूछल', icon: '⭐' }
+      ]
+    };
+    const badgesToRender = localizedBadges[lang] || profile.badges.map(b => ({
+      ...b,
+      desc: b.desc.replace(/in Tamil/g, `in ${currLangName}`).replace(/Tamil/g, currLangName)
+    }));
+
     const badgesGrid = document.getElementById('dashboard-badges-grid');
     if (badgesGrid) {
-      badgesGrid.innerHTML = profile.badges.map(b => `
-        <div class="badge-item">
+      const speechCode = matched ? matched.speechCode : 'ta-IN';
+      badgesGrid.innerHTML = badgesToRender.map(b => `
+        <div class="badge-item" style="cursor: pointer;" title="Click to hear badge in ${currLangName}" onclick="speechEngine.speak('${b.name}. ${b.desc}', '${speechCode}')">
           <div class="badge-icon-box">${b.icon}</div>
           <div class="badge-name">${b.name}</div>
           <div class="badge-desc">${b.desc}</div>
@@ -2613,12 +2636,98 @@ ${l.homework}
     const minigameContainer = document.getElementById('minigame-container');
     if (!minigameContainer) return;
 
-    const pairs = [
-      { id: 'p1', eng: 'Sunlight', vern: 'சூரிய ஒளி', icon: '☀️' },
-      { id: 'p2', eng: 'Raindrops', vern: 'மழைத்துளிகள்', icon: '🌧️' },
-      { id: 'p3', eng: 'Green Leaf', vern: 'பச்சை இலை', icon: '🍃' },
-      { id: 'p4', eng: 'Half (1/2)', vern: 'அரை பாகம்', icon: '🥭' }
-    ];
+    const lang = this.currentLang || 'ta';
+    const langObj = SUPPORTED_LANGUAGES.find(l => l.code === lang);
+    const langSpeechCode = langObj ? langObj.speechCode : 'ta-IN';
+
+    const pairsByLang = {
+      ta: [
+        { id: 'p1', eng: 'Sunlight', vern: 'சூரிய ஒளி', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'மழைத்துளிகள்', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'பச்சை இலை', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'அரை பாகம்', icon: '🥭' }
+      ],
+      hi: [
+        { id: 'p1', eng: 'Sunlight', vern: 'सूर्य का प्रकाश', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'बारिश की बूंदें', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'हरी पत्ती', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'आधा हिस्सा (1/2)', icon: '🥭' }
+      ],
+      te: [
+        { id: 'p1', eng: 'Sunlight', vern: 'సూర్యకాంతి', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'వర్షపు బిందువులు', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'ఆకుపచ్చ ఆకు', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'సగం భాగం (1/2)', icon: '🥭' }
+      ],
+      kn: [
+        { id: 'p1', eng: 'Sunlight', vern: 'ಸೂರ್ಯನ ಬೆಳಕು', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'ಮಳೆಹನಿಗಳು', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'ಹಸಿರು ಎಲೆ', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'ಅರ್ಧ ಭಾಗ (1/2)', icon: '🥭' }
+      ],
+      ml: [
+        { id: 'p1', eng: 'Sunlight', vern: 'സൂര്യപ്രകാശം', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'മഴത്തുള്ളികൾ', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'പച്ച ഇല', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'പകുതി (1/2)', icon: '🥭' }
+      ],
+      bn: [
+        { id: 'p1', eng: 'Sunlight', vern: 'সূর্যালোক', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'বৃষ্টির ফোঁটা', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'সবুজ পাতা', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'অর্ধেক (1/2)', icon: '🥭' }
+      ],
+      mr: [
+        { id: 'p1', eng: 'Sunlight', vern: 'सूर्यप्रकाश', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'पावसाचे थेंब', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'हिरवे पान', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'अर्धा भाग (1/2)', icon: '🥭' }
+      ],
+      gu: [
+        { id: 'p1', eng: 'Sunlight', vern: 'સૂર્યપ્રકાશ', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'વરસાદનાં ટીપાં', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'લીલું પાંદડું', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'અડધો ભાગ (1/2)', icon: '🥭' }
+      ],
+      pa: [
+        { id: 'p1', eng: 'Sunlight', vern: 'ਸੂਰਜ ਦੀ ਰੌਸ਼ਨੀ', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'ਮੀਂਹ ਦੀਆਂ ਬੂੰਦਾਂ', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'ਹਰਾ ਪੱਤਾ', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'ਅੱਧਾ ਹਿੱਸਾ (1/2)', icon: '🥭' }
+      ],
+      or: [
+        { id: 'p1', eng: 'Sunlight', vern: 'ସୂର୍ଯ୍ୟାଲୋକ', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'ବର୍ଷା ବିନ୍ଦୁ', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'ସବୁଜ ପତ୍ର', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'ଅଧା (1/2)', icon: '🥭' }
+      ],
+      as: [
+        { id: 'p1', eng: 'Sunlight', vern: 'সূৰ্যৰ পোহৰ', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'বৰষুণৰ টোপাল', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'সেউজীয়া পাত', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'আধা (1/2)', icon: '🥭' }
+      ],
+      sat: [
+        { id: 'p1', eng: 'Sunlight', vern: 'ᱥᱤᱛᱩᱝ ᱢᱟᱨᱥᱟᱞ', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'ᱫᱟᱜ ᱴᱷᱤᱯᱤᱨ', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'ᱦᱟᱹᱨᱭᱟᱹᱲ ᱥᱟᱠᱟᱢ', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'ᱟᱫᱷᱟ ᱦᱟᱹᱴᱤᱧ (1/2)', icon: '🥭' }
+      ],
+      khr: [
+        { id: 'p1', eng: 'Sunlight', vern: 'सुरुज के घाम', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'पानी के बूंद', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'हरियर पतई', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'आधा हिस्सा (1/2)', icon: '🥭' }
+      ],
+      en: [
+        { id: 'p1', eng: 'Sunlight', vern: 'Sunshine Energy', icon: '☀️' },
+        { id: 'p2', eng: 'Raindrops', vern: 'Water Droplets', icon: '🌧️' },
+        { id: 'p3', eng: 'Green Leaf', vern: 'Plant Leaf', icon: '🍃' },
+        { id: 'p4', eng: 'Half (1/2)', vern: 'One Half Part', icon: '🥭' }
+      ]
+    };
+
+    const pairs = pairsByLang[lang] || pairsByLang['ta'];
 
     let selectedLeft = null;
     let matchesCount = 0;
@@ -2631,10 +2740,10 @@ ${l.homework}
         </div>
         <div class="minigame-columns">
           <div class="minigame-col" id="col-left">
-            ${pairs.map(p => `<button class="minigame-pill pill-left" data-id="${p.id}">${p.icon} ${p.eng}</button>`).join('')}
+            ${pairs.map(p => `<button class="minigame-pill pill-left" data-id="${p.id}" title="Click to hear in English">${p.icon} ${p.eng}</button>`).join('')}
           </div>
           <div class="minigame-col" id="col-right">
-            ${[...pairs].reverse().map(p => `<button class="minigame-pill pill-right" data-id="${p.id}">${p.vern}</button>`).join('')}
+            ${[...pairs].reverse().map(p => `<button class="minigame-pill pill-right" data-id="${p.id}" title="Click to hear in ${langObj ? langObj.name : 'Mother Tongue'}">${p.vern}</button>`).join('')}
           </div>
         </div>
       </div>
@@ -2646,16 +2755,26 @@ ${l.homework}
     leftBtns.forEach(b => {
       b.onclick = () => {
         speechEngine.playPopSound();
+        const pId = b.getAttribute('data-id');
+        const thisPair = pairs.find(p => p.id === pId);
+        if (thisPair) {
+          speechEngine.speak(thisPair.eng, 'en-IN');
+        }
         leftBtns.forEach(btn => btn.classList.remove('selected'));
         b.classList.add('selected');
-        selectedLeft = b.getAttribute('data-id');
+        selectedLeft = pId;
       };
     });
 
     rightBtns.forEach(b => {
       b.onclick = () => {
-        if (!selectedLeft) return;
         const rightId = b.getAttribute('data-id');
+        const thisPair = pairs.find(p => p.id === rightId);
+        if (thisPair) {
+          speechEngine.speak(thisPair.vern, langSpeechCode);
+        }
+
+        if (!selectedLeft) return;
         if (selectedLeft === rightId) {
           b.classList.add('matched');
           const leftMatched = minigameContainer.querySelector(`.pill-left[data-id="${selectedLeft}"]`);
@@ -2667,6 +2786,16 @@ ${l.homework}
           if (matchesCount === 4) {
             quizManager.burstConfetti();
             quizManager.awardStars(25, 'Minigame Champion! All pairs matched!');
+            const celebrationTexts = {
+              sat: 'ᱟᱹᱰᱤ ᱱᱟᱯᱟᱭ! ᱡᱚᱛᱚ ᱡᱤᱱᱤᱥ ᱥᱟᱹᱨᱤ ᱢᱤᱞᱟᱹᱣ ᱮᱱᱟ! ᱟᱢ ᱫᱚ ᱪᱟᱢᱯᱤᱭᱟᱱ ᱠᱟᱱᱟᱢ!',
+              khr: 'शाबाश संगी! सब जोड़ा बिल्कुल सही मिलल! तोहें चैंपियन बन गेला!',
+              ta: 'அற்புதம்! அனைத்து இணைகளும் சரியாக பொருந்திவிட்டன!',
+              hi: 'शाबाश! सभी जोड़े बिल्कुल सही मिल गए! आप चैंपियन हैं!'
+            };
+            const celebText = celebrationTexts[lang] || 'Well done! All pairs matched!';
+            setTimeout(() => {
+              speechEngine.speak(celebText, langSpeechCode);
+            }, 600);
           } else {
             speechEngine.playPopSound();
           }

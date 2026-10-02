@@ -305,14 +305,37 @@ export class SpeechEngine {
     };
     const ttsLang = gttsLangMap[shortLang] || shortLang;
 
+    // Ol Chiki phonetic transliteration dictionary for TTS speech engines
+    const OL_CHIKI_PHONETIC = {
+      '\u1C50': '0', '\u1C51': '1', '\u1C52': '2', '\u1C53': '3', '\u1C54': '4',
+      '\u1C55': '5', '\u1C56': '6', '\u1C57': '7', '\u1C58': '8', '\u1C59': '9',
+      '\u1C5A': 'o', '\u1C5B': 't', '\u1C5C': 'g', '\u1C5D': 'ng', '\u1C5E': 'l',
+      '\u1C5F': 'a', '\u1C60': 'k', '\u1C61': 'j', '\u1C62': 'm', '\u1C63': 'w',
+      '\u1C64': 'i', '\u1C65': 's', '\u1C66': 'h', '\u1C67': 'ny', '\u1C68': 'r',
+      '\u1C69': 'u', '\u1C6A': 'ch', '\u1C6B': 'd', '\u1C6C': 'n', '\u1C6D': 'y',
+      '\u1C6E': 'e', '\u1C6F': 'p', '\u1C70': 'd', '\u1C71': 'n', '\u1C72': 'r',
+      '\u1C73': 'o', '\u1C74': 't', '\u1C75': 'b', '\u1C76': 'n', '\u1C77': 'h',
+      '\u1C78': 'n', '\u1C79': '', '\u1C7A': '', '\u1C7B': '', '\u1C7C': '',
+      '\u1C7D': '', '\u1C7E': '.', '\u1C7F': '.'
+    };
+
+    let speechText = cleanText;
+    let synthLang = fullLang;
+    if (shortLang === 'sat' || /[\u1C50-\u1C7F]/.test(cleanText)) {
+      speechText = cleanText.split('').map(c => OL_CHIKI_PHONETIC[c] !== undefined ? OL_CHIKI_PHONETIC[c] : c).join('');
+      synthLang = 'hi-IN';
+    } else if (shortLang === 'khr') {
+      synthLang = 'hi-IN';
+    }
+
     // Prepare candidate audio stream endpoints
     const candidates = [];
     const baseUrls = this.getApiBaseUrls();
     for (const b of baseUrls) {
-      candidates.push(`${b}/speech/tts?text=${encodeURIComponent(cleanText.slice(0, 600))}&lang=${encodeURIComponent(shortLang)}`);
+      candidates.push(`${b}/speech/tts?text=${encodeURIComponent(speechText.slice(0, 600))}&lang=${encodeURIComponent(shortLang)}`);
     }
     // Direct Google Translate TTS endpoint (client=tw-ob, no CORS required when crossOrigin is not set)
-    candidates.push(`https://translate.google.com/translate_tts?ie=UTF-8&tl=${encodeURIComponent(ttsLang)}&client=tw-ob&q=${encodeURIComponent(cleanText.slice(0, 250))}`);
+    candidates.push(`https://translate.google.com/translate_tts?ie=UTF-8&tl=${encodeURIComponent(ttsLang)}&client=tw-ob&q=${encodeURIComponent(speechText.slice(0, 250))}`);
 
     let candidateIndex = 0;
     let isFinished = false;
@@ -337,13 +360,13 @@ export class SpeechEngine {
         window.speechSynthesis.cancel();
         window.speechSynthesis.resume();
 
-        const utterance = new SpeechSynthesisUtterance(cleanText);
-        utterance.lang = fullLang;
+        const utterance = new SpeechSynthesisUtterance(speechText);
+        utterance.lang = synthLang;
         utterance.pitch = (customProfile && customProfile.pitch) ? customProfile.pitch : 1.24;
         utterance.rate = (customProfile && customProfile.rate) ? customProfile.rate : 0.88;
         utterance.volume = 1.0;
 
-        const ladyVoice = this.findChildFriendlyLadyVoice(fullLang, customProfile);
+        const ladyVoice = this.findChildFriendlyLadyVoice(synthLang, customProfile);
         if (ladyVoice) {
           utterance.voice = ladyVoice;
         }
