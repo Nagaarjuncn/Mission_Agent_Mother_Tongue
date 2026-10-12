@@ -1,11 +1,12 @@
----
-💡 SMART INDIA HACKATHON 2026 SUBMISSION
-• Problem Statement ID: SIH26042
-• Problem Statement Title: AI-Powered Vernacular Pedagogy and Real-Time Translation Tool for Mother Tongue-Based Primary Education
-• Theme: Smart Automation (Software Category)
-• Team ID: 172710
-• Team Name: Hack Horizons
----
+> ### 💡 SMART INDIA HACKATHON 2026 SUBMISSION
+> * **Problem Statement ID:** SIH26042
+> * **Problem Statement Title:** AI-Powered Vernacular Pedagogy and Real-Time Translation Tool for Mother Tongue-Based Primary Education
+> * **Theme:** Smart Automation (Software Category)
+> * **Team ID:** 172710
+> * **Team Name:** Hack Horizons
+
+***
+
 
 
 # Mission Agent Mother-Tongue — Full-Stack Vernacular AI Education Platform 🇮🇳📚
